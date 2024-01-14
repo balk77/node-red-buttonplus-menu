@@ -1,1 +1,1321 @@
-[{"id":"fd2bb19b59cf119e","type":"subflow","name":"B+ MQTT to main","info":"","category":"","in":[{"x":80,"y":100,"wires":[{"id":"94a06ba2b812bfa9"}]}],"out":[],"env":[],"meta":{},"color":"#DDAA99"},{"id":"0184922774fbede3","type":"mqtt out","z":"fd2bb19b59cf119e","name":"value","topic":"","qos":"0","retain":"true","respTopic":"","contentType":"","userProps":"","correl":"","expiry":"","broker":"e6dbd5fb3f32ec20","x":730,"y":360,"wires":[]},{"id":"59db74a4adc9a31f","type":"change","z":"fd2bb19b59cf119e","name":"","rules":[{"t":"set","p":"payload","pt":"msg","to":"label","tot":"msg"}],"action":"","property":"","from":"","to":"","reg":false,"x":540,"y":300,"wires":[["9169f4d5de7f5aa2"]]},{"id":"9169f4d5de7f5aa2","type":"mqtt out","z":"fd2bb19b59cf119e","name":"title","topic":"","qos":"0","retain":"true","respTopic":"","contentType":"","userProps":"","correl":"","expiry":"","broker":"e6dbd5fb3f32ec20","x":730,"y":300,"wires":[]},{"id":"cf7dbf4993cc51d8","type":"mqtt out","z":"fd2bb19b59cf119e","name":"uom","topic":"","qos":"0","retain":"true","respTopic":"","contentType":"","userProps":"","correl":"","expiry":"","broker":"e6dbd5fb3f32ec20","x":730,"y":240,"wires":[]},{"id":"e477e4949ea48f65","type":"change","z":"fd2bb19b59cf119e","name":"","rules":[{"t":"set","p":"payload","pt":"msg","to":"uom","tot":"msg"}],"action":"","property":"","from":"","to":"","reg":false,"x":540,"y":240,"wires":[["cf7dbf4993cc51d8"]]},{"id":"e387eac66190fe70","type":"function","z":"fd2bb19b59cf119e","name":"concat uom","func":"var appendix='uom'\nmsg.topic = msg.topic.concat(appendix)\nreturn msg;","outputs":1,"noerr":0,"initialize":"","finalize":"","libs":[],"x":330,"y":240,"wires":[["e477e4949ea48f65"]]},{"id":"3c67118b2fe0bb35","type":"function","z":"fd2bb19b59cf119e","name":"concat label","func":"var appendix='label'\nmsg.topic = msg.topic.concat(appendix)\nreturn msg;","outputs":1,"timeout":"","noerr":0,"initialize":"","finalize":"","libs":[],"x":330,"y":300,"wires":[["59db74a4adc9a31f"]]},{"id":"849c57c4154e9b1c","type":"function","z":"fd2bb19b59cf119e","name":"concat value","func":"var appendix='value'\nmsg.topic = msg.topic.concat(appendix)\nreturn msg;","outputs":1,"timeout":"","noerr":0,"initialize":"","finalize":"","libs":[],"x":330,"y":360,"wires":[["0184922774fbede3"]]},{"id":"94a06ba2b812bfa9","type":"function","z":"fd2bb19b59cf119e","name":"set topic","func":"msg.topic = \"buttonplus/\"+msg.device+\"/display/\"+msg.displayitem+\"/\";\nreturn msg;","outputs":1,"timeout":0,"noerr":0,"initialize":"","finalize":"","libs":[],"x":140,"y":300,"wires":[["e387eac66190fe70","3c67118b2fe0bb35","849c57c4154e9b1c"]]},{"id":"e6dbd5fb3f32ec20","type":"mqtt-broker","name":"","broker":"192.168.1.7","port":"1883","clientid":"","autoConnect":true,"usetls":false,"protocolVersion":"4","keepalive":"60","cleansession":true,"autoUnsubscribe":true,"birthTopic":"","birthQos":"0","birthPayload":"","birthMsg":{},"closeTopic":"","closeQos":"0","closePayload":"","closeMsg":{},"willTopic":"","willQos":"0","willPayload":"","willMsg":{},"userProps":"","sessionExpiry":""},{"id":"dda605bd4ff9ca6b","type":"tab","label":"Button+","disabled":false,"info":"","env":[]},{"id":"def85d44acd7ae1f","type":"subflow:fd2bb19b59cf119e","z":"dda605bd4ff9ca6b","name":"","x":730,"y":100,"wires":[]},{"id":"5585d907fa2f3f30","type":"debug","z":"dda605bd4ff9ca6b","name":"debug 2","active":false,"tosidebar":true,"console":false,"tostatus":false,"complete":"true","targetType":"full","statusVal":"","statusType":"auto","x":720,"y":160,"wires":[]},{"id":"5e63cffe051c7270","type":"switch","z":"dda605bd4ff9ca6b","name":"","property":"source","propertyType":"msg","rules":[{"t":"eq","v":"Woonkamer","vt":"str"},{"t":"else"}],"checkall":"true","repair":false,"outputs":2,"x":480,"y":700,"wires":[["4335ac1ad2ec79e0"],["20d33fb7fb73d171"]]},{"id":"4335ac1ad2ec79e0","type":"change","z":"dda605bd4ff9ca6b","name":"","rules":[{"t":"set","p":"payload","pt":"msg","to":"msg.media_artist & \" - \" & msg.media_title","tot":"jsonata"}],"action":"","property":"","from":"","to":"","reg":false,"x":690,"y":680,"wires":[["e83ea66daaf0b095","7a94d2dc5523d3a9"]]},{"id":"e83ea66daaf0b095","type":"subflow:fd2bb19b59cf119e","z":"dda605bd4ff9ca6b","name":"","x":960,"y":700,"wires":[]},{"id":"20d33fb7fb73d171","type":"change","z":"dda605bd4ff9ca6b","name":"","rules":[{"t":"set","p":"payload","pt":"msg","to":"","tot":"str"}],"action":"","property":"","from":"","to":"","reg":false,"x":690,"y":720,"wires":[["e83ea66daaf0b095"]]},{"id":"678539c7ea352922","type":"function","z":"dda605bd4ff9ca6b","name":"concat value","func":"var appendix='value'\nmsg.topic = msg.topic.concat(appendix)\nreturn msg;","outputs":1,"noerr":0,"initialize":"","finalize":"","libs":[],"x":660,"y":820,"wires":[[]]},{"id":"7a94d2dc5523d3a9","type":"debug","z":"dda605bd4ff9ca6b","name":"debug 8","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"false","statusVal":"","statusType":"auto","x":1090,"y":860,"wires":[]},{"id":"5c4f8fd575f74583","type":"subflow:fd2bb19b59cf119e","z":"dda605bd4ff9ca6b","name":"","x":689,"y":886,"wires":[]},{"id":"85f97a48c12dd796","type":"debug","z":"dda605bd4ff9ca6b","name":"debug 9","active":false,"tosidebar":true,"console":false,"tostatus":false,"complete":"uom","targetType":"msg","statusVal":"","statusType":"auto","x":579,"y":1006,"wires":[]},{"id":"840bde6727a030a0","type":"change","z":"dda605bd4ff9ca6b","name":"","rules":[{"t":"set","p":"label","pt":"msg","to":"Gemeten","tot":"str"}],"action":"","property":"","from":"","to":"","reg":false,"x":510,"y":100,"wires":[["def85d44acd7ae1f","5585d907fa2f3f30"]]},{"id":"77ac129d00b347c1","type":"comment","z":"dda605bd4ff9ca6b","name":"Displayitem 1","info":"","x":170,"y":60,"wires":[]},{"id":"39a53e1d9a445841","type":"subflow:fd2bb19b59cf119e","z":"dda605bd4ff9ca6b","name":"","x":730,"y":240,"wires":[]},{"id":"7d3326a0ec6856fe","type":"debug","z":"dda605bd4ff9ca6b","name":"debug 21","active":false,"tosidebar":true,"console":false,"tostatus":false,"complete":"true","targetType":"full","statusVal":"","statusType":"auto","x":720,"y":300,"wires":[]},{"id":"95930f12d9e9a004","type":"change","z":"dda605bd4ff9ca6b","name":"","rules":[{"t":"set","p":"label","pt":"msg","to":"Ingesteld","tot":"str"}],"action":"","property":"","from":"","to":"","reg":false,"x":510,"y":240,"wires":[["39a53e1d9a445841","7d3326a0ec6856fe"]]},{"id":"75b758a921fca3eb","type":"comment","z":"dda605bd4ff9ca6b","name":"Displayitem 2 (aangepast blok)","info":"","x":230,"y":200,"wires":[]},{"id":"bc3fea2c6f17b7fa","type":"api-current-state","z":"dda605bd4ff9ca6b","name":"","server":"c5f56a3a.f3f838","version":3,"outputs":1,"halt_if":"","halt_if_type":"str","halt_if_compare":"is","entity_id":"sensor.delft_precipitation_forecast_total","state_type":"str","blockInputOverrides":false,"outputProperties":[{"property":"payload","propertyType":"msg","value":"","valueType":"entityState"},{"property":"data","propertyType":"msg","value":"","valueType":"entity"}],"for":"0","forType":"num","forUnits":"minutes","override_topic":false,"state_location":"payload","override_payload":"msg","entity_location":"data","override_data":"msg","x":280,"y":620,"wires":[[]]},{"id":"8f62a92116d42782","type":"server-state-changed","z":"dda605bd4ff9ca6b","name":"Woonkamer temperatuur","server":"c5f56a3a.f3f838","version":5,"outputs":1,"exposeAsEntityConfig":"","entityId":"sensor.woonkamer_temperature","entityIdType":"exact","outputInitially":true,"stateType":"num","ifState":"","ifStateType":"str","ifStateOperator":"is","outputOnlyOnStateChange":true,"for":"0","forType":"num","forUnits":"minutes","ignorePrevStateNull":false,"ignorePrevStateUnknown":false,"ignorePrevStateUnavailable":false,"ignoreCurrentStateUnknown":false,"ignoreCurrentStateUnavailable":false,"outputProperties":[{"property":"payload","propertyType":"msg","value":"","valueType":"entityState"},{"property":"uom","propertyType":"msg","value":"$entity().attributes.unit_of_measurement","valueType":"jsonata"},{"property":"label","propertyType":"msg","value":"$entity().attributes.friendly_name","valueType":"jsonata"},{"property":"displayitem","propertyType":"msg","value":"1","valueType":"str"},{"property":"device","propertyType":"msg","value":"wk1","valueType":"str"}],"x":210,"y":100,"wires":[["840bde6727a030a0"]]},{"id":"06aea980c602425e","type":"server-state-changed","z":"dda605bd4ff9ca6b","name":"","server":"c5f56a3a.f3f838","version":5,"outputs":1,"exposeAsEntityConfig":"","entityId":"media_player.spotify_sbalk","entityIdType":"exact","outputInitially":true,"stateType":"str","ifState":"","ifStateType":"str","ifStateOperator":"is","outputOnlyOnStateChange":true,"for":"0","forType":"num","forUnits":"minutes","ignorePrevStateNull":false,"ignorePrevStateUnknown":false,"ignorePrevStateUnavailable":false,"ignoreCurrentStateUnknown":false,"ignoreCurrentStateUnavailable":false,"outputProperties":[{"property":"payload","propertyType":"msg","value":"","valueType":"entityState"},{"property":"uom","propertyType":"msg","value":"$entity().attributes.unit_of_measurement","valueType":"jsonata"},{"property":"title","propertyType":"msg","value":"Now playing","valueType":"str"},{"property":"topic","propertyType":"msg","value":"buttonplus/wk1/main/in/4/","valueType":"str"},{"property":"source","propertyType":"msg","value":"$entity().attributes.source","valueType":"jsonata"},{"property":"media_title","propertyType":"msg","value":"$entity().attributes.media_title","valueType":"jsonata"},{"property":"media_artist","propertyType":"msg","value":"$entity().attributes.media_artist","valueType":"jsonata"}],"x":240,"y":700,"wires":[["5e63cffe051c7270"]]},{"id":"1233d0753de517f0","type":"server-state-changed","z":"dda605bd4ff9ca6b","name":"","server":"c5f56a3a.f3f838","version":5,"outputs":1,"exposeAsEntityConfig":"","entityId":"sensor.buienalarm_precipitation_forecast_total","entityIdType":"exact","outputInitially":true,"stateType":"num","ifState":"","ifStateType":"str","ifStateOperator":"is","outputOnlyOnStateChange":true,"for":"0","forType":"num","forUnits":"minutes","ignorePrevStateNull":false,"ignorePrevStateUnknown":false,"ignorePrevStateUnavailable":false,"ignoreCurrentStateUnknown":false,"ignoreCurrentStateUnavailable":false,"outputProperties":[{"property":"payload","propertyType":"msg","value":"","valueType":"entityState"},{"property":"uom","propertyType":"msg","value":"$entity().attributes.unit_of_measurement","valueType":"jsonata"},{"property":"title","propertyType":"msg","value":"Regen 15min","valueType":"str"},{"property":"topic","propertyType":"msg","value":"buttonplus/wk1/main/in/5/","valueType":"str"}],"x":330,"y":880,"wires":[["5c4f8fd575f74583","85f97a48c12dd796"]]},{"id":"0b4dbfb79cec893a","type":"server-state-changed","z":"dda605bd4ff9ca6b","name":"Ingestelde temperatuur","server":"c5f56a3a.f3f838","version":5,"outputs":1,"exposeAsEntityConfig":"","entityId":"climate.woonkamer","entityIdType":"exact","outputInitially":true,"stateType":"num","ifState":"","ifStateType":"str","ifStateOperator":"is","outputOnlyOnStateChange":true,"for":"0","forType":"num","forUnits":"minutes","ignorePrevStateNull":false,"ignorePrevStateUnknown":false,"ignorePrevStateUnavailable":false,"ignoreCurrentStateUnknown":false,"ignoreCurrentStateUnavailable":false,"outputProperties":[{"property":"payload","propertyType":"msg","value":"$entity().attributes.temperature","valueType":"jsonata"},{"property":"uom","propertyType":"msg","value":"$entity().attributes.unit_of_measurement","valueType":"jsonata"},{"property":"label","propertyType":"msg","value":"$entity().attributes.friendly_name","valueType":"jsonata"},{"property":"displayitem","propertyType":"msg","value":"2","valueType":"str"},{"property":"device","propertyType":"msg","value":"wk1","valueType":"str"}],"x":200,"y":240,"wires":[["95930f12d9e9a004"]]},{"id":"173ceffe137b21a9","type":"subflow:fd2bb19b59cf119e","z":"dda605bd4ff9ca6b","name":"","x":730,"y":440,"wires":[]},{"id":"dcf28ad761fd5922","type":"debug","z":"dda605bd4ff9ca6b","name":"debug 25","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"true","targetType":"full","statusVal":"","statusType":"auto","x":720,"y":500,"wires":[]},{"id":"e0ba654526d58375","type":"change","z":"dda605bd4ff9ca6b","name":"","rules":[{"t":"set","p":"device","pt":"msg","to":"wk1","tot":"str"},{"t":"set","p":"displayitem","pt":"msg","to":"6","tot":"str"}],"action":"","property":"","from":"","to":"","reg":false,"x":520,"y":440,"wires":[["173ceffe137b21a9"]]},{"id":"4ae39b93e4e5d9c9","type":"comment","z":"dda605bd4ff9ca6b","name":"Displayitem 6 (aangepast blok)","info":"","x":230,"y":400,"wires":[]},{"id":"46cba9840f0bc890","type":"server-state-changed","z":"dda605bd4ff9ca6b","name":"Tijd","server":"c5f56a3a.f3f838","version":5,"outputs":1,"exposeAsEntityConfig":"","entityId":"sensor.time","entityIdType":"exact","outputInitially":true,"stateType":"str","ifState":"","ifStateType":"str","ifStateOperator":"is","outputOnlyOnStateChange":true,"for":"0","forType":"num","forUnits":"minutes","ignorePrevStateNull":false,"ignorePrevStateUnknown":false,"ignorePrevStateUnavailable":false,"ignoreCurrentStateUnknown":false,"ignoreCurrentStateUnavailable":false,"outputProperties":[{"property":"payload","propertyType":"msg","value":"","valueType":"entityState"},{"property":"displayitem","propertyType":"msg","value":"6","valueType":"str"},{"property":"device","propertyType":"msg","value":"wk1","valueType":"str"}],"x":150,"y":440,"wires":[["e0ba654526d58375"]]},{"id":"13befc1ff21e3205","type":"server-state-changed","z":"dda605bd4ff9ca6b","name":"Datum","server":"c5f56a3a.f3f838","version":5,"outputs":1,"exposeAsEntityConfig":"","entityId":"sensor.date","entityIdType":"exact","outputInitially":true,"stateType":"str","ifState":"","ifStateType":"str","ifStateOperator":"is","outputOnlyOnStateChange":true,"for":"0","forType":"num","forUnits":"minutes","ignorePrevStateNull":false,"ignorePrevStateUnknown":false,"ignorePrevStateUnavailable":false,"ignoreCurrentStateUnknown":false,"ignoreCurrentStateUnavailable":false,"outputProperties":[{"property":"label","propertyType":"msg","value":"","valueType":"entityState"},{"property":"displayitem","propertyType":"msg","value":"6","valueType":"str"},{"property":"device","propertyType":"msg","value":"wk1","valueType":"str"}],"x":150,"y":500,"wires":[["69c067cb360038b9"]]},{"id":"69c067cb360038b9","type":"moment","z":"dda605bd4ff9ca6b","name":"format date","topic":"","input":"label","inputType":"msg","inTz":"Europe/Amsterdam","adjAmount":0,"adjType":"days","adjDir":"add","format":"D MMMM","locale":"nl","output":"label","outputType":"msg","outTz":"Europe/Amsterdam","x":290,"y":500,"wires":[["e0ba654526d58375"]]},{"id":"c5f56a3a.f3f838","type":"server","name":"Home Assistant","version":5,"addon":true,"rejectUnauthorizedCerts":true,"ha_boolean":"y|yes|true|on|home|open","connectionDelay":true,"cacheJson":true,"heartbeat":false,"heartbeatInterval":"30","areaSelector":"friendlyName","deviceSelector":"friendlyName","entitySelector":"friendlyName","statusSeparator":"at: ","statusYear":"hidden","statusMonth":"short","statusDay":"numeric","statusHourCycle":"h23","statusTimeFormat":"h:m","enableGlobalContextStore":true}]
+[
+    {
+        "id": "ee7dfcae62a1d1d1",
+        "type": "subflow",
+        "name": "B+ MQTT to main",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 80,
+                "y": 100,
+                "wires": [
+                    {
+                        "id": "a49cd7b39edf50ad"
+                    }
+                ]
+            }
+        ],
+        "out": [],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "96d164091bca558c",
+        "type": "mqtt out",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "value",
+        "topic": "",
+        "qos": "0",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e6dbd5fb3f32ec20",
+        "x": 730,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "523048e5478dc2ba",
+        "type": "change",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "label",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 300,
+        "wires": [
+            [
+                "b18f1afeaa130737"
+            ]
+        ]
+    },
+    {
+        "id": "b18f1afeaa130737",
+        "type": "mqtt out",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "title",
+        "topic": "",
+        "qos": "0",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e6dbd5fb3f32ec20",
+        "x": 730,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "e343e9a04e0cf6df",
+        "type": "mqtt out",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "uom",
+        "topic": "",
+        "qos": "0",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e6dbd5fb3f32ec20",
+        "x": 730,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "2906bb2e666b787a",
+        "type": "change",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "uom",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 240,
+        "wires": [
+            [
+                "e343e9a04e0cf6df"
+            ]
+        ]
+    },
+    {
+        "id": "4b58c6126865041d",
+        "type": "function",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "concat uom",
+        "func": "var appendix='uom'\nmsg.topic = msg.topic.concat(appendix)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 240,
+        "wires": [
+            [
+                "2906bb2e666b787a"
+            ]
+        ]
+    },
+    {
+        "id": "ef07977994e4e2f4",
+        "type": "function",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "concat label",
+        "func": "var appendix='label'\nmsg.topic = msg.topic.concat(appendix)\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 300,
+        "wires": [
+            [
+                "523048e5478dc2ba"
+            ]
+        ]
+    },
+    {
+        "id": "7611744803215c96",
+        "type": "function",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "concat value",
+        "func": "var appendix='value'\nmsg.topic = msg.topic.concat(appendix)\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 360,
+        "wires": [
+            [
+                "96d164091bca558c"
+            ]
+        ]
+    },
+    {
+        "id": "a49cd7b39edf50ad",
+        "type": "function",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "set topic",
+        "func": "msg.topic = \"buttonplus/\"+msg.device+\"/display/\"+msg.page+\"/\"+msg.displayitem+\"/\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 140,
+        "y": 300,
+        "wires": [
+            [
+                "4b58c6126865041d",
+                "ef07977994e4e2f4",
+                "7611744803215c96"
+            ]
+        ]
+    },
+    {
+        "id": "e6dbd5fb3f32ec20",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.1.7",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "1044a74b4adb9c61",
+        "type": "tab",
+        "label": "Button+",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b5eadadbf165db94",
+        "type": "subflow:ee7dfcae62a1d1d1",
+        "z": "1044a74b4adb9c61",
+        "name": "",
+        "x": 730,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "76595fb85bdd4174",
+        "type": "debug",
+        "z": "1044a74b4adb9c61",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "9c81d00921e7a289",
+        "type": "switch",
+        "z": "1044a74b4adb9c61",
+        "d": true,
+        "name": "",
+        "property": "source",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Woonkamer",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 530,
+        "y": 900,
+        "wires": [
+            [
+                "59e9189ce22eec87"
+            ],
+            [
+                "da4a6f274ef86b0a"
+            ]
+        ]
+    },
+    {
+        "id": "59e9189ce22eec87",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "msg.media_artist & \" - \" & msg.media_title",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 670,
+        "y": 800,
+        "wires": [
+            [
+                "9194324548900780",
+                "633064a13b1dde11"
+            ]
+        ]
+    },
+    {
+        "id": "9194324548900780",
+        "type": "subflow:ee7dfcae62a1d1d1",
+        "z": "1044a74b4adb9c61",
+        "name": "",
+        "x": 910,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "da4a6f274ef86b0a",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 670,
+        "y": 840,
+        "wires": [
+            [
+                "9194324548900780"
+            ]
+        ]
+    },
+    {
+        "id": "73268ba66a7f962a",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "name": "concat value",
+        "func": "var appendix='value'\nmsg.topic = msg.topic.concat(appendix)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 940,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "633064a13b1dde11",
+        "type": "debug",
+        "z": "1044a74b4adb9c61",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1070,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "cdbbb3bd404d4327",
+        "type": "subflow:ee7dfcae62a1d1d1",
+        "z": "1044a74b4adb9c61",
+        "name": "",
+        "x": 1050,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "4d286b6d9f925228",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "label",
+                "pt": "msg",
+                "to": "Gemeten",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 100,
+        "wires": [
+            [
+                "b5eadadbf165db94",
+                "76595fb85bdd4174"
+            ]
+        ]
+    },
+    {
+        "id": "fdb0652c84e550c2",
+        "type": "comment",
+        "z": "1044a74b4adb9c61",
+        "name": "Displayitem 1",
+        "info": "",
+        "x": 170,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "ab309423bbda3afd",
+        "type": "subflow:ee7dfcae62a1d1d1",
+        "z": "1044a74b4adb9c61",
+        "name": "",
+        "x": 730,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "f29ff5d6e8edf9ae",
+        "type": "debug",
+        "z": "1044a74b4adb9c61",
+        "name": "debug 21",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "ea4f1a85e58e0a3c",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "label",
+                "pt": "msg",
+                "to": "Ingesteld",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 240,
+        "wires": [
+            [
+                "ab309423bbda3afd",
+                "f29ff5d6e8edf9ae"
+            ]
+        ]
+    },
+    {
+        "id": "bac5188e1cbd80f1",
+        "type": "comment",
+        "z": "1044a74b4adb9c61",
+        "name": "Displayitem 2 (aangepast blok)",
+        "info": "",
+        "x": 230,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "9a23393442c5ea0c",
+        "type": "api-current-state",
+        "z": "1044a74b4adb9c61",
+        "name": "",
+        "server": "c5f56a3a.f3f838",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.delft_precipitation_forecast_total",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 280,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "25abc7ea7f798fa2",
+        "type": "server-state-changed",
+        "z": "1044a74b4adb9c61",
+        "name": "Woonkamer temperatuur",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "sensor.woonkamer_temperature",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "num",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "uom",
+                "propertyType": "msg",
+                "value": "$entity().attributes.unit_of_measurement",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "label",
+                "propertyType": "msg",
+                "value": "$entity().attributes.friendly_name",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "displayitem",
+                "propertyType": "msg",
+                "value": "1",
+                "valueType": "str"
+            },
+            {
+                "property": "device",
+                "propertyType": "msg",
+                "value": "wk1",
+                "valueType": "str"
+            },
+            {
+                "property": "page",
+                "propertyType": "msg",
+                "value": "main",
+                "valueType": "str"
+            }
+        ],
+        "x": 210,
+        "y": 100,
+        "wires": [
+            [
+                "4d286b6d9f925228"
+            ]
+        ]
+    },
+    {
+        "id": "199a03230e204edc",
+        "type": "server-state-changed",
+        "z": "1044a74b4adb9c61",
+        "name": "",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "sensor.spotify_now_playing",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "uom",
+                "propertyType": "msg",
+                "value": "$entity().attributes.unit_of_measurement",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "title",
+                "propertyType": "msg",
+                "value": "Now playing",
+                "valueType": "str"
+            },
+            {
+                "property": "source",
+                "propertyType": "msg",
+                "value": "$entity().attributes.source",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "media_title",
+                "propertyType": "msg",
+                "value": "$entity().attributes.media_title",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "media_artist",
+                "propertyType": "msg",
+                "value": "$entity().attributes.media_artist",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "page",
+                "propertyType": "msg",
+                "value": "muziek",
+                "valueType": "str"
+            },
+            {
+                "property": "device",
+                "propertyType": "msg",
+                "value": "wk1",
+                "valueType": "str"
+            },
+            {
+                "property": "displayitem",
+                "propertyType": "msg",
+                "value": "11",
+                "valueType": "str"
+            }
+        ],
+        "x": 230,
+        "y": 820,
+        "wires": [
+            [
+                "9c81d00921e7a289",
+                "0673d76b8e2c2b11"
+            ]
+        ]
+    },
+    {
+        "id": "74f02ff1ad5a5726",
+        "type": "server-state-changed",
+        "z": "1044a74b4adb9c61",
+        "name": "",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "sensor.buienalarm_precipitation_forecast_total",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "num",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "uom",
+                "propertyType": "msg",
+                "value": "$entity().attributes.unit_of_measurement",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "title",
+                "propertyType": "msg",
+                "value": "Regen 15min",
+                "valueType": "str"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "buttonplus/wk1/main/in/5/",
+                "valueType": "str"
+            },
+            {
+                "property": "page",
+                "propertyType": "msg",
+                "value": "ochtend",
+                "valueType": "str"
+            },
+            {
+                "property": "device",
+                "propertyType": "msg",
+                "value": "wk1",
+                "valueType": "str"
+            },
+            {
+                "property": "displayitem",
+                "propertyType": "msg",
+                "value": "10",
+                "valueType": "str"
+            }
+        ],
+        "x": 240,
+        "y": 1060,
+        "wires": [
+            [
+                "708d814b09a36bd2"
+            ]
+        ]
+    },
+    {
+        "id": "7f2d36bb6cd2f0de",
+        "type": "server-state-changed",
+        "z": "1044a74b4adb9c61",
+        "name": "Ingestelde temperatuur",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "climate.woonkamer",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "num",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": false,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "$entity().attributes.temperature",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "uom",
+                "propertyType": "msg",
+                "value": "$entity().attributes.unit_of_measurement",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "label",
+                "propertyType": "msg",
+                "value": "$entity().attributes.friendly_name",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "displayitem",
+                "propertyType": "msg",
+                "value": "2",
+                "valueType": "str"
+            },
+            {
+                "property": "device",
+                "propertyType": "msg",
+                "value": "wk1",
+                "valueType": "str"
+            },
+            {
+                "property": "page",
+                "propertyType": "msg",
+                "value": "main",
+                "valueType": "str"
+            }
+        ],
+        "x": 200,
+        "y": 240,
+        "wires": [
+            [
+                "ea4f1a85e58e0a3c"
+            ]
+        ]
+    },
+    {
+        "id": "ae778fc259e59470",
+        "type": "subflow:ee7dfcae62a1d1d1",
+        "z": "1044a74b4adb9c61",
+        "name": "",
+        "x": 730,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "f4d3696a8f6a19fa",
+        "type": "debug",
+        "z": "1044a74b4adb9c61",
+        "name": "debug 25",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "b5d0fe5ee189f94f",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device",
+                "pt": "msg",
+                "to": "wk1",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "displayitem",
+                "pt": "msg",
+                "to": "3",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 440,
+        "wires": [
+            [
+                "ae778fc259e59470"
+            ]
+        ]
+    },
+    {
+        "id": "894ba0312a96aadb",
+        "type": "comment",
+        "z": "1044a74b4adb9c61",
+        "name": "Displayitem 6 (aangepast blok)",
+        "info": "",
+        "x": 230,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "c4590a066bf2df4f",
+        "type": "server-state-changed",
+        "z": "1044a74b4adb9c61",
+        "name": "Tijd",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "sensor.time",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "displayitem",
+                "propertyType": "msg",
+                "value": "6",
+                "valueType": "str"
+            },
+            {
+                "property": "device",
+                "propertyType": "msg",
+                "value": "wk1",
+                "valueType": "str"
+            },
+            {
+                "property": "page",
+                "propertyType": "msg",
+                "value": "main",
+                "valueType": "str"
+            }
+        ],
+        "x": 150,
+        "y": 440,
+        "wires": [
+            [
+                "b5d0fe5ee189f94f"
+            ]
+        ]
+    },
+    {
+        "id": "9bcaa6cdef2cc259",
+        "type": "server-state-changed",
+        "z": "1044a74b4adb9c61",
+        "name": "Datum",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "sensor.date",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "label",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "displayitem",
+                "propertyType": "msg",
+                "value": "6",
+                "valueType": "str"
+            },
+            {
+                "property": "device",
+                "propertyType": "msg",
+                "value": "wk1",
+                "valueType": "str"
+            },
+            {
+                "property": "page",
+                "propertyType": "msg",
+                "value": "main",
+                "valueType": "str"
+            }
+        ],
+        "x": 150,
+        "y": 500,
+        "wires": [
+            [
+                "b6cae6645fc1100d"
+            ]
+        ]
+    },
+    {
+        "id": "b6cae6645fc1100d",
+        "type": "moment",
+        "z": "1044a74b4adb9c61",
+        "name": "format date",
+        "topic": "",
+        "input": "label",
+        "inputType": "msg",
+        "inTz": "Europe/Amsterdam",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "D MMMM",
+        "locale": "nl",
+        "output": "label",
+        "outputType": "msg",
+        "outTz": "Europe/Amsterdam",
+        "x": 290,
+        "y": 500,
+        "wires": [
+            [
+                "b5d0fe5ee189f94f"
+            ]
+        ]
+    },
+    {
+        "id": "4a7e09d84565482f",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "name": "mm naar voorspelling",
+        "func": "var mmpu = msg.payload*4;\nvar description;\nif (mmpu ==0){\n    description = \"(droog)\";\n} else if (mmpu < 1) {\n    description = \"(licht)\";\n} else if (mmpu < 5) {\n    description = \"(matig)\";\n} else {\n    description = \"(zwaar)\";\n}\nmsg.payload = mmpu.toString()+\" mm/u \"+description;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 800,
+        "y": 1120,
+        "wires": [
+            [
+                "cdbbb3bd404d4327"
+            ]
+        ]
+    },
+    {
+        "id": "708d814b09a36bd2",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "label",
+                "pt": "msg",
+                "to": "Regen komende 15 min",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$number(payload)",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "uom",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 800,
+        "y": 1060,
+        "wires": [
+            [
+                "4a7e09d84565482f"
+            ]
+        ]
+    },
+    {
+        "id": "4e09035911d2e244",
+        "type": "server-state-changed",
+        "z": "1044a74b4adb9c61",
+        "name": "",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "sensor.buttonplus_prio_notification",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            },
+            {
+                "property": "label",
+                "propertyType": "msg",
+                "value": "$entity(). attributes.label",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "toplabel",
+                "propertyType": "msg",
+                "value": "$entity().attributes.toplabel",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "ledrgb",
+                "propertyType": "msg",
+                "value": "$entity().attributes.frontled",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "buttonplus/wk1/button/main/2",
+                "valueType": "str"
+            }
+        ],
+        "x": 210,
+        "y": 1240,
+        "wires": [
+            [
+                "c9a98ceba76c6c47",
+                "52071c63d9f364d1"
+            ]
+        ]
+    },
+    {
+        "id": "c9a98ceba76c6c47",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "name": "prepare MQTT topics",
+        "func": "function sleep(ms) {\n    return new Promise((resolve) => {\n        setTimeout(resolve, ms);\n    });\n}\n\nvar newMsg = {};\n// send label\nnewMsg.payload = msg.label;\nif (newMsg.payload == \"\") { newMsg.payload = \" \" }\nnewMsg.topic = msg.topic+\"/label\";\nnode.send(newMsg);\nawait sleep(20);\n\n// send toplabel\nnewMsg.payload = msg.toplabel;\nif (newMsg.payload == \"\") { newMsg.payload = \" \" }\nnewMsg.topic = msg.topic+\"/toplabel\";\nnode.send(newMsg);\nawait sleep(20);\n// send led color\nnewMsg.payload = msg.ledrgb;\nnewMsg.topic = msg.topic+\"/ledrgb\";\nnode.send(newMsg);\nawait sleep(20);\n// send led state\n// newMsg.payload = msg.led[i];\n// newMsg.topic = msg.topic + i + \"/led\";\n// node.send(newMsg);\n\n\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 1240,
+        "wires": [
+            [
+                "bda2c11f55cdc105"
+            ]
+        ]
+    },
+    {
+        "id": "bda2c11f55cdc105",
+        "type": "mqtt out",
+        "z": "1044a74b4adb9c61",
+        "name": "Update buttons",
+        "topic": "",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e6dbd5fb3f32ec20",
+        "x": 760,
+        "y": 1240,
+        "wires": []
+    },
+    {
+        "id": "52071c63d9f364d1",
+        "type": "debug",
+        "z": "1044a74b4adb9c61",
+        "name": "debug 27",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 1320,
+        "wires": []
+    },
+    {
+        "id": "0673d76b8e2c2b11",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "label",
+                "pt": "msg",
+                "to": "Wat speelt er nu?",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 530,
+        "y": 760,
+        "wires": [
+            [
+                "9194324548900780"
+            ]
+        ]
+    },
+    {
+        "id": "c5f56a3a.f3f838",
+        "type": "server",
+        "name": "Home Assistant",
+        "version": 5,
+        "addon": true,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": true,
+        "heartbeat": false,
+        "heartbeatInterval": "30",
+        "areaSelector": "friendlyName",
+        "deviceSelector": "friendlyName",
+        "entitySelector": "friendlyName",
+        "statusSeparator": "at: ",
+        "statusYear": "hidden",
+        "statusMonth": "short",
+        "statusDay": "numeric",
+        "statusHourCycle": "h23",
+        "statusTimeFormat": "h:m",
+        "enableGlobalContextStore": true
+    }
+]
