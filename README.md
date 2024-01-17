@@ -8,6 +8,7 @@ Notes:
 * Uses the following additional nodes:
   * node-red-contrib-home-assistant-websocket
   * https://github.com/hufftheweevil/node-red-contrib-persistent-fsm
+  * https://github.com/TotallyInformation/node-red-contrib-moment (used to beautify the date from English to Dutch)
 * Requires configuration of Node Red with [file based storage of variables](https://stevesnoderedguide.com/node-red-variables). [Read this](https://community.home-assistant.io/t/persistent-states-node-red/76174) when using the addon
 * See these topics on GoT
   * https://gathering.tweakers.net/forum/list_messages/2201036
