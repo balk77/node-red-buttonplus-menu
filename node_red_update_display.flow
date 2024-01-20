@@ -251,7 +251,7 @@
         "z": "1044a74b4adb9c61",
         "name": "",
         "x": 730,
-        "y": 100,
+        "y": 180,
         "wires": []
     },
     {
@@ -268,62 +268,32 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 720,
-        "y": 160,
+        "y": 240,
         "wires": []
     },
     {
-        "id": "9c81d00921e7a289",
-        "type": "switch",
+        "id": "9194324548900780",
+        "type": "subflow:ee7dfcae62a1d1d1",
         "z": "1044a74b4adb9c61",
-        "d": true,
         "name": "",
-        "property": "source",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "Woonkamer",
-                "vt": "str"
-            },
-            {
-                "t": "else"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 530,
-        "y": 900,
-        "wires": [
-            [
-                "59e9189ce22eec87"
-            ],
-            [
-                "da4a6f274ef86b0a"
-            ]
-        ]
+        "x": 910,
+        "y": 840,
+        "wires": []
     },
     {
-        "id": "59e9189ce22eec87",
-        "type": "change",
+        "id": "73268ba66a7f962a",
+        "type": "function",
         "z": "1044a74b4adb9c61",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "msg.media_artist & \" - \" & msg.media_title",
-                "tot": "jsonata"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 670,
-        "y": 800,
+        "name": "change label",
+        "func": "var label=msg.label\n\nif (label == \"Sander\"){\n    msg.label = \"Spotify Sander\";\n} else if (label == \"Fien\") {\n    msg.label = \"Spotify Fien\";\n} else if (label == \"Dide\") {\n    msg.label = \"Spotify Dide\";\n} else if (label == \"MPD Radio\") {\n    msg.label = \"Radio\";\n} \n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 960,
         "wires": [
             [
                 "9194324548900780",
@@ -332,72 +302,20 @@
         ]
     },
     {
-        "id": "9194324548900780",
-        "type": "subflow:ee7dfcae62a1d1d1",
-        "z": "1044a74b4adb9c61",
-        "name": "",
-        "x": 910,
-        "y": 760,
-        "wires": []
-    },
-    {
-        "id": "da4a6f274ef86b0a",
-        "type": "change",
-        "z": "1044a74b4adb9c61",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 670,
-        "y": 840,
-        "wires": [
-            [
-                "9194324548900780"
-            ]
-        ]
-    },
-    {
-        "id": "73268ba66a7f962a",
-        "type": "function",
-        "z": "1044a74b4adb9c61",
-        "name": "concat value",
-        "func": "var appendix='value'\nmsg.topic = msg.topic.concat(appendix)\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 640,
-        "y": 940,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "633064a13b1dde11",
         "type": "debug",
         "z": "1044a74b4adb9c61",
         "name": "debug 8",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1070,
-        "y": 980,
+        "x": 880,
+        "y": 960,
         "wires": []
     },
     {
@@ -406,7 +324,7 @@
         "z": "1044a74b4adb9c61",
         "name": "",
         "x": 1050,
-        "y": 1120,
+        "y": 1200,
         "wires": []
     },
     {
@@ -429,7 +347,7 @@
         "to": "",
         "reg": false,
         "x": 510,
-        "y": 100,
+        "y": 180,
         "wires": [
             [
                 "b5eadadbf165db94",
@@ -442,9 +360,9 @@
         "type": "comment",
         "z": "1044a74b4adb9c61",
         "name": "Displayitem 1",
-        "info": "",
+        "info": "Make sure to add required fields:\nmsg.displayitem (align with configured displayitem)\nmsg.device (B+ device, used in MQTT topic)\nmsg.page (to which page this displayitem belongs to)",
         "x": 170,
-        "y": 60,
+        "y": 140,
         "wires": []
     },
     {
@@ -453,7 +371,7 @@
         "z": "1044a74b4adb9c61",
         "name": "",
         "x": 730,
-        "y": 240,
+        "y": 320,
         "wires": []
     },
     {
@@ -461,7 +379,7 @@
         "type": "debug",
         "z": "1044a74b4adb9c61",
         "name": "debug 21",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -470,7 +388,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 720,
-        "y": 300,
+        "y": 380,
         "wires": []
     },
     {
@@ -493,7 +411,7 @@
         "to": "",
         "reg": false,
         "x": 510,
-        "y": 240,
+        "y": 320,
         "wires": [
             [
                 "ab309423bbda3afd",
@@ -508,50 +426,8 @@
         "name": "Displayitem 2 (aangepast blok)",
         "info": "",
         "x": 230,
-        "y": 200,
+        "y": 280,
         "wires": []
-    },
-    {
-        "id": "9a23393442c5ea0c",
-        "type": "api-current-state",
-        "z": "1044a74b4adb9c61",
-        "name": "",
-        "server": "c5f56a3a.f3f838",
-        "version": 3,
-        "outputs": 1,
-        "halt_if": "",
-        "halt_if_type": "str",
-        "halt_if_compare": "is",
-        "entity_id": "sensor.delft_precipitation_forecast_total",
-        "state_type": "str",
-        "blockInputOverrides": false,
-        "outputProperties": [
-            {
-                "property": "payload",
-                "propertyType": "msg",
-                "value": "",
-                "valueType": "entityState"
-            },
-            {
-                "property": "data",
-                "propertyType": "msg",
-                "value": "",
-                "valueType": "entity"
-            }
-        ],
-        "for": "0",
-        "forType": "num",
-        "forUnits": "minutes",
-        "override_topic": false,
-        "state_location": "payload",
-        "override_payload": "msg",
-        "entity_location": "data",
-        "override_data": "msg",
-        "x": 280,
-        "y": 620,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "25abc7ea7f798fa2",
@@ -606,8 +482,8 @@
             {
                 "property": "device",
                 "propertyType": "msg",
-                "value": "wk1",
-                "valueType": "str"
+                "value": "#:(file)::bplusdevice",
+                "valueType": "flow"
             },
             {
                 "property": "page",
@@ -617,7 +493,7 @@
             }
         ],
         "x": 210,
-        "y": 100,
+        "y": 180,
         "wires": [
             [
                 "4d286b6d9f925228"
@@ -695,8 +571,8 @@
             {
                 "property": "device",
                 "propertyType": "msg",
-                "value": "wk1",
-                "valueType": "str"
+                "value": "#:(file)::bplusdevice",
+                "valueType": "flow"
             },
             {
                 "property": "displayitem",
@@ -706,10 +582,9 @@
             }
         ],
         "x": 230,
-        "y": 820,
+        "y": 840,
         "wires": [
             [
-                "9c81d00921e7a289",
                 "0673d76b8e2c2b11"
             ]
         ]
@@ -767,14 +642,14 @@
             {
                 "property": "page",
                 "propertyType": "msg",
-                "value": "ochtend",
+                "value": "overdag",
                 "valueType": "str"
             },
             {
                 "property": "device",
                 "propertyType": "msg",
-                "value": "wk1",
-                "valueType": "str"
+                "value": "#:(file)::bplusdevice",
+                "valueType": "flow"
             },
             {
                 "property": "displayitem",
@@ -783,8 +658,8 @@
                 "valueType": "str"
             }
         ],
-        "x": 240,
-        "y": 1060,
+        "x": 290,
+        "y": 1140,
         "wires": [
             [
                 "708d814b09a36bd2"
@@ -844,8 +719,8 @@
             {
                 "property": "device",
                 "propertyType": "msg",
-                "value": "wk1",
-                "valueType": "str"
+                "value": "#:(file)::bplusdevice",
+                "valueType": "flow"
             },
             {
                 "property": "page",
@@ -855,7 +730,7 @@
             }
         ],
         "x": 200,
-        "y": 240,
+        "y": 320,
         "wires": [
             [
                 "ea4f1a85e58e0a3c"
@@ -868,7 +743,7 @@
         "z": "1044a74b4adb9c61",
         "name": "",
         "x": 730,
-        "y": 440,
+        "y": 520,
         "wires": []
     },
     {
@@ -876,7 +751,7 @@
         "type": "debug",
         "z": "1044a74b4adb9c61",
         "name": "debug 25",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -885,7 +760,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 720,
-        "y": 500,
+        "y": 580,
         "wires": []
     },
     {
@@ -915,7 +790,7 @@
         "to": "",
         "reg": false,
         "x": 520,
-        "y": 440,
+        "y": 520,
         "wires": [
             [
                 "ae778fc259e59470"
@@ -929,7 +804,7 @@
         "name": "Displayitem 6 (aangepast blok)",
         "info": "",
         "x": 230,
-        "y": 400,
+        "y": 480,
         "wires": []
     },
     {
@@ -973,8 +848,8 @@
             {
                 "property": "device",
                 "propertyType": "msg",
-                "value": "wk1",
-                "valueType": "str"
+                "value": "#:(file)::bplusdevice",
+                "valueType": "flow"
             },
             {
                 "property": "page",
@@ -984,7 +859,7 @@
             }
         ],
         "x": 150,
-        "y": 440,
+        "y": 520,
         "wires": [
             [
                 "b5d0fe5ee189f94f"
@@ -1000,7 +875,7 @@
         "version": 5,
         "outputs": 1,
         "exposeAsEntityConfig": "",
-        "entityId": "sensor.date",
+        "entityId": "sensor.datum_nl",
         "entityIdType": "exact",
         "outputInitially": true,
         "stateType": "str",
@@ -1032,8 +907,8 @@
             {
                 "property": "device",
                 "propertyType": "msg",
-                "value": "wk1",
-                "valueType": "str"
+                "value": "#:(file)::bplusdevice",
+                "valueType": "flow"
             },
             {
                 "property": "page",
@@ -1043,32 +918,7 @@
             }
         ],
         "x": 150,
-        "y": 500,
-        "wires": [
-            [
-                "b6cae6645fc1100d"
-            ]
-        ]
-    },
-    {
-        "id": "b6cae6645fc1100d",
-        "type": "moment",
-        "z": "1044a74b4adb9c61",
-        "name": "format date",
-        "topic": "",
-        "input": "label",
-        "inputType": "msg",
-        "inTz": "Europe/Amsterdam",
-        "adjAmount": 0,
-        "adjType": "days",
-        "adjDir": "add",
-        "format": "D MMMM",
-        "locale": "nl",
-        "output": "label",
-        "outputType": "msg",
-        "outTz": "Europe/Amsterdam",
-        "x": 290,
-        "y": 500,
+        "y": 580,
         "wires": [
             [
                 "b5d0fe5ee189f94f"
@@ -1088,7 +938,7 @@
         "finalize": "",
         "libs": [],
         "x": 800,
-        "y": 1120,
+        "y": 1200,
         "wires": [
             [
                 "cdbbb3bd404d4327"
@@ -1129,7 +979,7 @@
         "to": "",
         "reg": false,
         "x": 800,
-        "y": 1060,
+        "y": 1140,
         "wires": [
             [
                 "4a7e09d84565482f"
@@ -1203,10 +1053,16 @@
                 "propertyType": "msg",
                 "value": "buttonplus/wk1/button/main/2",
                 "valueType": "str"
+            },
+            {
+                "property": "device",
+                "propertyType": "msg",
+                "value": "#:(file)::bplusdevice",
+                "valueType": "flow"
             }
         ],
         "x": 210,
-        "y": 1240,
+        "y": 1320,
         "wires": [
             [
                 "c9a98ceba76c6c47",
@@ -1227,7 +1083,7 @@
         "finalize": "",
         "libs": [],
         "x": 540,
-        "y": 1240,
+        "y": 1320,
         "wires": [
             [
                 "bda2c11f55cdc105"
@@ -1249,7 +1105,7 @@
         "expiry": "",
         "broker": "e6dbd5fb3f32ec20",
         "x": 760,
-        "y": 1240,
+        "y": 1320,
         "wires": []
     },
     {
@@ -1257,7 +1113,7 @@
         "type": "debug",
         "z": "1044a74b4adb9c61",
         "name": "debug 27",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1265,11 +1121,134 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 560,
-        "y": 1320,
+        "y": 1400,
         "wires": []
     },
     {
         "id": "0673d76b8e2c2b11",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "name": "",
+        "rules": [],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 840,
+        "wires": [
+            [
+                "9194324548900780"
+            ]
+        ]
+    },
+    {
+        "id": "3cdfccdf2992d956",
+        "type": "server-state-changed",
+        "z": "1044a74b4adb9c61",
+        "name": "",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "sensor.delft_temperature",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "num",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            },
+            {
+                "property": "device",
+                "propertyType": "msg",
+                "value": "#:(file)::bplusdevice",
+                "valueType": "flow"
+            },
+            {
+                "property": "page",
+                "propertyType": "msg",
+                "value": "overdag",
+                "valueType": "str"
+            },
+            {
+                "property": "displayitem",
+                "propertyType": "msg",
+                "value": "12",
+                "valueType": "str"
+            },
+            {
+                "property": "uom",
+                "propertyType": "msg",
+                "value": "$entity().attributes.unit_of_measurement",
+                "valueType": "jsonata"
+            }
+        ],
+        "x": 180,
+        "y": 1520,
+        "wires": [
+            [
+                "216548165e9963a6",
+                "0e40ee5e3d856362"
+            ]
+        ]
+    },
+    {
+        "id": "dabac98a4a72e082",
+        "type": "subflow:ee7dfcae62a1d1d1",
+        "z": "1044a74b4adb9c61",
+        "name": "",
+        "x": 870,
+        "y": 1500,
+        "wires": []
+    },
+    {
+        "id": "226264a4d9e714a0",
+        "type": "debug",
+        "z": "1044a74b4adb9c61",
+        "name": "debug 31",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 1560,
+        "wires": []
+    },
+    {
+        "id": "216548165e9963a6",
         "type": "change",
         "z": "1044a74b4adb9c61",
         "name": "",
@@ -1278,7 +1257,7 @@
                 "t": "set",
                 "p": "label",
                 "pt": "msg",
-                "to": "Wat speelt er nu?",
+                "to": "Buiten",
                 "tot": "str"
             }
         ],
@@ -1287,13 +1266,301 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 530,
-        "y": 760,
+        "x": 650,
+        "y": 1500,
         "wires": [
             [
-                "9194324548900780"
+                "dabac98a4a72e082",
+                "226264a4d9e714a0"
             ]
         ]
+    },
+    {
+        "id": "6d3cebcc6d08db86",
+        "type": "subflow:ee7dfcae62a1d1d1",
+        "z": "1044a74b4adb9c61",
+        "name": "",
+        "x": 870,
+        "y": 1620,
+        "wires": []
+    },
+    {
+        "id": "dcdc56b66844d233",
+        "type": "debug",
+        "z": "1044a74b4adb9c61",
+        "name": "debug 32",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 1680,
+        "wires": []
+    },
+    {
+        "id": "0e40ee5e3d856362",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "page",
+                "pt": "msg",
+                "to": "avond",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "displayitem",
+                "pt": "msg",
+                "to": "13",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label",
+                "pt": "msg",
+                "to": "Buiten",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 1560,
+        "wires": [
+            [
+                "6d3cebcc6d08db86",
+                "dcdc56b66844d233"
+            ]
+        ]
+    },
+    {
+        "id": "60d3c66fbc8eb9a5",
+        "type": "server-state-changed",
+        "z": "1044a74b4adb9c61",
+        "name": "",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "input_select.media_source_selector",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "label",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            },
+            {
+                "property": "page",
+                "propertyType": "msg",
+                "value": "muziek",
+                "valueType": "str"
+            },
+            {
+                "property": "device",
+                "propertyType": "msg",
+                "value": "#:(file)::bplusdevice",
+                "valueType": "flow"
+            },
+            {
+                "property": "displayitem",
+                "propertyType": "msg",
+                "value": "11",
+                "valueType": "str"
+            }
+        ],
+        "x": 250,
+        "y": 960,
+        "wires": [
+            [
+                "73268ba66a7f962a"
+            ]
+        ]
+    },
+    {
+        "id": "63458f075f671caa",
+        "type": "server-state-changed",
+        "z": "1044a74b4adb9c61",
+        "name": "HA Input Select",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "input_select.buttonplus_wk1_menuselector",
+        "entityIdType": "exact",
+        "outputInitially": false,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "#:(file)::bplusconfigdevice.pagetopic",
+                "valueType": "flow"
+            }
+        ],
+        "x": 1000,
+        "y": 200,
+        "wires": [
+            [
+                "3f37e4b1bdaca3d3",
+                "e7cc598d7a6cc9f5"
+            ]
+        ],
+        "info": "Prepare msg.page, to be filled with the requested page name"
+    },
+    {
+        "id": "3f37e4b1bdaca3d3",
+        "type": "mqtt out",
+        "z": "1044a74b4adb9c61",
+        "name": "",
+        "topic": "",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e6dbd5fb3f32ec20",
+        "x": 1210,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "c90528d1b3e7c241",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "name": "01 local config",
+        "func": "// Configuration goes here:\nvar bplusdevice = \"wk1\"; // the device this page belongs to\n\n// nothing to be changed below this line\n// -------------------------------------\n\n// retrieve existing config from disk, or create when non-existent\n// this retrieves configuration for all configured B+ devices\nvar bplusconfig = global.get(\"bplusconfig\", \"file\");\n\n\n// save the configuration and parameters to this flow, for use\nflow.set('bplusdevice', bplusdevice, \"file\");\nflow.set('bplusconfigdevice', bplusconfig[bplusdevice], \"file\");\n\n\n\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6e980a863a83beeb",
+        "type": "inject",
+        "z": "1044a74b4adb9c61",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 60,
+        "wires": [
+            [
+                "c90528d1b3e7c241"
+            ]
+        ]
+    },
+    {
+        "id": "e7cc598d7a6cc9f5",
+        "type": "mqtt out",
+        "z": "1044a74b4adb9c61",
+        "name": "",
+        "topic": "buttonplus/wk1/display/main/4/value",
+        "qos": "",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e6dbd5fb3f32ec20",
+        "x": 1210,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "f8210e82d8b29a39",
+        "type": "comment",
+        "z": "1044a74b4adb9c61",
+        "name": "Issue new page title to MQTT",
+        "info": "",
+        "x": 1220,
+        "y": 280,
+        "wires": []
     },
     {
         "id": "c5f56a3a.f3f838",
