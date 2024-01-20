@@ -18,7 +18,7 @@ Notes:
 * Blocks requiring configuration are placed in yellow groups.
 * Topics follow this naming convention: https://github.com/koenhendriks/ha-button-plus/wiki/mqttstructure.md <-- to be updated, page is added `buttonplus/<device>/button/<page>/<buttonID>/state`
 * Uses the following additional nodes:
-  * node-red-contrib-home-assistant-websocket
+  * [node-red-contrib-home-assistant-websocket](https://flows.nodered.org/node/node-red-contrib-home-assistant-websocket)
   * ~~https://github.com/hufftheweevil/node-red-contrib-persistent-fsm~~ no longer needed
   * ~~https://github.com/TotallyInformation/node-red-contrib-moment~~ no longer used
 * Requires configuration of Node Red with [file based storage of variables](https://stevesnoderedguide.com/node-red-variables). [Read this](https://community.home-assistant.io/t/persistent-states-node-red/76174) when using the addon
