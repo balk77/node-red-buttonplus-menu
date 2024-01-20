@@ -13,6 +13,7 @@ This Node Red flow creates a page menu structure on you Buttonplus device. Page 
 
 Notes:
 * Based on firmwate 1.08
+* Flow is for 3-bar configuration only, 2, 1 and 0 bar needs to be added
 * Active page can be set by sending a page name to `<basetopic>/<bplusdevice>/page`, for instance `buttonplus/wk1/page`
 * Brightness can be controlled by sending a numeric value (1-100) to `<basetopic>/<bplusdevice>/brightness`, for instance `buttonplus/wk1/brightness`
 * Blocks requiring configuration are placed in yellow groups.
