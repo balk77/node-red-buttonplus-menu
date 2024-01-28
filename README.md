@@ -1,5 +1,5 @@
 # node-red-buttonplus-menu
-This Node Red flow creates a page menu structure on you Buttonplus device. Page `main` is always visible, for things like time etc. You can also assign buttons to `main`, for instance as a trigger to change the menu page.
+This Node Red flow creates a page menu structure on you Buttonplus device. Page `main` is always visible, for things like time etc. You can also assign buttons to `main`, for instance as a trigger to change the menu page. See our [Wiki](https://github.com/balk77/node-red-buttonplus-menu/wiki) for documentation.
 
 **Installation**
 * Create a new flow from `node_red_config.flow`
