@@ -1,1448 +1,6 @@
 [
     {
-        "id": "9fafc27b6f107add",
-        "type": "subflow",
-        "name": "Main",
-        "info": "",
-        "category": "",
-        "in": [
-            {
-                "x": 40,
-                "y": 140,
-                "wires": [
-                    {
-                        "id": "ed48a4366bab24de"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 680,
-                "y": 260,
-                "wires": []
-            },
-            {
-                "x": 680,
-                "y": 320,
-                "wires": [
-                    {
-                        "id": "d0d44f1d535dd25c",
-                        "port": 1
-                    }
-                ]
-            }
-        ],
-        "env": [],
-        "meta": {},
-        "color": "#DDAA99"
-    },
-    {
-        "id": "ed48a4366bab24de",
-        "type": "switch",
-        "z": "9fafc27b6f107add",
-        "name": "",
-        "property": "state",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "press",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "release",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "longpress",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 3,
-        "x": 150,
-        "y": 140,
-        "wires": [
-            [
-                "d0d44f1d535dd25c"
-            ],
-            [
-                "9737cabeb9fdb9c4"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "d0d44f1d535dd25c",
-        "type": "switch",
-        "z": "9fafc27b6f107add",
-        "name": "press",
-        "property": "button",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "0",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "2",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "4",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "5",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "6",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "7",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 8,
-        "x": 370,
-        "y": 160,
-        "wires": [
-            [],
-            [
-                "0fd3958b060ec2f2"
-            ],
-            [
-                "69efab6a059210b6"
-            ],
-            [],
-            [],
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "9737cabeb9fdb9c4",
-        "type": "switch",
-        "z": "9fafc27b6f107add",
-        "name": "Release",
-        "property": "button",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "0",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "2",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "4",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "5",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "6",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "7",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 8,
-        "x": 180,
-        "y": 340,
-        "wires": [
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "0fd3958b060ec2f2",
-        "type": "api-call-service",
-        "z": "9fafc27b6f107add",
-        "name": "next menu",
-        "server": "c5f56a3a.f3f838",
-        "version": 5,
-        "debugenabled": false,
-        "domain": "input_select",
-        "service": "select_next",
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "input_select.buttonplus_wk1_menuselector"
-        ],
-        "data": "",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 670,
-        "y": 140,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "69efab6a059210b6",
-        "type": "api-call-service",
-        "z": "9fafc27b6f107add",
-        "name": "B+ clear prio",
-        "server": "c5f56a3a.f3f838",
-        "version": 5,
-        "debugenabled": false,
-        "domain": "script",
-        "service": "buttonplus_notification_clear_prio",
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [],
-        "data": "",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 690,
-        "y": 200,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "3f278483a074ca1c",
-        "type": "subflow",
-        "name": "Overdag",
-        "info": "",
-        "category": "",
-        "in": [
-            {
-                "x": 50,
-                "y": 30,
-                "wires": [
-                    {
-                        "id": "64813ca6fc6f35be"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 700,
-                "y": 80,
-                "wires": []
-            },
-            {
-                "x": 740,
-                "y": 280,
-                "wires": []
-            },
-            {
-                "x": 720,
-                "y": 180,
-                "wires": []
-            }
-        ],
-        "env": [],
-        "meta": {},
-        "color": "#DDAA99"
-    },
-    {
-        "id": "64813ca6fc6f35be",
-        "type": "switch",
-        "z": "3f278483a074ca1c",
-        "name": "",
-        "property": "state",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "press",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "release",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "longpress",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 3,
-        "x": 150,
-        "y": 80,
-        "wires": [
-            [
-                "47b85f522b41fbbf",
-                "0be23b60c617d5c0"
-            ],
-            [
-                "784a3abe76920af2",
-                "0be23b60c617d5c0"
-            ],
-            [
-                "0be23b60c617d5c0"
-            ]
-        ]
-    },
-    {
-        "id": "47b85f522b41fbbf",
-        "type": "switch",
-        "z": "3f278483a074ca1c",
-        "name": "press",
-        "property": "button",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "0",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "2",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "4",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "5",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "6",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "7",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 8,
-        "x": 290,
-        "y": 280,
-        "wires": [
-            [],
-            [],
-            [],
-            [],
-            [],
-            [
-                "b10720159d610313"
-            ],
-            [
-                "cd561af46a31eef9"
-            ],
-            [
-                "4c1e21bb771abaae"
-            ]
-        ]
-    },
-    {
-        "id": "4c1e21bb771abaae",
-        "type": "api-call-service",
-        "z": "3f278483a074ca1c",
-        "name": "Ochtend aan",
-        "server": "c5f56a3a.f3f838",
-        "version": 5,
-        "debugenabled": false,
-        "domain": "scene",
-        "service": "turn_on",
-        "areaId": [
-            "f003303ef40d4f74a22d0ac43952a198"
-        ],
-        "deviceId": [],
-        "entityId": [
-            "scene.ochtend_aan"
-        ],
-        "data": "",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 710,
-        "y": 440,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "cd561af46a31eef9",
-        "type": "api-call-service",
-        "z": "3f278483a074ca1c",
-        "name": "",
-        "server": "c5f56a3a.f3f838",
-        "version": 5,
-        "debugenabled": false,
-        "domain": "script",
-        "service": "woonkamer_lichten_uit",
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [],
-        "data": "",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 480,
-        "y": 440,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "b10720159d610313",
-        "type": "api-call-service",
-        "z": "3f278483a074ca1c",
-        "name": "Woonkamer vol",
-        "server": "c5f56a3a.f3f838",
-        "version": 5,
-        "debugenabled": false,
-        "domain": "scene",
-        "service": "turn_on",
-        "areaId": [
-            "f003303ef40d4f74a22d0ac43952a198"
-        ],
-        "deviceId": [],
-        "entityId": [
-            "scene.woonkamer_vol"
-        ],
-        "data": "",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 720,
-        "y": 380,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "784a3abe76920af2",
-        "type": "switch",
-        "z": "3f278483a074ca1c",
-        "name": "Release",
-        "property": "button",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "0",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "2",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "4",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "5",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "6",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "7",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 8,
-        "x": 160,
-        "y": 420,
-        "wires": [
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "e68e5ff2d957406f",
-        "type": "mqtt out",
-        "z": "3f278483a074ca1c",
-        "name": "",
-        "topic": "",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "e6dbd5fb3f32ec20",
-        "x": 570,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "0be23b60c617d5c0",
-        "type": "function",
-        "z": "3f278483a074ca1c",
-        "name": "light led on press",
-        "func": "if(msg.state == \"release\"){\n    msg.payload = 0;    \n}else{\n    msg.payload = 14523136;\n}\n\n\nmsg.topic = msg.topic.split(\"/\").slice(0, -1).join(\"/\") + \"/ledrgb\";\n\n//msg.topic = \"buttonplus/wk1/button/muziek/\" + msg.button +\"/ledrgb\"\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 390,
-        "y": 80,
-        "wires": [
-            [
-                "e68e5ff2d957406f"
-            ]
-        ]
-    },
-    {
-        "id": "6b88b4fda81a741c",
-        "type": "subflow",
-        "name": "Muziek",
-        "info": "",
-        "category": "",
-        "in": [
-            {
-                "x": 40,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "cb068e69b8176d5f"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 1080,
-                "y": 140,
-                "wires": []
-            },
-            {
-                "x": 740,
-                "y": 280,
-                "wires": [
-                    {
-                        "id": "f648896a3569bab7",
-                        "port": 1
-                    }
-                ]
-            },
-            {
-                "x": 800,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "cb068e69b8176d5f",
-                        "port": 0
-                    }
-                ]
-            }
-        ],
-        "env": [],
-        "meta": {},
-        "color": "#DDAA99"
-    },
-    {
-        "id": "cb068e69b8176d5f",
-        "type": "switch",
-        "z": "6b88b4fda81a741c",
-        "name": "",
-        "property": "state",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "press",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "release",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "longpress",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 3,
-        "x": 110,
-        "y": 220,
-        "wires": [
-            [
-                "f648896a3569bab7",
-                "b573c77f70928143"
-            ],
-            [
-                "88670b4b387a6e74",
-                "b573c77f70928143"
-            ],
-            [
-                "b573c77f70928143"
-            ]
-        ]
-    },
-    {
-        "id": "f648896a3569bab7",
-        "type": "switch",
-        "z": "6b88b4fda81a741c",
-        "name": "press",
-        "property": "button",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "0",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "2",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "4",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "5",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "6",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "7",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 8,
-        "x": 330,
-        "y": 380,
-        "wires": [
-            [],
-            [],
-            [],
-            [
-                "b3ede8c9cfcce4a7"
-            ],
-            [
-                "50c5c53183df6843"
-            ],
-            [
-                "63c0313088c7f320"
-            ],
-            [
-                "76a2ad845656e9e7"
-            ],
-            [
-                "2a291b5c19369515"
-            ]
-        ]
-    },
-    {
-        "id": "003e63908f635c91",
-        "type": "mqtt out",
-        "z": "6b88b4fda81a741c",
-        "name": "",
-        "topic": "buttonplus/wk1/music",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "e6dbd5fb3f32ec20",
-        "x": 840,
-        "y": 500,
-        "wires": []
-    },
-    {
-        "id": "2a291b5c19369515",
-        "type": "change",
-        "z": "6b88b4fda81a741c",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "volumeup",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 540,
-        "y": 500,
-        "wires": [
-            [
-                "003e63908f635c91"
-            ]
-        ]
-    },
-    {
-        "id": "76a2ad845656e9e7",
-        "type": "change",
-        "z": "6b88b4fda81a741c",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "volumedown",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 540,
-        "y": 440,
-        "wires": [
-            [
-                "003e63908f635c91"
-            ]
-        ]
-    },
-    {
-        "id": "63c0313088c7f320",
-        "type": "change",
-        "z": "6b88b4fda81a741c",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "next",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 540,
-        "y": 400,
-        "wires": [
-            [
-                "003e63908f635c91"
-            ]
-        ]
-    },
-    {
-        "id": "50c5c53183df6843",
-        "type": "change",
-        "z": "6b88b4fda81a741c",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "previous",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 540,
-        "y": 360,
-        "wires": [
-            [
-                "003e63908f635c91"
-            ]
-        ]
-    },
-    {
-        "id": "b3ede8c9cfcce4a7",
-        "type": "change",
-        "z": "6b88b4fda81a741c",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "playpause",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 540,
-        "y": 320,
-        "wires": [
-            [
-                "003e63908f635c91"
-            ]
-        ]
-    },
-    {
-        "id": "88670b4b387a6e74",
-        "type": "switch",
-        "z": "6b88b4fda81a741c",
-        "name": "Release",
-        "property": "button",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "0",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "2",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "4",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "5",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "6",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "7",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 8,
-        "x": 180,
-        "y": 500,
-        "wires": [
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "5c4cbc3800b26b26",
-        "type": "mqtt out",
-        "z": "6b88b4fda81a741c",
-        "name": "",
-        "topic": "",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "e6dbd5fb3f32ec20",
-        "x": 630,
-        "y": 220,
-        "wires": []
-    },
-    {
-        "id": "b573c77f70928143",
-        "type": "function",
-        "z": "6b88b4fda81a741c",
-        "name": "light led on press",
-        "func": "if(msg.state == \"release\"){\n    msg.payload = 0;    \n}else{\n    msg.payload = 14523136;\n}\n\n\nmsg.topic = msg.topic.split(\"/\").slice(0, -1).join(\"/\") + \"/ledrgb\";\n\n//msg.topic = \"buttonplus/wk1/button/muziek/\" + msg.button +\"/ledrgb\"\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 450,
-        "y": 220,
-        "wires": [
-            [
-                "5c4cbc3800b26b26"
-            ]
-        ]
-    },
-    {
-        "id": "e2ce48a0f1cc65ac",
-        "type": "subflow",
-        "name": "Verlichting",
-        "info": "",
-        "category": "",
-        "in": [
-            {
-                "x": 40,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "55c81e3cc9724857"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 740,
-                "y": 240,
-                "wires": []
-            },
-            {
-                "x": 560,
-                "y": 160,
-                "wires": []
-            },
-            {
-                "x": 740,
-                "y": 360,
-                "wires": []
-            }
-        ],
-        "env": [],
-        "meta": {},
-        "color": "#DDAA99"
-    },
-    {
-        "id": "55c81e3cc9724857",
-        "type": "switch",
-        "z": "e2ce48a0f1cc65ac",
-        "name": "",
-        "property": "state",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "press",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "release",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "longpress",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 3,
-        "x": 130,
-        "y": 80,
-        "wires": [
-            [
-                "ff8aabd46a802efc",
-                "d8eab2e2bcdb8ad8"
-            ],
-            [
-                "3cb7e0d19160bf71",
-                "d8eab2e2bcdb8ad8"
-            ],
-            [
-                "d8eab2e2bcdb8ad8"
-            ]
-        ]
-    },
-    {
-        "id": "ff8aabd46a802efc",
-        "type": "switch",
-        "z": "e2ce48a0f1cc65ac",
-        "name": "press",
-        "property": "button",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "0",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "2",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "4",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "5",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "6",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "7",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 8,
-        "x": 350,
-        "y": 100,
-        "wires": [
-            [],
-            [],
-            [],
-            [],
-            [
-                "c5f0eebafd0ff6c9"
-            ],
-            [
-                "b93b2de25909867b"
-            ],
-            [
-                "fb500ea153622b80"
-            ],
-            [
-                "76a71f967af5ab9d"
-            ]
-        ]
-    },
-    {
-        "id": "fb500ea153622b80",
-        "type": "api-call-service",
-        "z": "e2ce48a0f1cc65ac",
-        "name": "",
-        "server": "c5f56a3a.f3f838",
-        "version": 5,
-        "debugenabled": false,
-        "domain": "script",
-        "service": "woonkamer_lichten_uit",
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [],
-        "data": "",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 540,
-        "y": 480,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "76a71f967af5ab9d",
-        "type": "api-call-service",
-        "z": "e2ce48a0f1cc65ac",
-        "name": "Woonkamer vol",
-        "server": "c5f56a3a.f3f838",
-        "version": 5,
-        "debugenabled": false,
-        "domain": "scene",
-        "service": "turn_on",
-        "areaId": [
-            "f003303ef40d4f74a22d0ac43952a198"
-        ],
-        "deviceId": [],
-        "entityId": [
-            "scene.woonkamer_vol"
-        ],
-        "data": "",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 780,
-        "y": 480,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "c5f0eebafd0ff6c9",
-        "type": "api-call-service",
-        "z": "e2ce48a0f1cc65ac",
-        "name": "Woonkamer mid",
-        "server": "c5f56a3a.f3f838",
-        "version": 5,
-        "debugenabled": false,
-        "domain": "scene",
-        "service": "turn_on",
-        "areaId": [
-            "f003303ef40d4f74a22d0ac43952a198"
-        ],
-        "deviceId": [],
-        "entityId": [
-            "scene.woonkamer_mid"
-        ],
-        "data": "",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 500,
-        "y": 420,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "b93b2de25909867b",
-        "type": "api-call-service",
-        "z": "e2ce48a0f1cc65ac",
-        "name": "Woonkamer mid",
-        "server": "c5f56a3a.f3f838",
-        "version": 5,
-        "debugenabled": false,
-        "domain": "scene",
-        "service": "turn_on",
-        "areaId": [
-            "f003303ef40d4f74a22d0ac43952a198"
-        ],
-        "deviceId": [],
-        "entityId": [
-            "scene.woonkamer_dim"
-        ],
-        "data": "",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 780,
-        "y": 420,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "3cb7e0d19160bf71",
-        "type": "switch",
-        "z": "e2ce48a0f1cc65ac",
-        "name": "Release",
-        "property": "button",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "0",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "2",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "4",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "5",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "6",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "7",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 8,
-        "x": 180,
-        "y": 280,
-        "wires": [
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "9c3ea71aaf87cf4b",
-        "type": "mqtt out",
-        "z": "e2ce48a0f1cc65ac",
-        "name": "",
-        "topic": "",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "e6dbd5fb3f32ec20",
-        "x": 630,
-        "y": 20,
-        "wires": []
-    },
-    {
-        "id": "d8eab2e2bcdb8ad8",
-        "type": "function",
-        "z": "e2ce48a0f1cc65ac",
-        "name": "light led on press",
-        "func": "if(msg.state == \"release\"){\n    msg.payload = 0;    \n}else{\n    msg.payload = 14523136;\n}\n\n\nmsg.topic = msg.topic.split(\"/\").slice(0, -1).join(\"/\") + \"/ledrgb\";\n\n//msg.topic = \"buttonplus/wk1/button/muziek/\" + msg.button +\"/ledrgb\"\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 450,
-        "y": 20,
-        "wires": [
-            [
-                "9c3ea71aaf87cf4b"
-            ]
-        ]
-    },
-    {
-        "id": "c5f56a3a.f3f838",
-        "type": "server",
-        "name": "Home Assistant",
-        "version": 5,
-        "addon": true,
-        "rejectUnauthorizedCerts": true,
-        "ha_boolean": "y|yes|true|on|home|open",
-        "connectionDelay": true,
-        "cacheJson": true,
-        "heartbeat": false,
-        "heartbeatInterval": "30",
-        "areaSelector": "friendlyName",
-        "deviceSelector": "friendlyName",
-        "entitySelector": "friendlyName",
-        "statusSeparator": "at: ",
-        "statusYear": "hidden",
-        "statusMonth": "short",
-        "statusDay": "numeric",
-        "statusHourCycle": "h23",
-        "statusTimeFormat": "h:m",
-        "enableGlobalContextStore": true
-    },
-    {
-        "id": "e6dbd5fb3f32ec20",
-        "type": "mqtt-broker",
-        "name": "",
-        "broker": "192.168.1.7",
-        "port": "1883",
-        "clientid": "",
-        "autoConnect": true,
-        "usetls": false,
-        "protocolVersion": "4",
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
-        "willMsg": {},
-        "userProps": "",
-        "sessionExpiry": ""
-    },
-    {
-        "id": "bbc4284780ea4146",
+        "id": "18dd279f36d97386",
         "type": "tab",
         "label": "Button+ modes",
         "disabled": false,
@@ -1450,178 +8,28 @@
         "env": []
     },
     {
-        "id": "1eb42d9c512c5156",
+        "id": "3dc14376c3d7d50c",
         "type": "group",
-        "z": "bbc4284780ea4146",
+        "z": "18dd279f36d97386",
         "name": "Requires configuration",
         "style": {
             "label": true,
             "fill": "#ffffbf"
         },
         "nodes": [
-            "d40843311b88541a",
-            "19db5d2c7a02a803",
-            "82bf5afba94b270d",
-            "28b27c4de8787982",
-            "fdb5418b5a49e3bb",
-            "79244f8d7c36cfc6",
-            "d1188bfef91713b4",
-            "5d966a3e21fccf2b"
+            "c42c778490b3be56",
+            "9d1dd1afd2f2e0b3",
+            "b1a43bc8d228b222"
         ],
-        "x": 294,
-        "y": 139,
-        "w": 692,
-        "h": 292
+        "x": 74,
+        "y": 19,
+        "w": 472,
+        "h": 142
     },
     {
-        "id": "f656786cbb1524d5",
-        "type": "group",
-        "z": "bbc4284780ea4146",
-        "name": "Requires configuration",
-        "style": {
-            "label": true,
-            "fill": "#ffffbf"
-        },
-        "nodes": [
-            "fc6d1e231f9bdac4",
-            "65343ba3b7c732f7",
-            "86ed38097572038e",
-            "3188db217b8b6298",
-            "16bd02dea700edcf",
-            "09405e7b9e062b41",
-            "3646108c0ac15193",
-            "ea911d1506cae58e",
-            "16fa7ded212bb8cf",
-            "e46b4ed403416635",
-            "dc85c529b1aabafd"
-        ],
-        "x": 1014,
-        "y": 499,
-        "w": 652,
-        "h": 302
-    },
-    {
-        "id": "9d87a235156e6c91",
-        "type": "group",
-        "z": "bbc4284780ea4146",
-        "name": "Requires configuration",
-        "style": {
-            "fill": "#ffffbf",
-            "label": true
-        },
-        "nodes": [
-            "791cd6a5c204cc2f",
-            "d886aea62c470a8f",
-            "c5c9d91309682db1",
-            "b5071d75c23ccfef",
-            "a15704fb6b2ed516",
-            "15858f44f9fc05d3",
-            "c6de25db8019ed6e",
-            "11460e3f73666fbe",
-            "c5605e4c2a8790a1",
-            "6897bb5f56c71bbe"
-        ],
-        "x": 334,
-        "y": 819,
-        "w": 952,
-        "h": 329.5
-    },
-    {
-        "id": "791cd6a5c204cc2f",
-        "type": "subflow:e2ce48a0f1cc65ac",
-        "z": "bbc4284780ea4146",
-        "g": "9d87a235156e6c91",
-        "name": "Verlichting",
-        "x": 690,
-        "y": 980,
-        "wires": [
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "d886aea62c470a8f",
-        "type": "subflow:6b88b4fda81a741c",
-        "z": "bbc4284780ea4146",
-        "g": "9d87a235156e6c91",
-        "name": "Muziek",
-        "x": 680,
-        "y": 1040,
-        "wires": [
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "c5c9d91309682db1",
-        "type": "subflow:3f278483a074ca1c",
-        "z": "bbc4284780ea4146",
-        "g": "9d87a235156e6c91",
-        "name": "Overdag",
-        "x": 680,
-        "y": 1100,
-        "wires": [
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "b5071d75c23ccfef",
-        "type": "switch",
-        "z": "bbc4284780ea4146",
-        "g": "9d87a235156e6c91",
-        "name": "06 Switch",
-        "property": "page",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "#:(file)::pages.0",
-                "vt": "flow"
-            },
-            {
-                "t": "eq",
-                "v": "#:(file)::pages.1",
-                "vt": "flow"
-            },
-            {
-                "t": "eq",
-                "v": "#:(file)::pages.2",
-                "vt": "flow"
-            },
-            {
-                "t": "eq",
-                "v": "#:(file)::pages.3",
-                "vt": "flow"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 4,
-        "x": 500,
-        "y": 1020,
-        "wires": [
-            [
-                "15858f44f9fc05d3"
-            ],
-            [
-                "791cd6a5c204cc2f"
-            ],
-            [
-                "d886aea62c470a8f"
-            ],
-            [
-                "c5c9d91309682db1"
-            ]
-        ]
-    },
-    {
-        "id": "ce6c6f8a40d28d94",
+        "id": "1cc89963bcc5d396",
         "type": "debug",
-        "z": "bbc4284780ea4146",
+        "z": "18dd279f36d97386",
         "name": "debug 19",
         "active": false,
         "tosidebar": true,
@@ -1631,127 +39,39 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2100,
-        "y": 780,
+        "x": 2040,
+        "y": 580,
         "wires": []
     },
     {
-        "id": "a15704fb6b2ed516",
+        "id": "451c39045c64f3cd",
         "type": "comment",
-        "z": "bbc4284780ea4146",
-        "g": "9d87a235156e6c91",
-        "name": "Splits based on page",
-        "info": "",
-        "x": 460,
-        "y": 960,
-        "wires": []
-    },
-    {
-        "id": "84702cc7d5cf9982",
-        "type": "comment",
-        "z": "bbc4284780ea4146",
-        "name": "Subscription to button MQTT topics",
-        "info": "",
-        "x": 180,
+        "z": "18dd279f36d97386",
+        "name": "Subscription to generic button MQTT topics",
+        "info": "Translates the generic button presses\ninto menu specific button presses\n\nFor insance, when buttonpage = music and button 4 is pressed:\n\nbuttonplus/<device>/button/4/state (press/release/etc)\nis translated into\nbuttonplus/<device>/button/music/4/state (press/release/etc)\n\nThis way, you can let your music player always listen to\nbuttonplus/<device>/button/music/4/state (value: press)\nto increase the volume",
+        "x": 210,
         "y": 820,
         "wires": []
     },
     {
-        "id": "0f2cdb45b427cadd",
-        "type": "inject",
-        "z": "bbc4284780ea4146",
-        "name": "page: avond",
-        "props": [
-            {
-                "p": "page",
-                "v": "avond",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 150,
-        "y": 440,
-        "wires": [
-            [
-                "d1188bfef91713b4"
-            ]
-        ]
-    },
-    {
-        "id": "73c7d6fba7621f74",
-        "type": "inject",
-        "z": "bbc4284780ea4146",
-        "name": "page: muziek",
-        "props": [
-            {
-                "p": "page",
-                "v": "muziek",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 150,
-        "y": 480,
-        "wires": [
-            [
-                "d1188bfef91713b4"
-            ]
-        ]
-    },
-    {
-        "id": "a985c32762b7f802",
-        "type": "inject",
-        "z": "bbc4284780ea4146",
-        "name": "page: overdag",
-        "props": [
-            {
-                "p": "page",
-                "v": "overdag",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 150,
-        "y": 520,
-        "wires": [
-            [
-                "d1188bfef91713b4"
-            ]
-        ]
-    },
-    {
-        "id": "c94b82af6ba988a6",
+        "id": "b27b4b2ef322fadc",
         "type": "change",
-        "z": "bbc4284780ea4146",
+        "z": "18dd279f36d97386",
         "name": "fetch config",
         "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "page",
+                "tot": "msg"
+            },
             {
                 "t": "set",
                 "p": "bplusconfig",
                 "pt": "msg",
                 "to": "#:(file)::bplusconfigdevice",
                 "tot": "flow"
-            },
-            {
-                "t": "change",
-                "p": "page",
-                "pt": "msg",
-                "from": "change",
-                "fromt": "str",
-                "to": "",
-                "tot": "str"
             },
             {
                 "t": "set",
@@ -1766,39 +86,38 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 550,
-        "y": 620,
+        "x": 390,
+        "y": 520,
         "wires": [
             [
-                "8c9be970874aeae6",
-                "fdb5418b5a49e3bb"
+                "5a16a7c2d6e78561"
             ]
         ]
     },
     {
-        "id": "8c9be970874aeae6",
+        "id": "5c42b1864a858d07",
         "type": "function",
-        "z": "bbc4284780ea4146",
+        "z": "18dd279f36d97386",
         "name": "mqttbuttons JSON",
-        "func": "context.mqttbuttonsarray = [];\nvar topic = msg.bplusconfig['buttontopic'];\nvar brokerid = msg.bplusconfig['mqttbrokers'];\nbrokerid = brokerid[0].brokerid;\nvar topics = [];\n\nlet buttons = Object.values(msg.pagebutton);\n\nbuttons.forEach((val, index) => {\n  var mqttbuttons_temp = {};\n  mqttbuttons_temp['id'] = index;\n  mqttbuttons_temp['label'] = \" \";\n  mqttbuttons_temp['toplabel'] = \" \";\n  mqttbuttons_temp['ledcolorfront'] = 0;\n  mqttbuttons_temp['ledcolorwall'] = 0;\n  if (index == 0 || index == 1) {\n    topics = [\n      {\n        \"brokerid\": brokerid,\n        \"topic\": topic  + val + \"/\" + index + \"/press\",\n        \"payload\": index.toString(),\n        \"eventtype\": 0\n      },\n      {\n        \"brokerid\": brokerid,\n        \"topic\": topic + val + \"/\" + index + \"/longpress\",\n        \"payload\": index.toString(),\n        \"eventtype\": 1\n      },\n      {\n        \"brokerid\": brokerid,\n        \"topic\": topic + val + \"/\" + index + \"/release\",\n        \"payload\": index.toString(),\n        \"eventtype\": 2\n      }]\n  } else {\n    topics = [\n      {\n        \"brokerid\": brokerid,\n        \"topic\": topic + val + \"/\" + index + \"/press\",\n        \"payload\": index.toString(),\n        \"eventtype\": 0\n      }\n      , {\n        \"brokerid\": brokerid,\n        \"topic\": topic + val + \"/\" + index + \"/longpress\",\n        \"payload\": index.toString(),\n        \"eventtype\": 1\n      }\n      // // { \"brokerid\": \"ha\",\n      // //   \"topic\": \"buttonplus/wk1/button/\" + buttons[i] + \"/release\",\n      // //   \"payload\": buttons[i].toString(),\n      // //   \"eventtype\": 2 },\n      // ,{ \"brokerid\": \"ha\",\n      //   \"topic\": \"buttonplus/wk1/button/\" + buttons[i] + \"/ledblue\",\n      //   \"payload\": \"on\",\n      //   \"eventtype\": 8 }\n      // ,{ \"brokerid\": \"ha\",\n      //   \"topic\": \"buttonplus/wk1/button/\" + buttons[i] + \"/ledred\",\n      //   \"payload\": \"on\",\n      //   \"eventtype\": 9 }\n      // ,{ \"brokerid\": \"ha\",\n      //   \"topic\": \"buttonplus/wk1/button/\" + buttons[i] + \"/ledgreen\",\n      //   \"payload\": \"on\",\n      //   \"eventtype\": 10 }\n      , {\n        \"brokerid\": brokerid,\n        \"topic\": topic + val + \"/\" + index + \"/label\",\n        // \"payload\": \"\",\n        \"eventtype\": 11\n      }\n      , {\n        \"brokerid\": brokerid,\n        \"topic\": topic + val + \"/\" + index + \"/toplabel\",\n        // \"payload\": \"\",\n        \"eventtype\": 12\n      }\n\n      // ,{ \"brokerid\": \"ha\",\n      //   \"topic\": \"buttonplus/wk1/button/\" + buttons[i] + \"/led\",\n      //   \"payload\": \"on\",\n      //   \"eventtype\": 14 }\n\n      , {\n        \"brokerid\": brokerid,\n        \"topic\": topic + val + \"/\" + index + \"/ledrgb\",\n        \"payload\": \"0\",\n        // .toString()\n        \"eventtype\": 13\n      },\n      {\n        \"brokerid\": brokerid,\n        \"topic\": topic + val + \"/\" + index + \"/release\",\n        \"payload\": index.toString(),\n        \"eventtype\": 2\n      }\n    ]\n  }\n\n  mqttbuttons_temp['topics'] = topics;\n  context.mqttbuttonsarray.push(mqttbuttons_temp);\n})\n\nmsg.mqttbuttons = context.mqttbuttonsarray;\n\n// Initialize displayitem JSON\nmsg.displayitem = [];\n\nreturn msg;",
+        "func": "context.mqttbuttonsarray = [];\nvar topic = msg.bplusconfig['buttontopic'];\nvar brokerid = msg.bplusconfig['mqttbrokers'];\nbrokerid = brokerid[0].brokerid;\nvar topics = [];\n\nfor (let i = 0; i < 8; i++) {\n  var mqttbuttons_temp = {};\n  mqttbuttons_temp['id'] = i;\n  mqttbuttons_temp['label'] = \" \";\n  mqttbuttons_temp['toplabel'] = \" \";\n  mqttbuttons_temp['ledcolorfront'] = 0;\n  mqttbuttons_temp['ledcolorwall'] = 0;\n  if (i == 0 || i == 1) {\n    topics = [\n      {\n        \"brokerid\": brokerid,\n        \"topic\": topic  + i + \"/state\",\n        \"payload\": \"press\",\n        \"eventtype\": 0\n      },\n      {\n        \"brokerid\": brokerid,\n        \"topic\": topic + i + \"/longpress\",\n        \"payload\": \"longpress\",\n        \"eventtype\": 1\n      },\n      {\n        \"brokerid\": brokerid,\n        \"topic\": topic + i + \"/state\",\n        \"payload\": \"release\",\n        \"eventtype\": 2\n      }]\n  } else {\n    topics = [\n      {\n        \"brokerid\": brokerid,\n        \"topic\": topic + i + \"/state\",\n        \"payload\": \"press\",\n        \"eventtype\": 0\n      }\n      , {\n        \"brokerid\": brokerid,\n        \"topic\": topic + i + \"/state\",\n        \"payload\": \"longpress\",\n        \"eventtype\": 1\n      }\n      // // { \"brokerid\": \"ha\",\n      // //   \"topic\": \"buttonplus/wk1/button/\" + buttons[i] + \"/release\",\n      // //   \"payload\": buttons[i].toString(),\n      // //   \"eventtype\": 2 },\n      // ,{ \"brokerid\": \"ha\",\n      //   \"topic\": \"buttonplus/wk1/button/\" + buttons[i] + \"/ledblue\",\n      //   \"payload\": \"on\",\n      //   \"eventtype\": 8 }\n      // ,{ \"brokerid\": \"ha\",\n      //   \"topic\": \"buttonplus/wk1/button/\" + buttons[i] + \"/ledred\",\n      //   \"payload\": \"on\",\n      //   \"eventtype\": 9 }\n      // ,{ \"brokerid\": \"ha\",\n      //   \"topic\": \"buttonplus/wk1/button/\" + buttons[i] + \"/ledgreen\",\n      //   \"payload\": \"on\",\n      //   \"eventtype\": 10 }\n      , {\n        \"brokerid\": brokerid,\n        \"topic\": topic + i + \"/label\",\n        // \"payload\": \"\",\n        \"eventtype\": 11\n      }\n      , {\n        \"brokerid\": brokerid,\n        \"topic\": topic + i + \"/toplabel\",\n        // \"payload\": \"\",\n        \"eventtype\": 12\n      }\n\n      // ,{ \"brokerid\": \"ha\",\n      //   \"topic\": \"buttonplus/wk1/button/\" + buttons[i] + \"/led\",\n      //   \"payload\": \"on\",\n      //   \"eventtype\": 14 }\n\n      , {\n        \"brokerid\": brokerid,\n        \"topic\": topic + i + \"/ledrgb\",\n        \"payload\": \"0\",\n        // .toString()\n        \"eventtype\": 13\n      },\n      {\n        \"brokerid\": brokerid,\n        \"topic\": topic + i + \"/state\",\n        \"payload\": \"release\",\n        \"eventtype\": 2\n      }\n    ]\n  }\n\n  mqttbuttons_temp['topics'] = topics;\n  context.mqttbuttonsarray.push(mqttbuttons_temp);\n}\n// )\n\nmsg.mqttbuttons = context.mqttbuttonsarray;\n\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 810,
-        "y": 620,
+        "x": 970,
+        "y": 100,
         "wires": [
             [
-                "3188db217b8b6298"
+                "52f51d80a7af1382"
             ]
         ]
     },
     {
-        "id": "cf2eb2efe29af8d0",
+        "id": "a2a79e0bbb8e37ee",
         "type": "http request",
-        "z": "bbc4284780ea4146",
+        "z": "18dd279f36d97386",
         "name": "Post JSON",
         "method": "POST",
         "ret": "txt",
@@ -1818,16 +137,18 @@
                 "valueValue": "application/json"
             }
         ],
-        "x": 2130,
-        "y": 920,
+        "x": 1810,
+        "y": 580,
         "wires": [
-            []
+            [
+                "1cc89963bcc5d396"
+            ]
         ]
     },
     {
-        "id": "3eb17d954066e070",
+        "id": "85953f5f7ff0a4d4",
         "type": "function",
-        "z": "bbc4284780ea4146",
+        "z": "18dd279f36d97386",
         "name": "Set headers",
         "func": "var ipaddress = msg.ipaddress;\nmsg.url='http://'+ipaddress+'/configsave'\n\nmsg.headers = {};\nmsg.headers[\"Accept\"] = 'application/json';\nmsg.headers[\"Accept-Encoding\"] = 'gzip, deflate, br';\nmsg.headers[\"json\"] = true;\nreturn msg;\n",
         "outputs": 1,
@@ -1836,637 +157,69 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2130,
-        "y": 880,
+        "x": 1810,
+        "y": 540,
         "wires": [
             [
-                "cf2eb2efe29af8d0"
+                "a2a79e0bbb8e37ee"
             ]
         ],
         "icon": "font-awesome/fa-lock"
     },
     {
-        "id": "0e26ad4a81c8cec8",
+        "id": "bf5cc3184c6b20f3",
         "type": "function",
-        "z": "bbc4284780ea4146",
+        "z": "18dd279f36d97386",
         "name": "Assemble json object",
-        "func": "var configJSON = {};\nvar brightness = flow.get('brightness');\nvar bplusdevice = flow.get('bplusdevice', 'file');\nvar bplusconfig = global.get('bplusconfig', 'file');\nvar mqttbrokers = bplusconfig[bplusdevice].mqttbrokers;\nvar id = bplusconfig[bplusdevice].id;\nvar mac = bplusconfig[bplusdevice].mac;\nvar ipaddress = bplusconfig[bplusdevice].ip;\nvar firmware = bplusconfig[bplusdevice].firmware;\nvar location = bplusconfig[bplusdevice].location;\nvar autobackup = bplusconfig[bplusdevice].autobackup;\nvar statusbar = bplusconfig[bplusdevice].statusbar;\nmsg.ipaddress = ipaddress;\n\n\n// configJSON['info'] = {\n//     \"id\": id,\n//     \"mac\": mac,\n//     \"ipaddress\": ipaddress,\n//     \"firmware\": firmware,\n//     \"largedisplay\": 0,\n//     \"connectors\": [\n//         { \"id\": 0, \"type\": 2 },\n//         { \"id\": 1, \"type\": 1 },\n//         { \"id\": 2, \"type\": 1 },\n//         { \"id\": 3, \"type\": 1 }\n//     ],\n//     \"sensors\": [\n//         { \"sensorid\": 1, \"description\": \"Sensirion STS35 Temperature Sensor\" }\n//     ]\n// }\n\nconfigJSON['core'] = {\n    \"name\": id,\n    \"location\": location,\n    \"autobackup\": autobackup,\n    \"brightnesslargedisplay\": brightness,\n    \"brightnessminidisplay\": brightness,\n    \"ledcolorfront\": 0,\n    \"ledcolorwall\": 0,\n    \"color\": 0,\n    \"statusbar\": statusbar\n}\n\nconfigJSON['mqttbrokers'] = mqttbrokers;\nconfigJSON['mqttbuttons'] = msg.mqttbuttons;\nconfigJSON['mqttdisplays'] = msg.displayitem;\n\n\nmsg.payload = configJSON;\nreturn msg;",
+        "func": "var configJSON = {};\nvar brightness = flow.get('brightness');\nvar bplusdevice = flow.get('bplusdevice', 'file');\nvar bplusconfig = global.get('bplusconfig', 'file');\nvar configJSONcore = flow.get('configJSONcore', 'file');\n\nvar mqttbrokers = bplusconfig[bplusdevice].mqttbrokers;\nvar id = bplusconfig[bplusdevice].id;\nvar mac = bplusconfig[bplusdevice].mac;\nvar ipaddress = bplusconfig[bplusdevice].ip;\nvar firmware = bplusconfig[bplusdevice].firmware;\nvar location = bplusconfig[bplusdevice].location;\nvar autobackup = bplusconfig[bplusdevice].autobackup;\nvar statusbar = bplusconfig[bplusdevice].statusbar;\nmsg.ipaddress = ipaddress;\n\n\nconfigJSON['core'] = configJSONcore;\n\n\nconfigJSON['mqttbrokers'] = mqttbrokers;\nconfigJSON['mqttdisplays'] = msg.displayitem;\n\n\nmsg.payload = configJSON;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1880,
-        "y": 780,
+        "x": 1280,
+        "y": 520,
         "wires": [
             [
-                "3eb17d954066e070",
-                "ce6c6f8a40d28d94"
+                "85953f5f7ff0a4d4"
             ]
         ]
     },
     {
-        "id": "6476a339a624f9e9",
+        "id": "678a181d1d45296c",
         "type": "comment",
-        "z": "bbc4284780ea4146",
+        "z": "18dd279f36d97386",
         "name": "Update B+",
         "info": "",
-        "x": 2100,
-        "y": 840,
+        "x": 1780,
+        "y": 500,
         "wires": []
     },
     {
-        "id": "d40843311b88541a",
-        "type": "change",
-        "z": "bbc4284780ea4146",
-        "g": "1eb42d9c512c5156",
-        "name": "draw avond label",
-        "rules": [
-            {
-                "t": "set",
-                "p": "label.0",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "label.1",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "label.2",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "label.3",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "label.4",
-                "pt": "msg",
-                "to": "Avond mid",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "label.5",
-                "pt": "msg",
-                "to": "Avond dim",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "label.6",
-                "pt": "msg",
-                "to": "Slaapstand",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "label.7",
-                "pt": "msg",
-                "to": "Avond vol",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "toplabel.0",
-                "pt": "msg",
-                "to": " ",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "toplabel.1",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "toplabel.2",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "toplabel.3",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "toplabel.4",
-                "pt": "msg",
-                "to": "Verlichting",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "toplabel.5",
-                "pt": "msg",
-                "to": "Verlichting",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "toplabel.6",
-                "pt": "msg",
-                "to": "Alles uit",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "toplabel.7",
-                "pt": "msg",
-                "to": "Verlichting",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "ledrgb.0",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "ledrgb.1",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "ledrgb.2",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "ledrgb.3",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "ledrgb.4",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "ledrgb.5",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "ledrgb.6",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "ledrgb.7",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 870,
-        "y": 300,
-        "wires": [
-            [
-                "bb32a343824dc33b"
-            ]
-        ]
-    },
-    {
-        "id": "19db5d2c7a02a803",
-        "type": "change",
-        "z": "bbc4284780ea4146",
-        "g": "1eb42d9c512c5156",
-        "name": "draw Muziek label",
-        "rules": [
-            {
-                "t": "set",
-                "p": "label.0",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "label.1",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "label.2",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "label.3",
-                "pt": "msg",
-                "to": "Play/Pause",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "label.4",
-                "pt": "msg",
-                "to": "Previous",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "label.5",
-                "pt": "msg",
-                "to": "Next",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "label.6",
-                "pt": "msg",
-                "to": "-",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "label.7",
-                "pt": "msg",
-                "to": "+",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "toplabel.0",
-                "pt": "msg",
-                "to": " ",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "toplabel.1",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "toplabel.2",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "toplabel.3",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "toplabel.4",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "toplabel.5",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "toplabel.6",
-                "pt": "msg",
-                "to": "Volume",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "toplabel.7",
-                "pt": "msg",
-                "to": "Volume",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "ledrgb.0",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "ledrgb.1",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "ledrgb.2",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "ledrgb.3",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "ledrgb.4",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "ledrgb.5",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "ledrgb.6",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "ledrgb.7",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 870,
-        "y": 340,
-        "wires": [
-            [
-                "bb32a343824dc33b"
-            ]
-        ]
-    },
-    {
-        "id": "82bf5afba94b270d",
-        "type": "change",
-        "z": "bbc4284780ea4146",
-        "g": "1eb42d9c512c5156",
-        "name": "draw Overdag label",
-        "rules": [
-            {
-                "t": "set",
-                "p": "label.0",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "label.1",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "label.2",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "label.3",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "label.4",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "label.5",
-                "pt": "msg",
-                "to": "Alles aan",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "label.6",
-                "pt": "msg",
-                "to": "Vertrekken",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "label.7",
-                "pt": "msg",
-                "to": "Ochtend",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "toplabel.0",
-                "pt": "msg",
-                "to": " ",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "toplabel.1",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "toplabel.2",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "toplabel.3",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "toplabel.4",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "toplabel.5",
-                "pt": "msg",
-                "to": "Verlichting",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "toplabel.6",
-                "pt": "msg",
-                "to": "Alles uit",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "toplabel.7",
-                "pt": "msg",
-                "to": "Verlichting",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "ledrgb.0",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "ledrgb.1",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "ledrgb.2",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "ledrgb.3",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "ledrgb.4",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "ledrgb.5",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "ledrgb.6",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "ledrgb.7",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 870,
-        "y": 380,
-        "wires": [
-            [
-                "bb32a343824dc33b"
-            ]
-        ]
-    },
-    {
-        "id": "bb32a343824dc33b",
+        "id": "6d8c3d2b85859530",
         "type": "function",
-        "z": "bbc4284780ea4146",
+        "z": "18dd279f36d97386",
         "name": "prepare MQTT topics",
-        "func": "// Definition of sleep function\n// This prevents overloading of MQTT bus\nfunction sleep(ms) {\n    return new Promise((resolve) => {\n        setTimeout(resolve, ms);\n    });\n}\n\nvar topic = msg.bplusconfig['buttontopic'];\n\nvar page = msg.page+\"/\";\n\nfor (var i in msg.label){\n    var newMsg = {};\n    // send label\n    newMsg.payload = msg.label[i];\n    if (newMsg.payload == \"\") { newMsg.payload = \" \" }\n    newMsg.topic = topic+page+i+\"/label\";\n    node.send(newMsg);\n    await sleep(20);\n\n    // send toplabel\n    newMsg.payload = msg.toplabel[i];\n    if (newMsg.payload == \"\") { newMsg.payload = \" \" }\n    newMsg.topic = topic + page +i+\"/toplabel\";\n    node.send(newMsg);\n    await sleep(20);\n    // send led color\n    newMsg.payload = msg.ledrgb[i];\n    newMsg.topic = topic + page +i+\"/ledrgb\";\n    node.send(newMsg);\n    await sleep(20);\n    // send led state\n    // newMsg.payload = msg.led[i];\n    // newMsg.topic = topic + i + \"/led\";\n    // node.send(newMsg);\n}\n\nreturn null;",
+        "func": "// Definition of sleep function\n// This prevents overloading of MQTT bus\nfunction sleep(ms) {\n    return new Promise((resolve) => {\n        setTimeout(resolve, ms);\n    });\n}\n\nvar topic = msg.bplusconfig['buttontopic'];\n\nvar page = msg.page+\"/\";\npage = \"\";\n\nfor (var i in msg.label){\n    var newMsg = {};\n    // send label\n    newMsg.payload = msg.label[i];\n    if (newMsg.payload == \"\") { newMsg.payload = \" \" }\n    newMsg.topic = topic+page+i+\"/label\";\n    node.send(newMsg);\n    await sleep(20);\n\n    // send toplabel\n    newMsg.payload = msg.toplabel[i];\n    if (newMsg.payload == \"\") { newMsg.payload = \" \" }\n    newMsg.topic = topic + page +i+\"/toplabel\";\n    node.send(newMsg);\n    await sleep(20);\n    // send led color\n    newMsg.payload = msg.ledrgb[i];\n    newMsg.topic = topic + page +i+\"/ledrgb\";\n    node.send(newMsg);\n    await sleep(20);\n    // send led state\n    // newMsg.payload = msg.led[i];\n    // newMsg.topic = topic + i + \"/led\";\n    // node.send(newMsg);\n}\n\nreturn null;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1200,
-        "y": 340,
+        "x": 1140,
+        "y": 240,
         "wires": [
             [
-                "0c40b3f89d4b7cbe"
+                "ccd034892beae1a0"
             ]
         ]
     },
     {
-        "id": "0c40b3f89d4b7cbe",
+        "id": "ccd034892beae1a0",
         "type": "mqtt out",
-        "z": "bbc4284780ea4146",
+        "z": "18dd279f36d97386",
         "name": "Update buttons",
         "topic": "",
         "qos": "2",
@@ -2477,297 +230,80 @@
         "correl": "",
         "expiry": "",
         "broker": "e6dbd5fb3f32ec20",
-        "x": 1220,
-        "y": 380,
+        "x": 1380,
+        "y": 240,
         "wires": []
     },
     {
-        "id": "fdb5418b5a49e3bb",
+        "id": "920ae05b7da02f5e",
         "type": "switch",
-        "z": "bbc4284780ea4146",
-        "g": "1eb42d9c512c5156",
+        "z": "18dd279f36d97386",
         "name": "06 Switch",
-        "property": "page",
+        "property": "buttonpage",
         "propertyType": "msg",
         "rules": [
             {
                 "t": "eq",
-                "v": "#:(file)::pages.1",
+                "v": "#:(file)::buttonpages.1",
                 "vt": "flow"
             },
             {
                 "t": "eq",
-                "v": "#:(file)::pages.2",
+                "v": "#:(file)::buttonpages.2",
                 "vt": "flow"
             },
             {
                 "t": "eq",
-                "v": "#:(file)::pages.3",
+                "v": "#:(file)::buttonpages.3",
                 "vt": "flow"
             },
             {
                 "t": "eq",
-                "v": "#:(file)::pages.4",
+                "v": "#:(file)::buttonpages.4",
                 "vt": "flow"
             },
             {
                 "t": "eq",
-                "v": "#:(file)::pages.5",
+                "v": "#:(file)::buttonpages.5",
                 "vt": "flow"
             },
             {
                 "t": "eq",
-                "v": "#:(file)::pages.6",
+                "v": "#:(file)::buttonpages.6",
                 "vt": "flow"
             }
         ],
         "checkall": "true",
         "repair": false,
         "outputs": 6,
-        "x": 660,
-        "y": 360,
+        "x": 640,
+        "y": 300,
         "wires": [
             [
-                "d40843311b88541a"
+                "542a85206fad321f"
             ],
             [
-                "19db5d2c7a02a803"
+                "e8889b05d24c5dcb"
             ],
             [
-                "82bf5afba94b270d"
-            ],
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "3188db217b8b6298",
-        "type": "function",
-        "z": "bbc4284780ea4146",
-        "g": "f656786cbb1524d5",
-        "name": "Displayitem 1",
-        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 1;\n// assign to a page\nvar page = \"main\";\n// add characteristics\nvar x = 0;\nvar y = 0;\nvar fontsize = 3;\nvar width = 27;\nvar label = \"\";\nvar value = \"\";\nvar uom = \"°C\"\nvar round = 1;\nvar align = 0;\n\n// no config below this line\nvar newitem = {};\n\nnewitem = {\n    \"page\": page,\n    \"x\": x,\n    \"y\": y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\nmsg.displayitem[displayitem] = newitem;\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1120,
-        "y": 620,
-        "wires": [
-            [
-                "86ed38097572038e"
-            ]
-        ]
-    },
-    {
-        "id": "86ed38097572038e",
-        "type": "function",
-        "z": "bbc4284780ea4146",
-        "g": "f656786cbb1524d5",
-        "name": "Displayitem 2",
-        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 2;\n// assign to a page\nvar page = \"main\";\n// add characteristics\nvar x = 36;\nvar y = 0;\nvar fontsize = 3;\nvar width = 25;\nvar label = \"\";\nvar value = \"\";\nvar uom = \"°C\"\nvar round = 0;\nvar align = 0;\n\n// no config below this line\nvar newitem = {};\n\nnewitem = {\n    \"page\": page,\n    \"x\": x,\n    \"y\": y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\nmsg.displayitem[displayitem] = newitem;\n\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1120,
-        "y": 660,
-        "wires": [
-            [
-                "65343ba3b7c732f7"
-            ]
-        ]
-    },
-    {
-        "id": "65343ba3b7c732f7",
-        "type": "function",
-        "z": "bbc4284780ea4146",
-        "g": "f656786cbb1524d5",
-        "name": "Displayitem 3",
-        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 3;\n// assign to a page\nvar page = \"main\";\n// add characteristics\nvar x = 70;\nvar y = 0;\nvar fontsize = 3;\nvar width = 30;\nvar label = \"\";\nvar value = \"\";\nvar uom = \"°C\"\nvar round = 0;\nvar align = 0;\n\n// no config below this line\nvar newitem = {};\n\nnewitem = {\n    \"page\": page,\n    \"x\": x,\n    \"y\":y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\nmsg.displayitem[displayitem] = newitem;\n\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1120,
-        "y": 700,
-        "wires": [
-            [
-                "fc6d1e231f9bdac4"
-            ]
-        ]
-    },
-    {
-        "id": "3ced4d268c0b687d",
-        "type": "function",
-        "z": "bbc4284780ea4146",
-        "name": "add topics",
-        "func": "var displayitem = msg.displayitem;\nvar topic = msg.bplusconfig['displaytopic'];\nvar brokerid = msg.bplusconfig['mqttbrokers'][0]['brokerid'];\n\n// Walk through all display items and add required JSON\nfor (var i in displayitem) {\n    if (typeof displayitem[i] === 'object') {\n        displayitem[i]['topics'] = [{\n            \"brokerid\": brokerid,\n            \"topic\": topic + displayitem[i]['page'] + \"/\" + i + \"/value\",\n            \"eventtype\": 15\n        }, {\n            \"brokerid\": brokerid, \"topic\": topic + displayitem[i]['page'] + \"/\" + i + \"/label\",\n            \"eventtype\": 16\n        }, {\n            \"brokerid\": brokerid, \"topic\": topic + displayitem[i]['page'] + \"/\" + i + \"/uom\",\n            \"eventtype\": 17\n        }\n        ]\n        // var newMsg = {};\n        // newMsg.error = displayitem[i];\n        // node.send(newMsg);\n    }\n};\n\n// Cleanup array\nvar newarray = [];\nvar j = 0;\nfor (let i = 0; i < displayitem.length; i++) {\n    if (displayitem[i] !== undefined) {\n        newarray[j] = displayitem[i];\n        j = j + 1;\n    }\n}\n\nmsg.displayitem = newarray;\n\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1850,
-        "y": 680,
-        "wires": [
-            [
-                "0e26ad4a81c8cec8"
-            ]
-        ]
-    },
-    {
-        "id": "fc6d1e231f9bdac4",
-        "type": "function",
-        "z": "bbc4284780ea4146",
-        "g": "f656786cbb1524d5",
-        "name": "Displayitem 4",
-        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 4;\n// assign to a page\nvar page = \"main\";\n// add characteristics\nvar x = 70;\nvar y = 84;\nvar fontsize = 1;\nvar width = 30;\nvar label = \"Menu\";\nvar value = \"\";\nvar uom = \"\"\nvar round = 0;\nvar align = 0;\n\n// no config below this line\nvar newitem = {};\n\nnewitem = {\n    \"page\": page,\n    \"x\": x,\n    \"y\":y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\nmsg.displayitem[displayitem] = newitem;\n\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1120,
-        "y": 740,
-        "wires": [
-            [
-                "16bd02dea700edcf"
-            ]
-        ]
-    },
-    {
-        "id": "15858f44f9fc05d3",
-        "type": "subflow:9fafc27b6f107add",
-        "z": "bbc4284780ea4146",
-        "g": "9d87a235156e6c91",
-        "name": "",
-        "x": 670,
-        "y": 920,
-        "wires": [
-            [],
-            [
-                "11460e3f73666fbe"
-            ]
-        ]
-    },
-    {
-        "id": "16bd02dea700edcf",
-        "type": "switch",
-        "z": "bbc4284780ea4146",
-        "g": "f656786cbb1524d5",
-        "name": "06 Switch",
-        "property": "page",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "#:(file)::pages.1",
-                "vt": "flow"
-            },
-            {
-                "t": "eq",
-                "v": "#:(file)::pages.2",
-                "vt": "flow"
-            },
-            {
-                "t": "eq",
-                "v": "#:(file)::pages.3",
-                "vt": "flow"
-            },
-            {
-                "t": "eq",
-                "v": "#:(file)::pages.4",
-                "vt": "flow"
-            },
-            {
-                "t": "eq",
-                "v": "#:(file)::pages.5",
-                "vt": "flow"
-            },
-            {
-                "t": "eq",
-                "v": "#:(file)::pages.6",
-                "vt": "flow"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 6,
-        "x": 1320,
-        "y": 660,
-        "wires": [
-            [
-                "ea911d1506cae58e"
+                "7e5b78d7c7fe4627"
             ],
             [
-                "16fa7ded212bb8cf"
+                "fdf83fd0588a899d"
             ],
             [
-                "e46b4ed403416635"
+                "e58c83c87a6fe33e"
             ],
-            [],
-            [],
-            []
-        ],
-        "info": "Compares msg.page with the contents of msg.pages\n\nItem 0 is main,\nItem 1 and further are the configured pages\n\nAdd more rows if you have more pages."
-    },
-    {
-        "id": "e46b4ed403416635",
-        "type": "function",
-        "z": "bbc4284780ea4146",
-        "g": "f656786cbb1524d5",
-        "name": "Displayitem 10 (overdag)",
-        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 10;\n// assign to a page\nvar page = msg.page;\n// add characteristics\nvar x = 0;\nvar y = 31;\nvar fontsize = 2;\nvar width = 70;\nvar label = \"\";\nvar value = \"\";\nvar uom = \"\"\nvar round = 0;\nvar align = 0;\n\n// no config below this line\nvar newitem = {};\n\nnewitem = {\n    \"page\": page,\n    \"x\": x,\n    \"y\":y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\nmsg.displayitem[displayitem] = newitem;\n\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1530,
-        "y": 720,
-        "wires": [
             [
-                "dc85c529b1aabafd"
+                "aeccd097bb7b6078"
             ]
         ]
     },
     {
-        "id": "16fa7ded212bb8cf",
+        "id": "7999247d642a01a5",
         "type": "function",
-        "z": "bbc4284780ea4146",
-        "g": "f656786cbb1524d5",
-        "name": "Displayitem 11 (muziek)",
-        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 11;\n// assign to a page\nvar page = msg.page;\n// add characteristics\nvar x = 0;\nvar y = 31;\nvar fontsize = 2;\nvar width = 100;\nvar label = \"\";\nvar value = \"\";\nvar uom = \"\"\nvar round = 0;\nvar align = 0;\n\n// no config below this line\nvar newitem = {};\n\nnewitem = {\n    \"page\": page,\n    \"x\": x,\n    \"y\":y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\nmsg.displayitem[displayitem] = newitem;\n\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1530,
-        "y": 640,
-        "wires": [
-            [
-                "3ced4d268c0b687d"
-            ]
-        ]
-    },
-    {
-        "id": "6ccca3d893c52152",
-        "type": "function",
-        "z": "bbc4284780ea4146",
-        "name": "Assemble json object",
+        "z": "18dd279f36d97386",
+        "name": "Send configJSON['core']",
         "func": "var configJSON = {};\nvar brightness = flow.get('brightness');\nvar bplusdevice = flow.get('bplusdevice', 'file');\nvar bplusconfig = global.get('bplusconfig', 'file');\nvar mqttbrokers = bplusconfig[bplusdevice].mqttbrokers;\nvar id = bplusconfig[bplusdevice].id;\nvar mac = bplusconfig[bplusdevice].mac;\nvar ipaddress = bplusconfig[bplusdevice].ip;\nvar firmware = bplusconfig[bplusdevice].firmware;\nvar location = bplusconfig[bplusdevice].location;\nvar autobackup = bplusconfig[bplusdevice].autobackup;\nvar statusbar = bplusconfig[bplusdevice].statusbar;\nmsg.ipaddress = ipaddress;\n\n// configJSON['info'] = {\n//   \"id\": id,\n//   \"mac\": mac,\n//   \"ipaddress\": ipaddress,\n//   \"firmware\": firmware,\n//   \"largedisplay\": 0,\n//   \"connectors\": [\n//     { \"id\": 0, \"type\": 2 },\n//     { \"id\": 1, \"type\": 1 },\n//     { \"id\": 2, \"type\": 1 },\n//     { \"id\": 3, \"type\": 1 }\n//   ],\n//   \"sensors\": [\n//     { \"sensorid\": 1, \"description\": \"Sensirion STS35 Temperature Sensor\" }\n//   ]\n// }\n\nconfigJSON['core'] = {\n  \"name\": id,\n  \"location\": location,\n  \"autobackup\": autobackup,\n  \"brightnesslargedisplay\": brightness,\n  \"brightnessminidisplay\": brightness,\n  \"ledcolorfront\": 0,\n  \"ledcolorwall\": 0,\n  \"color\": 0,\n  \"statusbar\": statusbar\n}\n\nmsg.payload = configJSON;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -2775,18 +311,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1820,
-        "y": 1040,
+        "x": 1230,
+        "y": 780,
         "wires": [
             [
-                "3eb17d954066e070"
+                "85953f5f7ff0a4d4"
             ]
         ]
     },
     {
-        "id": "fddeccb21f4b6d07",
+        "id": "8c7c530121f06c0a",
         "type": "function",
-        "z": "bbc4284780ea4146",
+        "z": "18dd279f36d97386",
         "name": "Parse brightness from MQTT",
         "func": "var brightness = parseInt(msg.payload);\nflow.set('brightness', brightness);\nmsg.brightness = brightness;\n\n\nreturn msg;",
         "outputs": 1,
@@ -2795,18 +331,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1820,
-        "y": 1000,
+        "x": 1200,
+        "y": 740,
         "wires": [
             [
-                "6ccca3d893c52152"
+                "7999247d642a01a5"
             ]
         ]
     },
     {
-        "id": "9b7ca79530c71d64",
+        "id": "9e5c458fc0c9a42c",
         "type": "mqtt in",
-        "z": "bbc4284780ea4146",
+        "z": "18dd279f36d97386",
         "name": "",
         "topic": "",
         "qos": "2",
@@ -2820,119 +356,66 @@
         "y": 900,
         "wires": [
             [
-                "5ca20baf4991e0b1"
+                "69c074c0b157fb0f"
             ]
         ]
     },
     {
-        "id": "5ca20baf4991e0b1",
+        "id": "69c074c0b157fb0f",
         "type": "function",
-        "z": "bbc4284780ea4146",
+        "z": "18dd279f36d97386",
         "name": "Split topic",
-        "func": "var topic = msg.topic;\ntopic = topic.split(\"/\");\n\nmsg.page = topic[3];\nmsg.button = topic[4];\nmsg.state = topic[5];\n\nif (msg.state == \"press\" || msg.state == \"release\" || msg.state == \"longpress\"){\n    return msg;    \n}else{\nreturn null;}",
+        "func": "var topic = msg.topic;\ntopic = topic.split(\"/\");\n\nvar buttonpageid = flow.get(\"buttonpageid\")\nvar buttonpages = flow.get(\"buttonpages\", \"file\");\nvar button = topic[3];\n\nvar mainbutton = flow.get(\"bplusconfigbuttons\", \"file\").mainbutton;\n\nif (mainbutton[button] == \"main\"){\n    var buttonpage = buttonpages[0];\n}else{\n    var buttonpage = buttonpages[buttonpageid];\n}\n\nmsg.buttonpage = buttonpage;\nmsg.button = topic[3];\nmsg.state = msg.payload;\n// msg.buttonpageid = buttonpageid;\n\nvar basetopic = topic[0];\nvar device = topic[1];\nvar newtopic = [basetopic, device, \"button\", buttonpage,button,\"state\"];\nmsg.topic = newtopic.join(\"/\");\n\nreturn msg;  ",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 180,
-        "y": 960,
+        "x": 340,
+        "y": 900,
         "wires": [
             [
-                "b5071d75c23ccfef"
+                "5a18a8146233329f",
+                "360959b6396226a4",
+                "acd5a8cdd7fdab94"
             ]
         ]
     },
     {
-        "id": "c6de25db8019ed6e",
+        "id": "e9feb78c7c682c81",
         "type": "comment",
-        "z": "bbc4284780ea4146",
-        "g": "9d87a235156e6c91",
-        "name": "Signal from button 1, changes to next page",
+        "z": "18dd279f36d97386",
+        "name": "Trigger to change menu via MQTT",
         "info": "",
-        "x": 1090,
-        "y": 860,
+        "x": 160,
+        "y": 440,
         "wires": []
     },
     {
-        "id": "68c8e3f412f0f313",
+        "id": "4e93887143e892f2",
         "type": "comment",
-        "z": "bbc4284780ea4146",
-        "name": "Trigger to change menu from HA",
-        "info": "",
-        "x": 150,
-        "y": 220,
-        "wires": []
-    },
-    {
-        "id": "28b27c4de8787982",
-        "type": "comment",
-        "z": "bbc4284780ea4146",
-        "g": "1eb42d9c512c5156",
-        "name": "03 Contains the default button labels",
-        "info": "",
-        "x": 810,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "8ea4d14d647290cb",
-        "type": "comment",
-        "z": "bbc4284780ea4146",
+        "z": "18dd279f36d97386",
         "name": "Listen to brightness triggers",
         "info": "Partial update of B+",
-        "x": 1800,
-        "y": 880,
+        "x": 1200,
+        "y": 620,
         "wires": []
     },
     {
-        "id": "09405e7b9e062b41",
+        "id": "024763858b861b96",
         "type": "comment",
-        "z": "bbc4284780ea4146",
-        "g": "f656786cbb1524d5",
-        "name": "04 Displayitems for Main",
-        "info": "Add more blocks if you need more display items\nmake sure to update the displayitem number",
-        "x": 1150,
-        "y": 580,
+        "z": "18dd279f36d97386",
+        "name": "Trigger update of B+ when configuration has changed",
+        "info": "Trigger update of B+ when configuration has changed\n\nWill update the MQTT topics of the buttons ",
+        "x": 1040,
+        "y": 60,
         "wires": []
     },
     {
-        "id": "3646108c0ac15193",
+        "id": "dadb8ffa780eaf8f",
         "type": "comment",
-        "z": "bbc4284780ea4146",
-        "g": "f656786cbb1524d5",
-        "name": "05 Displayitems for pages",
-        "info": "Configure displayitems that belong to specific pages",
-        "x": 1530,
-        "y": 540,
-        "wires": []
-    },
-    {
-        "id": "5d966a3e21fccf2b",
-        "type": "comment",
-        "z": "bbc4284780ea4146",
-        "g": "1eb42d9c512c5156",
-        "name": "Button definition",
-        "info": "Example:\nmsg.pagebutton.0 = \"main\" --> always belongs to main page\nmsg.pagebutton.2 = msg.page --> is dynamically assigned to page",
-        "x": 420,
-        "y": 320,
-        "wires": []
-    },
-    {
-        "id": "e5e8d6ef7143d479",
-        "type": "comment",
-        "z": "bbc4284780ea4146",
-        "name": "Assembly of button JSON",
-        "info": "based on upstream page definition\n\nprepares a JSON each time a page is changed",
-        "x": 590,
-        "y": 560,
-        "wires": []
-    },
-    {
-        "id": "cf616ebb6d2b389b",
-        "type": "comment",
-        "z": "bbc4284780ea4146",
+        "z": "18dd279f36d97386",
         "name": "Update MQTT topics for button labels ",
         "info": "",
         "x": 1250,
@@ -2940,90 +423,51 @@
         "wires": []
     },
     {
-        "id": "43c66b546e97baf5",
+        "id": "18520d4ccc30f2dd",
         "type": "comment",
-        "z": "bbc4284780ea4146",
+        "z": "18dd279f36d97386",
         "name": "Prepare Displayitems JSON",
         "info": "based on upstream definition",
-        "x": 1840,
-        "y": 580,
+        "x": 1040,
+        "y": 480,
         "wires": []
     },
     {
-        "id": "3b11356d45d0b641",
+        "id": "0b84f1ab4bd32c4a",
         "type": "comment",
-        "z": "bbc4284780ea4146",
+        "z": "18dd279f36d97386",
         "name": "Combine JSON objects",
         "info": "and prepare upload to JSON",
-        "x": 1880,
-        "y": 740,
+        "x": 1280,
+        "y": 480,
         "wires": []
     },
     {
-        "id": "dc85c529b1aabafd",
+        "id": "c42c778490b3be56",
         "type": "function",
-        "z": "bbc4284780ea4146",
-        "g": "f656786cbb1524d5",
-        "name": "Displayitem 12 (overdag)",
-        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 12    ;\n// assign to a page\nvar page = msg.page;\n// add characteristics\nvar x = 70;\nvar y = 31;\nvar fontsize = 2;\nvar width = 30;\nvar label = \"\";\nvar value = \"\";\nvar uom = \"\"\nvar round = 1;\nvar align = 0;\n\n// no config below this line\nvar newitem = {};\n\nnewitem = {\n    \"page\": page,\n    \"x\": x,\n    \"y\":y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\nmsg.displayitem[displayitem] = newitem;\n\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1530,
-        "y": 760,
-        "wires": [
-            [
-                "3ced4d268c0b687d"
-            ]
-        ]
-    },
-    {
-        "id": "ea911d1506cae58e",
-        "type": "function",
-        "z": "bbc4284780ea4146",
-        "g": "f656786cbb1524d5",
-        "name": "Displayitem 13 (avond)",
-        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 13    ;\n// assign to a page\nvar page = msg.page;\n// add characteristics\nvar x = 70;\nvar y = 31;\nvar fontsize = 2;\nvar width = 30;\nvar label = \"\";\nvar value = \"\";\nvar uom = \"\"\nvar round = 1;\nvar align = 0;\n\n// no config below this line\nvar newitem = {};\n\nnewitem = {\n    \"page\": page,\n    \"x\": x,\n    \"y\":y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\nmsg.displayitem[displayitem] = newitem;\n\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1520,
-        "y": 580,
-        "wires": [
-            [
-                "3ced4d268c0b687d"
-            ]
-        ]
-    },
-    {
-        "id": "79244f8d7c36cfc6",
-        "type": "function",
-        "z": "bbc4284780ea4146",
-        "g": "1eb42d9c512c5156",
+        "z": "18dd279f36d97386",
+        "g": "3dc14376c3d7d50c",
         "name": "01 global config",
-        "func": "// Configuration goes here:\nvar bplusdevice = \"wk1\"; // no spacess allowed!\nvar ip = \"192.168.1.81\"; \nvar basetopic = \"buttonplus/\" // first level of the mqtt topic\nvar mac = \"F4:12:FA:45:A4:24\"; \nvar firmware = \"1.08\";\nvar location = \"Woonkamer 1\";\nvar autobackup = true; // keep at true, unsure what it does\nvar statusbar = 0; // 0 = hidden, 1 = top, 2 = statusbar at bottom of display\n\nvar mqttbrokerid = \"ha\";\nvar mqtturl = \"mqtt://192.168.1.7\";\nvar mqttport = 1883;\nvar mqttwsport = 0;\nvar mqttusername = \"mqtt\";\nvar mqttpassword = \"mqtt\";\n// add pages, should start with \"main\"; \n// when more pages are added you should change some switch blocks as well\nvar pages = [\"main\",\"avond\",\"muziek\",\"overdag\"];\n\n// nothing to be changed below this line\n// -------------------------------------\n\n// retrieve existing config from disk, or create when non-existent\n// this retrieves configuration for all configured B+ devices\nvar bplusconfig = global.get(\"bplusconfig\", \"file\");\nif (bplusconfig == undefined) {\n    bplusconfig = {};\n\n}\n\n// assemble the base topics\nvar buttontopic = basetopic + bplusdevice + \"/button/\";\nvar displaytopic = basetopic + bplusdevice + \"/display/\";\nvar buttonsubscriptiontopic = buttontopic + \"+/+/+\";\nvar pagetopic = basetopic + bplusdevice+\"/page\";\nvar brightnesstopic = basetopic + bplusdevice + \"/brightness\";\n\n// assemble to configuration object\nbplusconfig[bplusdevice] = {\n    'ip': ip,\n    'id': bplusdevice,\n    'basetopic': basetopic,\n    'buttontopic': buttontopic,\n    'displaytopic': displaytopic,\n    'buttonsubscriptiontopic': buttonsubscriptiontopic,\n    'pagetopic': pagetopic,\n    'brightnesstopic': brightnesstopic,\n    'mac': mac,\n    'firmware': firmware,\n    'location': location,\n    'autobackup': autobackup,\n    'statusbar': statusbar,\n    'pages': pages,\n    'mqttbrokers': [\n        {\n            'brokerid': mqttbrokerid,\n            'url': mqtturl,\n            'port': mqttport,\n            'wsport': mqttwsport,\n            'username': mqttusername,\n            'password': mqttpassword\n        }\n    ],\n};\n\n// save the configuration and parameters to this flow, for use\nflow.set('bplusdevice', bplusdevice, \"file\");\nflow.set('bplusconfigdevice', bplusconfig[bplusdevice], \"file\");\nflow.set('pages',pages,\"file\");\n\n// save the config of all devices back to the disk\nglobal.set(\"bplusconfig\", bplusconfig, \"file\")\n\n\nreturn null;",
+        "func": "// Configuration goes here:\nvar bplusdevice = \"wk1\"; // the device this page belongs to\n\n// nothing to be changed below this line\n// -------------------------------------\n\n// retrieve existing config from disk, or create when non-existent\n// this retrieves configuration for all configured B+ devices\nvar bplusconfig = global.get(\"bplusconfig\", \"file\");\nvar bplusconfigbuttons = global.get('bplusconfigbuttons','file');\nvar bplusconfigdisplayitems = global.get('bplusconfigdisplayitems', 'file');\n\n\n\n\nvar buttonpages = bplusconfig[bplusdevice].buttonpages;\nvar pages = bplusconfig[bplusdevice].pages;\n\n\n// retrieve existing config from disk, or create when non-existent\n// this retrieves configuration for all configured B+ devices\nvar bplusconfig = global.get(\"bplusconfig\", \"file\");\nif (bplusconfig == undefined) {\n    bplusconfig = {};\n\n}\n\n\n\nvar label = bplusconfigbuttons[bplusdevice].label;\nvar toplabel = bplusconfigbuttons[bplusdevice].toplabel;\nvar ledrgb = bplusconfigbuttons[bplusdevice].ledrgb;\nvar mainbutton = bplusconfigbuttons[bplusdevice].mainbutton;\n\nfor (var i in label) {\n    for (var j in label[i]) {\n\n        if (mainbutton[j] == \"main\") {\n            var label_thisbutton = label[i];\n            var label_mainbutton = label[0];\n            label_thisbutton[j] = label_mainbutton[j];\n        }\n        label[i] = label_thisbutton;\n    }\n}\n\nfor (var i in toplabel) {\n    for (var j in toplabel[i]) {\n\n        if (mainbutton[j] == \"main\") {\n            var label_thisbutton = toplabel[i];\n            var label_mainbutton = toplabel[0];\n            label_thisbutton[j] = label_mainbutton[j];\n        }\n        toplabel[i] = label_thisbutton;\n    }\n}\n\nfor (var i in ledrgb) {\n    for (var j in ledrgb[i]) {\n\n        if (mainbutton[j] == \"main\") {\n            var label_thisbutton = ledrgb[i];\n            var label_mainbutton = ledrgb[0];\n            label_thisbutton[j] = label_mainbutton[j];\n        }\n        ledrgb[i] = label_thisbutton;\n    }\n}\n\n\nbplusconfigbuttons = {\n    'label': label,\n    'toplabel': toplabel,\n    'ledrgb': ledrgb,\n    'mainbutton': mainbutton\n}\n\n\n\n\n// save the configuration and parameters to this flow, for use\n// flow.set('bplusdevice', bplusdevice, \"file\");\n// flow.set('bplusconfigdevice', bplusconfig[bplusdevice], \"file\");\nflow.set('pages',pages,\"file\");\nflow.set('buttonpages', buttonpages, \"file\");\nflow.set('configJSONcore', bplusconfig[bplusdevice].configJSONcore, \"file\");\nflow.set('bplusconfigdisplayitems',bplusconfigdisplayitems[bplusdevice]);\n\n// save the configuration and parameters to this flow, for use\nflow.set('bplusdevice', bplusdevice, \"file\");\nflow.set('bplusconfigdevice', bplusconfig[bplusdevice], \"file\");\nflow.set('bplusconfigbuttons', bplusconfigbuttons, 'file')\n\n\n\n// // save the config of all devices back to the disk\n// global.set(\"bplusconfig\", bplusconfig, \"file\")\n\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 400,
-        "y": 180,
+        "x": 440,
+        "y": 60,
         "wires": [
-            []
+            [
+                "c43be3884888dc48"
+            ]
         ]
     },
     {
-        "id": "b8e5a5cd7d5f685a",
+        "id": "9d1dd1afd2f2e0b3",
         "type": "inject",
-        "z": "bbc4284780ea4146",
+        "z": "18dd279f36d97386",
+        "g": "3dc14376c3d7d50c",
         "name": "",
         "props": [
             {
@@ -3031,6 +475,12 @@
             },
             {
                 "p": "topic",
+                "v": "#:(file)::bplusconfigdevice.updatetopic",
+                "vt": "flow"
+            },
+            {
+                "p": "action",
+                "v": "subscribe",
                 "vt": "str"
             }
         ],
@@ -3042,17 +492,18 @@
         "payload": "",
         "payloadType": "date",
         "x": 190,
-        "y": 160,
+        "y": 60,
         "wires": [
             [
-                "79244f8d7c36cfc6"
+                "c42c778490b3be56",
+                "b1a43bc8d228b222"
             ]
         ]
     },
     {
-        "id": "d3e64d2990d99514",
+        "id": "fb7ab37fc1f0876e",
         "type": "inject",
-        "z": "bbc4284780ea4146",
+        "z": "18dd279f36d97386",
         "name": "",
         "props": [
             {
@@ -3080,131 +531,14 @@
         "y": 860,
         "wires": [
             [
-                "9b7ca79530c71d64"
+                "9e5c458fc0c9a42c"
             ]
         ]
     },
     {
-        "id": "d1188bfef91713b4",
-        "type": "change",
-        "z": "bbc4284780ea4146",
-        "g": "1eb42d9c512c5156",
-        "name": "02 pagebutton",
-        "rules": [
-            {
-                "t": "set",
-                "p": "pagebutton.0",
-                "pt": "msg",
-                "to": "main",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "pagebutton.1",
-                "pt": "msg",
-                "to": "main",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "pagebutton.2",
-                "pt": "msg",
-                "to": "main",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "pagebutton.3",
-                "pt": "msg",
-                "to": "page",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "pagebutton.4",
-                "pt": "msg",
-                "to": "page",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "pagebutton.5",
-                "pt": "msg",
-                "to": "page",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "pagebutton.6",
-                "pt": "msg",
-                "to": "page",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "pagebutton.7",
-                "pt": "msg",
-                "to": "page",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 420,
-        "y": 360,
-        "wires": [
-            [
-                "c94b82af6ba988a6"
-            ]
-        ],
-        "info": "Assign buttons to pages or to main.\n\nif assigned to \"main\" (A/Z text)\n    then it will be active on all menu pages\n\nif assigend to msg.page \n    then it will listen to whatever is in msg.page\n\nIn this example, button 0, 1 and 2 are assigned to main\nand as such always active in menu main.\n\nThe other buttons will listen to the topic with the value of msg.page in it."
-    },
-    {
-        "id": "11460e3f73666fbe",
-        "type": "api-call-service",
-        "z": "bbc4284780ea4146",
-        "g": "9d87a235156e6c91",
-        "name": "",
-        "server": "c5f56a3a.f3f838",
-        "version": 5,
-        "debugenabled": false,
-        "domain": "input_select",
-        "service": "select_next",
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "input_select.buttonplus_wk1_menuselector"
-        ],
-        "data": "",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 1110,
-        "y": 940,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "c5605e4c2a8790a1",
-        "type": "comment",
-        "z": "bbc4284780ea4146",
-        "g": "9d87a235156e6c91",
-        "name": "Trigger to change menu via HA",
-        "info": "",
-        "x": 1130,
-        "y": 900,
-        "wires": []
-    },
-    {
-        "id": "8e8485d720ba3aeb",
+        "id": "18c856d5c82682a7",
         "type": "mqtt in",
-        "z": "bbc4284780ea4146",
+        "z": "18dd279f36d97386",
         "name": "",
         "topic": "",
         "qos": "2",
@@ -3214,18 +548,18 @@
         "rap": true,
         "rh": 0,
         "inputs": 1,
-        "x": 170,
-        "y": 300,
+        "x": 150,
+        "y": 520,
         "wires": [
             [
-                "31da06a43ce7005c"
+                "b27b4b2ef322fadc"
             ]
         ]
     },
     {
-        "id": "e508038747ed3169",
+        "id": "5beb334d81c4c07b",
         "type": "inject",
-        "z": "bbc4284780ea4146",
+        "z": "18dd279f36d97386",
         "name": "",
         "props": [
             {
@@ -3250,44 +584,17 @@
         "payload": "",
         "payloadType": "date",
         "x": 150,
-        "y": 260,
+        "y": 480,
         "wires": [
             [
-                "8e8485d720ba3aeb"
+                "18c856d5c82682a7"
             ]
         ]
     },
     {
-        "id": "31da06a43ce7005c",
-        "type": "change",
-        "z": "bbc4284780ea4146",
-        "name": "",
-        "rules": [
-            {
-                "t": "move",
-                "p": "payload",
-                "pt": "msg",
-                "to": "page",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 170,
-        "y": 360,
-        "wires": [
-            [
-                "d1188bfef91713b4"
-            ]
-        ]
-    },
-    {
-        "id": "b79feb0a88396c87",
+        "id": "fd482d5e89b7c1a7",
         "type": "mqtt in",
-        "z": "bbc4284780ea4146",
+        "z": "18dd279f36d97386",
         "name": "",
         "topic": "",
         "qos": "2",
@@ -3297,18 +604,18 @@
         "rap": true,
         "rh": 0,
         "inputs": 1,
-        "x": 1770,
-        "y": 960,
+        "x": 1170,
+        "y": 700,
         "wires": [
             [
-                "fddeccb21f4b6d07"
+                "8c7c530121f06c0a"
             ]
         ]
     },
     {
-        "id": "93a6cd3fca3254e8",
+        "id": "d641ca2af3348273",
         "type": "inject",
-        "z": "bbc4284780ea4146",
+        "z": "18dd279f36d97386",
         "name": "",
         "props": [
             {
@@ -3332,23 +639,1593 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 1770,
-        "y": 920,
+        "x": 1170,
+        "y": 660,
         "wires": [
             [
-                "b79feb0a88396c87"
+                "fd482d5e89b7c1a7"
             ]
         ]
     },
     {
-        "id": "6897bb5f56c71bbe",
-        "type": "comment",
-        "z": "bbc4284780ea4146",
-        "g": "9d87a235156e6c91",
-        "name": "07 actions based on buttons assigned to page",
-        "info": "",
-        "x": 670,
+        "id": "e7627788f729cca5",
+        "type": "change",
+        "z": "18dd279f36d97386",
+        "name": "fetch config",
+        "rules": [
+            {
+                "t": "set",
+                "p": "buttonpage",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "bplusconfig",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigdevice",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "buttonpage",
+                "pt": "flow",
+                "to": "buttonpage",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 390,
+        "y": 300,
+        "wires": [
+            [
+                "920ae05b7da02f5e",
+                "87ee8d61ca60d62d"
+            ]
+        ]
+    },
+    {
+        "id": "52f51d80a7af1382",
+        "type": "function",
+        "z": "18dd279f36d97386",
+        "name": "Assemble json object",
+        "func": "var configJSON = {};\nvar bplusdevice = flow.get('bplusdevice', 'file');\nvar bplusconfig = global.get('bplusconfig', 'file');\nvar configJSONcore = flow.get('configJSONcore', 'file');\n\n// var mqttbrokers = bplusconfig[bplusdevice].mqttbrokers;\n\nmsg.ipaddress = bplusconfig[bplusdevice].ip;\n\nconfigJSON['core'] = configJSONcore;\n\n// configJSON['mqttbrokers'] = mqttbrokers;\nconfigJSON['mqttbuttons'] = msg.mqttbuttons;\n\n\nmsg.payload = configJSON;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1220,
+        "y": 100,
+        "wires": [
+            [
+                "85953f5f7ff0a4d4",
+                "ebc38199c9732748"
+            ]
+        ]
+    },
+    {
+        "id": "c43be3884888dc48",
+        "type": "change",
+        "z": "18dd279f36d97386",
+        "name": "fetch config",
+        "rules": [
+            {
+                "t": "set",
+                "p": "bplusconfig",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigdevice",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 750,
+        "y": 100,
+        "wires": [
+            [
+                "5c42b1864a858d07"
+            ]
+        ]
+    },
+    {
+        "id": "5a18a8146233329f",
+        "type": "debug",
+        "z": "18dd279f36d97386",
+        "name": "debug 37",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 280,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "5a16a7c2d6e78561",
+        "type": "function",
+        "z": "18dd279f36d97386",
+        "name": "Initialize displayitem JSON",
+        "func": "var page = msg.page;\nvar pages = flow.get(\"pages\", \"file\");\n\nvar pageid = pages.indexOf(page);\n// msg.pageid = pageid;\nflow.set(\"pageid\", pageid);\n\n\nvar pages = flow.get(\"pages\", \"file\");\n\n\nvar displayitems = flow.get(\"bplusconfigdisplayitems\");\n\n\nvar displayitems_new = [];\n\nfor (let i = 0; i < displayitems.length; i++) {\n    if (displayitems[i].page == 0 || displayitems[i].page == pageid) {\n    displayitems_new.push(displayitems[i]);}\n    \n}\n\n\n\n// Initialize displayitem JSON\n\n// msg.filter = filter;\n// msg.displayitems = displayitems;\nmsg.displayitems = displayitems_new;\n\n// Initialize displayitem JSON\nmsg.displayitem = [];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 520,
+        "wires": [
+            [
+                "21d5669fd64848d1",
+                "6374731ef808ee9b"
+            ]
+        ]
+    },
+    {
+        "id": "542a85206fad321f",
+        "type": "change",
+        "z": "18dd279f36d97386",
+        "name": "draw button page 1 label",
+        "rules": [
+            {
+                "t": "set",
+                "p": "label.0",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.1.0",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.1",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.1.1",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.2",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.1.2",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.3",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.1.3",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.4",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.1.4",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.5",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.1.5",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.6",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.1.6",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.7",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.1.7",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.0",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.1.0",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.1",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.1.1",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.2",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.1.2",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.3",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.1.3",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.4",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.1.4",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.5",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.1.5",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.6",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.1.6",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.7",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.1.7",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.0",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.1.0",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.1",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.1.1",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.2",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.1.2",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.3",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.1.3",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.4",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.1.4",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.5",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.1.5",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.6",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.1.6",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.7",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.1.7",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 890,
+        "y": 200,
+        "wires": [
+            [
+                "6d8c3d2b85859530"
+            ]
+        ]
+    },
+    {
+        "id": "e8889b05d24c5dcb",
+        "type": "change",
+        "z": "18dd279f36d97386",
+        "name": "draw button page 2 label",
+        "rules": [
+            {
+                "t": "set",
+                "p": "label.0",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.2.0",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.1",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.2.1",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.2",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.2.2",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.3",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.2.3",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.4",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.2.4",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.5",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.2.5",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.6",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.2.6",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.7",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.2.7",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.0",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.2.0",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.1",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.2.1",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.2",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.2.2",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.3",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.2.3",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.4",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.2.4",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.5",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.2.5",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.6",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.2.6",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.7",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.2.7",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.0",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.2.0",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.1",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.2.1",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.2",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.2.2",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.3",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.2.3",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.4",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.2.4",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.5",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.2.5",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.6",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.2.6",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.7",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.2.7",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 890,
+        "y": 240,
+        "wires": [
+            [
+                "6d8c3d2b85859530"
+            ]
+        ]
+    },
+    {
+        "id": "7e5b78d7c7fe4627",
+        "type": "change",
+        "z": "18dd279f36d97386",
+        "name": "draw button page 3 label",
+        "rules": [
+            {
+                "t": "set",
+                "p": "label.0",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.3.0",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.1",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.3.1",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.2",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.3.2",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.3",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.3.3",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.4",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.3.4",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.5",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.3.5",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.6",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.3.6",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.7",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.3.7",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.0",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.3.0",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.1",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.3.1",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.2",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.3.2",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.3",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.3.3",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.4",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.3.4",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.5",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.3.5",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.6",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.3.6",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.7",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.3.7",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.0",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.3.0",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.1",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.3.1",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.2",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.3.2",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.3",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.3.3",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.4",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.3.4",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.5",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.3.5",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.6",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.3.6",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.7",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.3.7",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 890,
+        "y": 280,
+        "wires": [
+            [
+                "6d8c3d2b85859530"
+            ]
+        ]
+    },
+    {
+        "id": "fdf83fd0588a899d",
+        "type": "change",
+        "z": "18dd279f36d97386",
+        "name": "draw button page 4 label",
+        "rules": [
+            {
+                "t": "set",
+                "p": "label.0",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.4.0",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.1",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.4.1",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.2",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.4.2",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.3",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.4.3",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.4",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.4.4",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.5",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.4.5",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.6",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.4.6",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.7",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.4.7",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.0",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.4.0",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.1",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.4.1",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.2",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.4.2",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.3",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.4.3",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.4",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.4.4",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.5",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.4.5",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.6",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.4.6",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.7",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.4.7",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.0",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.4.0",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.1",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.4.1",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.2",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.4.2",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.3",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.4.3",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.4",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.4.4",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.5",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.4.5",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.6",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.4.6",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.7",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.4.7",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 890,
+        "y": 320,
+        "wires": [
+            [
+                "6d8c3d2b85859530"
+            ]
+        ]
+    },
+    {
+        "id": "e58c83c87a6fe33e",
+        "type": "change",
+        "z": "18dd279f36d97386",
+        "name": "draw button page 5 label",
+        "rules": [
+            {
+                "t": "set",
+                "p": "label.0",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.5.0",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.1",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.5.1",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.2",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.5.2",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.3",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.5.3",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.4",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.5.4",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.5",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.5.5",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.6",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.5.6",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.7",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.5.7",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.0",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.5.0",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.1",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.5.1",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.2",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.5.2",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.3",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.5.3",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.4",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.5.4",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.5",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.5.5",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.6",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.5.6",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.7",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.5.7",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.0",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.5.0",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.1",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.5.1",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.2",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.5.2",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.3",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.5.3",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.4",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.5.4",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.5",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.5.5",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.6",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.5.6",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.7",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.5.7",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 890,
+        "y": 360,
+        "wires": [
+            [
+                "6d8c3d2b85859530"
+            ]
+        ]
+    },
+    {
+        "id": "aeccd097bb7b6078",
+        "type": "change",
+        "z": "18dd279f36d97386",
+        "name": "draw button page 6 label",
+        "rules": [
+            {
+                "t": "set",
+                "p": "label.0",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.6.0",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.1",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.6.1",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.2",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.6.2",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.3",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.6.3",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.4",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.6.4",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.5",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.6.5",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.6",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.6.6",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "label.7",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.label.6.7",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.0",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.6.0",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.1",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.6.1",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.2",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.6.2",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.3",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.6.3",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.4",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.6.4",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.5",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.6.5",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.6",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.6.6",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.7",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.toplabel.6.7",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.0",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.6.0",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.1",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.6.1",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.2",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.6.2",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.3",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.6.3",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.4",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.6.4",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.5",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.6.5",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.6",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.6.6",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.7",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigbuttons.ledrgb.6.7",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 890,
+        "y": 400,
+        "wires": [
+            [
+                "6d8c3d2b85859530"
+            ]
+        ]
+    },
+    {
+        "id": "87ee8d61ca60d62d",
+        "type": "function",
+        "z": "18dd279f36d97386",
+        "name": "save buttonpageid",
+        "func": "var buttonpage = msg.buttonpage;\nvar buttonpages = flow.get(\"buttonpages\",\"file\");\n\nvar buttonpageid = buttonpages.indexOf(buttonpage);\nmsg.buttonpageid = buttonpageid;\nflow.set(\"buttonpageid\", buttonpageid);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "21d5669fd64848d1",
+        "type": "debug",
+        "z": "18dd279f36d97386",
+        "name": "debug 39",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "6374731ef808ee9b",
+        "type": "function",
+        "z": "18dd279f36d97386",
+        "name": "add topics",
+        "func": "var displayitem = msg.displayitems;\nvar topic = msg.bplusconfig['displaytopic'];\nvar brokerid = msg.bplusconfig['mqttbrokers'][0]['brokerid'];\nvar page = msg.page;\nvar pages = msg.pages;\n\n// Walk through all display items and add required JSON\nfor (var i in displayitem) {\n    // if (typeof displayitem[i] === 'object') {\n        displayitem[i]['topics'] = [{\n            \"brokerid\": brokerid,\n            \"topic\": topic + pages[displayitem[i]['page']] + \"/\" + displayitem[i]['displayitem'] + \"/value\",\n            \"eventtype\": 15\n        }, {\n            \"brokerid\": brokerid, \"topic\": topic + pages[displayitem[i]['page']] + \"/\" + displayitem[i]['displayitem'] + \"/label\",\n            \"eventtype\": 16\n        }, {\n            \"brokerid\": brokerid, \"topic\": topic + pages[displayitem[i]['page']] + \"/\" + displayitem[i]['displayitem'] + \"/uom\",\n            \"eventtype\": 17\n        }\n        ]\n        // var newMsg = {};\n        // newMsg.error = displayitem[i];\n        // node.send(newMsg);\n    // delete displayitem[i].displayitem;\n    // delete displayitem[i].page;\n    // }\n};\n\n// // Cleanup array\n// var newarray = [];\n// var j = 0;\n// for (let i = 0; i < displayitem.length; i++) {\n//     if (displayitem[i] !== undefined) {\n//         newarray[j] = displayitem[i];\n//         j = j + 1;\n//     }\n// }\n\n// msg.displayitem = newarray;\nmsg.displayitem = displayitem;\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 930,
+        "y": 520,
+        "wires": [
+            [
+                "bf5cc3184c6b20f3"
+            ]
+        ]
+    },
+    {
+        "id": "360959b6396226a4",
+        "type": "mqtt out",
+        "z": "18dd279f36d97386",
+        "name": "",
+        "topic": "",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e6dbd5fb3f32ec20",
+        "x": 590,
         "y": 880,
         "wires": []
+    },
+    {
+        "id": "acd5a8cdd7fdab94",
+        "type": "link out",
+        "z": "18dd279f36d97386",
+        "name": "Buttonplus WK1 button clicks",
+        "mode": "link",
+        "links": [
+            "959c774849e00892"
+        ],
+        "x": 670,
+        "y": 1000,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "b1a43bc8d228b222",
+        "type": "mqtt in",
+        "z": "18dd279f36d97386",
+        "g": "3dc14376c3d7d50c",
+        "name": "",
+        "topic": "",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "e6dbd5fb3f32ec20",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 1,
+        "x": 270,
+        "y": 120,
+        "wires": [
+            [
+                "c42c778490b3be56"
+            ]
+        ]
+    },
+    {
+        "id": "37e30e2131181dd3",
+        "type": "comment",
+        "z": "18dd279f36d97386",
+        "name": "Trigger to change buttonmenu via MQTT",
+        "info": "",
+        "x": 160,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "58fbb0dc6d528c39",
+        "type": "mqtt in",
+        "z": "18dd279f36d97386",
+        "name": "",
+        "topic": "",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "e6dbd5fb3f32ec20",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 1,
+        "x": 130,
+        "y": 300,
+        "wires": [
+            [
+                "e7627788f729cca5"
+            ]
+        ]
+    },
+    {
+        "id": "723ba4c860a83c0e",
+        "type": "inject",
+        "z": "18dd279f36d97386",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "v": "#:(file)::bplusconfigdevice.buttonpagetopic",
+                "vt": "flow"
+            },
+            {
+                "p": "action",
+                "v": "subscribe",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 240,
+        "wires": [
+            [
+                "58fbb0dc6d528c39"
+            ]
+        ]
+    },
+    {
+        "id": "0d5f157421728820",
+        "type": "comment",
+        "z": "18dd279f36d97386",
+        "name": "Optional: use button presses within Node Red",
+        "info": "This can link to a node on another flow",
+        "x": 710,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "0d90e8ce00e6f73a",
+        "type": "comment",
+        "z": "18dd279f36d97386",
+        "name": "Page specific button topics",
+        "info": "use for direct subscription to a button press",
+        "x": 660,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "ebc38199c9732748",
+        "type": "debug",
+        "z": "18dd279f36d97386",
+        "name": "debug 40",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1550,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "b7ca85d28659e4ee",
+        "type": "function",
+        "z": "18dd279f36d97386",
+        "name": "Assemble json object",
+        "func": "var configJSON = {};\nvar bplusdevice = flow.get('bplusdevice', 'file');\nvar bplusconfig = flow.get('bplusconfigdevice', 'file');\nvar configJSONcore = flow.get('configJSONcore', 'file');\n\n\n\nmsg.ipaddress = bplusconfig.ip;\nvar mqttbrokers = bplusconfig.mqttbrokers;\n\nconfigJSON['core'] = configJSONcore;\n\nconfigJSON['mqttbrokers'] = mqttbrokers;\n\n\n\nmsg.payload = configJSON;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1280,
+        "y": 1000,
+        "wires": [
+            [
+                "85953f5f7ff0a4d4"
+            ]
+        ]
+    },
+    {
+        "id": "5dcbb87dfd981097",
+        "type": "change",
+        "z": "18dd279f36d97386",
+        "name": "fetch config",
+        "rules": [
+            {
+                "t": "set",
+                "p": "bplusconfig",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigdevice",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1290,
+        "y": 960,
+        "wires": [
+            [
+                "b7ca85d28659e4ee"
+            ]
+        ]
+    },
+    {
+        "id": "fc91caed9af12340",
+        "type": "inject",
+        "z": "18dd279f36d97386",
+        "name": "Resend MQTT broker to B+",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1260,
+        "y": 920,
+        "wires": [
+            [
+                "5dcbb87dfd981097"
+            ]
+        ]
+    },
+    {
+        "id": "b93bc4ba3c8814bf",
+        "type": "comment",
+        "z": "18dd279f36d97386",
+        "name": "Normally not needed",
+        "info": "",
+        "x": 1270,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "e6dbd5fb3f32ec20",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.1.7",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
     }
 ]

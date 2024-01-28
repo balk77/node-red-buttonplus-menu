@@ -1,0 +1,5862 @@
+[
+    {
+        "id": "acb772c499cddad8",
+        "type": "subflow",
+        "name": "Main (2)",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 40,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "3b1bbf371fec3f15"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 680,
+                "y": 260,
+                "wires": []
+            },
+            {
+                "x": 680,
+                "y": 320,
+                "wires": [
+                    {
+                        "id": "b533f9428616701e",
+                        "port": 1
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "3b1bbf371fec3f15",
+        "type": "switch",
+        "z": "acb772c499cddad8",
+        "name": "",
+        "property": "state",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "press",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "release",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "longpress",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 150,
+        "y": 140,
+        "wires": [
+            [
+                "b533f9428616701e"
+            ],
+            [
+                "09134ad0bb8f93d4"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "b533f9428616701e",
+        "type": "switch",
+        "z": "acb772c499cddad8",
+        "name": "press",
+        "property": "button",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "5",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "6",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "7",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 8,
+        "x": 370,
+        "y": 160,
+        "wires": [
+            [],
+            [
+                "96bfb8b46c1f241d"
+            ],
+            [
+                "6fe1a561fcb0b2a5"
+            ],
+            [],
+            [],
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "09134ad0bb8f93d4",
+        "type": "switch",
+        "z": "acb772c499cddad8",
+        "name": "Release",
+        "property": "button",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "5",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "6",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "7",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 8,
+        "x": 180,
+        "y": 340,
+        "wires": [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "96bfb8b46c1f241d",
+        "type": "api-call-service",
+        "z": "acb772c499cddad8",
+        "name": "next menu",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "input_select",
+        "service": "select_next",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "input_select.buttonplus_wk1_menuselector"
+        ],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 670,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6fe1a561fcb0b2a5",
+        "type": "api-call-service",
+        "z": "acb772c499cddad8",
+        "name": "B+ clear prio",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "script",
+        "service": "buttonplus_notification_clear_prio",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 690,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "42d3dae87571debc",
+        "type": "subflow",
+        "name": "Overdag (3)",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 50,
+                "y": 30,
+                "wires": [
+                    {
+                        "id": "4e62d4fa8dd80381"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 700,
+                "y": 80,
+                "wires": []
+            },
+            {
+                "x": 740,
+                "y": 280,
+                "wires": []
+            },
+            {
+                "x": 720,
+                "y": 180,
+                "wires": []
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "4e62d4fa8dd80381",
+        "type": "switch",
+        "z": "42d3dae87571debc",
+        "name": "",
+        "property": "state",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "press",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "release",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "longpress",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 150,
+        "y": 80,
+        "wires": [
+            [
+                "29cbe9fad6fce58d",
+                "51aa9b38883610f9"
+            ],
+            [
+                "480348226fcc8094",
+                "51aa9b38883610f9"
+            ],
+            [
+                "51aa9b38883610f9"
+            ]
+        ]
+    },
+    {
+        "id": "29cbe9fad6fce58d",
+        "type": "switch",
+        "z": "42d3dae87571debc",
+        "name": "press",
+        "property": "button",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "5",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "6",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "7",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 8,
+        "x": 290,
+        "y": 280,
+        "wires": [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [
+                "6845e75307606713"
+            ],
+            [
+                "e6da18ec90d9eb76"
+            ],
+            [
+                "49dd82e714b0ed66"
+            ]
+        ]
+    },
+    {
+        "id": "49dd82e714b0ed66",
+        "type": "api-call-service",
+        "z": "42d3dae87571debc",
+        "name": "Ochtend aan",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "scene",
+        "service": "turn_on",
+        "areaId": [
+            "f003303ef40d4f74a22d0ac43952a198"
+        ],
+        "deviceId": [],
+        "entityId": [
+            "scene.ochtend_aan"
+        ],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 710,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e6da18ec90d9eb76",
+        "type": "api-call-service",
+        "z": "42d3dae87571debc",
+        "name": "",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "script",
+        "service": "woonkamer_lichten_uit",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 480,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6845e75307606713",
+        "type": "api-call-service",
+        "z": "42d3dae87571debc",
+        "name": "Woonkamer vol",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "scene",
+        "service": "turn_on",
+        "areaId": [
+            "f003303ef40d4f74a22d0ac43952a198"
+        ],
+        "deviceId": [],
+        "entityId": [
+            "scene.woonkamer_vol"
+        ],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 720,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "480348226fcc8094",
+        "type": "switch",
+        "z": "42d3dae87571debc",
+        "name": "Release",
+        "property": "button",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "5",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "6",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "7",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 8,
+        "x": 160,
+        "y": 420,
+        "wires": [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "bc88903b3f6e751c",
+        "type": "mqtt out",
+        "z": "42d3dae87571debc",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e6dbd5fb3f32ec20",
+        "x": 570,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "51aa9b38883610f9",
+        "type": "function",
+        "z": "42d3dae87571debc",
+        "name": "light led on press",
+        "func": "if(msg.state == \"release\"){\n    msg.payload = 0;    \n}else{\n    msg.payload = 14523136;\n}\n\n\nmsg.topic = msg.topic.split(\"/\").slice(0, -1).join(\"/\") + \"/ledrgb\";\n\n//msg.topic = \"buttonplus/wk1/button/muziek/\" + msg.button +\"/ledrgb\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 80,
+        "wires": [
+            [
+                "bc88903b3f6e751c"
+            ]
+        ]
+    },
+    {
+        "id": "f1722db4c9b440e0",
+        "type": "subflow",
+        "name": "Muziek (3)",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 40,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "4465de4e409b29f5"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1080,
+                "y": 140,
+                "wires": []
+            },
+            {
+                "x": 740,
+                "y": 280,
+                "wires": [
+                    {
+                        "id": "fdc3e64dc7d29222",
+                        "port": 1
+                    }
+                ]
+            },
+            {
+                "x": 800,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "4465de4e409b29f5",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "4465de4e409b29f5",
+        "type": "switch",
+        "z": "f1722db4c9b440e0",
+        "name": "",
+        "property": "state",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "press",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "release",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "longpress",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 110,
+        "y": 220,
+        "wires": [
+            [
+                "fdc3e64dc7d29222",
+                "9963171b63d32264"
+            ],
+            [
+                "b8ecb7d18afcc699",
+                "9963171b63d32264"
+            ],
+            [
+                "9963171b63d32264"
+            ]
+        ]
+    },
+    {
+        "id": "fdc3e64dc7d29222",
+        "type": "switch",
+        "z": "f1722db4c9b440e0",
+        "name": "press",
+        "property": "button",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "5",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "6",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "7",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 8,
+        "x": 330,
+        "y": 380,
+        "wires": [
+            [],
+            [],
+            [],
+            [
+                "0a3c7bae44caba37"
+            ],
+            [
+                "4ddc56deeae365a9"
+            ],
+            [
+                "c60aece7e1359719"
+            ],
+            [
+                "9272afd82e4704f0"
+            ],
+            [
+                "1fdc5dba16b47075"
+            ]
+        ]
+    },
+    {
+        "id": "be5c28ee62cb8a24",
+        "type": "mqtt out",
+        "z": "f1722db4c9b440e0",
+        "name": "",
+        "topic": "buttonplus/wk1/music",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e6dbd5fb3f32ec20",
+        "x": 840,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "1fdc5dba16b47075",
+        "type": "change",
+        "z": "f1722db4c9b440e0",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "volumeup",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 500,
+        "wires": [
+            [
+                "be5c28ee62cb8a24"
+            ]
+        ]
+    },
+    {
+        "id": "9272afd82e4704f0",
+        "type": "change",
+        "z": "f1722db4c9b440e0",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "volumedown",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 440,
+        "wires": [
+            [
+                "be5c28ee62cb8a24"
+            ]
+        ]
+    },
+    {
+        "id": "c60aece7e1359719",
+        "type": "change",
+        "z": "f1722db4c9b440e0",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "next",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 400,
+        "wires": [
+            [
+                "be5c28ee62cb8a24"
+            ]
+        ]
+    },
+    {
+        "id": "4ddc56deeae365a9",
+        "type": "change",
+        "z": "f1722db4c9b440e0",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "previous",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 360,
+        "wires": [
+            [
+                "be5c28ee62cb8a24"
+            ]
+        ]
+    },
+    {
+        "id": "0a3c7bae44caba37",
+        "type": "change",
+        "z": "f1722db4c9b440e0",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "playpause",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 320,
+        "wires": [
+            [
+                "be5c28ee62cb8a24"
+            ]
+        ]
+    },
+    {
+        "id": "b8ecb7d18afcc699",
+        "type": "switch",
+        "z": "f1722db4c9b440e0",
+        "name": "Release",
+        "property": "button",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "5",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "6",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "7",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 8,
+        "x": 180,
+        "y": 500,
+        "wires": [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "bdde6f06dfa1f24a",
+        "type": "mqtt out",
+        "z": "f1722db4c9b440e0",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e6dbd5fb3f32ec20",
+        "x": 630,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "9963171b63d32264",
+        "type": "function",
+        "z": "f1722db4c9b440e0",
+        "name": "light led on press",
+        "func": "if(msg.state == \"release\"){\n    msg.payload = 0;    \n}else{\n    msg.payload = 14523136;\n}\n\n\nmsg.topic = msg.topic.split(\"/\").slice(0, -1).join(\"/\") + \"/ledrgb\";\n\n//msg.topic = \"buttonplus/wk1/button/muziek/\" + msg.button +\"/ledrgb\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 220,
+        "wires": [
+            [
+                "bdde6f06dfa1f24a"
+            ]
+        ]
+    },
+    {
+        "id": "30db8c8a540ef087",
+        "type": "subflow",
+        "name": "Verlichting (3)",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 40,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "1058fe1ba4bc0154"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 740,
+                "y": 240,
+                "wires": []
+            },
+            {
+                "x": 560,
+                "y": 160,
+                "wires": []
+            },
+            {
+                "x": 740,
+                "y": 360,
+                "wires": []
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "1058fe1ba4bc0154",
+        "type": "switch",
+        "z": "30db8c8a540ef087",
+        "name": "",
+        "property": "state",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "press",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "release",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "longpress",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 130,
+        "y": 80,
+        "wires": [
+            [
+                "a497f41264b406a4",
+                "c03fa3303403f78e"
+            ],
+            [
+                "7258bded9665242b",
+                "c03fa3303403f78e"
+            ],
+            [
+                "c03fa3303403f78e"
+            ]
+        ]
+    },
+    {
+        "id": "a497f41264b406a4",
+        "type": "switch",
+        "z": "30db8c8a540ef087",
+        "name": "press",
+        "property": "button",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "5",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "6",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "7",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 8,
+        "x": 350,
+        "y": 100,
+        "wires": [
+            [],
+            [],
+            [],
+            [],
+            [
+                "aa57e4fff4a722d8"
+            ],
+            [
+                "0e24f0db15bc67d3"
+            ],
+            [
+                "cce7a02baeb8cd28"
+            ],
+            [
+                "d9c5af7120f55383"
+            ]
+        ]
+    },
+    {
+        "id": "cce7a02baeb8cd28",
+        "type": "api-call-service",
+        "z": "30db8c8a540ef087",
+        "name": "",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "script",
+        "service": "woonkamer_lichten_uit",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 540,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d9c5af7120f55383",
+        "type": "api-call-service",
+        "z": "30db8c8a540ef087",
+        "name": "Woonkamer vol",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "scene",
+        "service": "turn_on",
+        "areaId": [
+            "f003303ef40d4f74a22d0ac43952a198"
+        ],
+        "deviceId": [],
+        "entityId": [
+            "scene.woonkamer_vol"
+        ],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 780,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "aa57e4fff4a722d8",
+        "type": "api-call-service",
+        "z": "30db8c8a540ef087",
+        "name": "Woonkamer mid",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "scene",
+        "service": "turn_on",
+        "areaId": [
+            "f003303ef40d4f74a22d0ac43952a198"
+        ],
+        "deviceId": [],
+        "entityId": [
+            "scene.woonkamer_mid"
+        ],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 500,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0e24f0db15bc67d3",
+        "type": "api-call-service",
+        "z": "30db8c8a540ef087",
+        "name": "Woonkamer mid",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "scene",
+        "service": "turn_on",
+        "areaId": [
+            "f003303ef40d4f74a22d0ac43952a198"
+        ],
+        "deviceId": [],
+        "entityId": [
+            "scene.woonkamer_dim"
+        ],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 780,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7258bded9665242b",
+        "type": "switch",
+        "z": "30db8c8a540ef087",
+        "name": "Release",
+        "property": "button",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "5",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "6",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "7",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 8,
+        "x": 180,
+        "y": 280,
+        "wires": [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "8502e4acd1972fcb",
+        "type": "mqtt out",
+        "z": "30db8c8a540ef087",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e6dbd5fb3f32ec20",
+        "x": 630,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "c03fa3303403f78e",
+        "type": "function",
+        "z": "30db8c8a540ef087",
+        "name": "light led on press",
+        "func": "if(msg.state == \"release\"){\n    msg.payload = 0;    \n}else{\n    msg.payload = 14523136;\n}\n\n\nmsg.topic = msg.topic.split(\"/\").slice(0, -1).join(\"/\") + \"/ledrgb\";\n\n//msg.topic = \"buttonplus/wk1/button/muziek/\" + msg.button +\"/ledrgb\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 20,
+        "wires": [
+            [
+                "8502e4acd1972fcb"
+            ]
+        ]
+    },
+    {
+        "id": "ee7dfcae62a1d1d1",
+        "type": "subflow",
+        "name": "B+ MQTT to main",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 80,
+                "y": 100,
+                "wires": [
+                    {
+                        "id": "a49cd7b39edf50ad"
+                    }
+                ]
+            }
+        ],
+        "out": [],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "96d164091bca558c",
+        "type": "mqtt out",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "value",
+        "topic": "",
+        "qos": "0",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e6dbd5fb3f32ec20",
+        "x": 730,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "523048e5478dc2ba",
+        "type": "change",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "label",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 300,
+        "wires": [
+            [
+                "b18f1afeaa130737"
+            ]
+        ]
+    },
+    {
+        "id": "b18f1afeaa130737",
+        "type": "mqtt out",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "title",
+        "topic": "",
+        "qos": "0",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e6dbd5fb3f32ec20",
+        "x": 730,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "e343e9a04e0cf6df",
+        "type": "mqtt out",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "uom",
+        "topic": "",
+        "qos": "0",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e6dbd5fb3f32ec20",
+        "x": 730,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "2906bb2e666b787a",
+        "type": "change",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "uom",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 240,
+        "wires": [
+            [
+                "e343e9a04e0cf6df"
+            ]
+        ]
+    },
+    {
+        "id": "4b58c6126865041d",
+        "type": "function",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "concat uom",
+        "func": "var appendix='uom'\nmsg.topic = msg.topic.concat(appendix)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 240,
+        "wires": [
+            [
+                "2906bb2e666b787a"
+            ]
+        ]
+    },
+    {
+        "id": "ef07977994e4e2f4",
+        "type": "function",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "concat label",
+        "func": "var appendix='label'\nmsg.topic = msg.topic.concat(appendix)\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 300,
+        "wires": [
+            [
+                "523048e5478dc2ba"
+            ]
+        ]
+    },
+    {
+        "id": "7611744803215c96",
+        "type": "function",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "concat value",
+        "func": "var appendix='value'\nmsg.topic = msg.topic.concat(appendix)\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 360,
+        "wires": [
+            [
+                "96d164091bca558c"
+            ]
+        ]
+    },
+    {
+        "id": "a49cd7b39edf50ad",
+        "type": "function",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "set topic",
+        "func": "msg.topic = \"buttonplus/\"+msg.device+\"/display/\"+msg.page+\"/\"+msg.displayitem+\"/\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 140,
+        "y": 300,
+        "wires": [
+            [
+                "4b58c6126865041d",
+                "ef07977994e4e2f4",
+                "7611744803215c96"
+            ]
+        ]
+    },
+    {
+        "id": "e6dbd5fb3f32ec20",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.1.7",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "1044a74b4adb9c61",
+        "type": "tab",
+        "label": "Button+",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d6ac19073ee2e393",
+        "type": "group",
+        "z": "1044a74b4adb9c61",
+        "g": "0263fcac64b35f45",
+        "name": "Display configuration",
+        "style": {
+            "label": true,
+            "fill": "#ffffbf"
+        },
+        "nodes": [
+            "2c891ac797e2f919",
+            "8e8b58ecccec0114",
+            "55efa82f44479663",
+            "616fdd3722918d71",
+            "c8c22cbaeac01bb4",
+            "8fddec5047f67e3e",
+            "8ccf3683cec10ac2",
+            "b31108223aaa5ab5",
+            "bda4e57e7fbbab2a",
+            "6e61a633d432848c",
+            "df7356c48653cc49",
+            "257bbce024f54d9f"
+        ],
+        "x": 1394,
+        "y": 139,
+        "w": 652,
+        "h": 382
+    },
+    {
+        "id": "322e42dc06764204",
+        "type": "group",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "Requires configuration",
+        "style": {
+            "fill": "#ffffbf",
+            "label": true
+        },
+        "nodes": [
+            "056d7c66b4cdf51a",
+            "30ed3ae41980acee",
+            "36c108bee8588f79",
+            "603b0c5fb7c24382",
+            "34e5bb849888e876",
+            "19f1cc01d6cf110c",
+            "0ccb4e093771f55b"
+        ],
+        "x": 494,
+        "y": 759,
+        "w": 532,
+        "h": 309.5
+    },
+    {
+        "id": "f4782afd5389e269",
+        "type": "group",
+        "z": "1044a74b4adb9c61",
+        "name": "VOID",
+        "style": {
+            "label": true,
+            "fill": "#ffffbf"
+        },
+        "nodes": [
+            "4b6e835d9f56bc65",
+            "6f6986666b681475",
+            "59b216d58f3e74db",
+            "ef40f9d055be8e33",
+            "e887a8f7b5d9d3e0",
+            "d6048671975494dc",
+            "a00c6d048d2c5646",
+            "1186516299b589db",
+            "72f9cf83a07eb74d",
+            "30f7455b98a26c22",
+            "e5f4d16c47030b24",
+            "8414a763e766e334",
+            "f3aa5092f91c198d"
+        ],
+        "x": 2834,
+        "y": 1579,
+        "w": 652,
+        "h": 382
+    },
+    {
+        "id": "fed1cb9c2dc13737",
+        "type": "group",
+        "z": "1044a74b4adb9c61",
+        "g": "0263fcac64b35f45",
+        "name": "Button configuration",
+        "style": {
+            "fill": "#ffffbf",
+            "label": true
+        },
+        "nodes": [
+            "50c18e45ce3112a2",
+            "0db84954f7a124f8",
+            "4d33050a2791d947",
+            "06f892806f5ebbf6",
+            "5d5f889983a03006",
+            "8292da757428a3ad",
+            "8506830f1601b793",
+            "f48a7a59c1c8047d",
+            "b0d11701b95feb0f",
+            "8f0e49d9c8346603"
+        ],
+        "x": 774,
+        "y": 139,
+        "w": 552,
+        "h": 362
+    },
+    {
+        "id": "63e74347d9b0f270",
+        "type": "group",
+        "z": "1044a74b4adb9c61",
+        "g": "0263fcac64b35f45",
+        "name": "General configuration for this device",
+        "style": {
+            "fill": "#ffffbf",
+            "label": true
+        },
+        "nodes": [
+            "c318de399681016a",
+            "b8529baf4892b3c5",
+            "12f925c0fa6fe3f5",
+            "886407beb73e83b6"
+        ],
+        "x": 94,
+        "y": 139,
+        "w": 572,
+        "h": 182
+    },
+    {
+        "id": "0263fcac64b35f45",
+        "type": "group",
+        "z": "1044a74b4adb9c61",
+        "name": "Part of flow",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "71920cda221f77ac",
+            "fe598751a6b0f0fa",
+            "b82ef7b6665c4ad2",
+            "86576d772d08d184",
+            "51a3694d492a22d7",
+            "d6ac19073ee2e393",
+            "fed1cb9c2dc13737",
+            "63e74347d9b0f270"
+        ],
+        "x": 68,
+        "y": 113,
+        "w": 2538,
+        "h": 508
+    },
+    {
+        "id": "dc3f4508d883debe",
+        "type": "group",
+        "z": "1044a74b4adb9c61",
+        "name": "own setup",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "b5eadadbf165db94",
+            "9194324548900780",
+            "4d286b6d9f925228",
+            "fdb0652c84e550c2",
+            "ab309423bbda3afd",
+            "f29ff5d6e8edf9ae",
+            "ea4f1a85e58e0a3c",
+            "bac5188e1cbd80f1",
+            "25abc7ea7f798fa2",
+            "199a03230e204edc",
+            "7f2d36bb6cd2f0de",
+            "ae778fc259e59470",
+            "f4d3696a8f6a19fa",
+            "b5d0fe5ee189f94f",
+            "894ba0312a96aadb",
+            "c4590a066bf2df4f",
+            "9bcaa6cdef2cc259",
+            "0673d76b8e2c2b11",
+            "63458f075f671caa",
+            "3f37e4b1bdaca3d3",
+            "c90528d1b3e7c241",
+            "6e980a863a83beeb",
+            "e7cc598d7a6cc9f5",
+            "f8210e82d8b29a39",
+            "959c774849e00892",
+            "2da8d93be9d086c8",
+            "367ca0415582acb8",
+            "86eb09a65e37736c",
+            "3e0813953330696d",
+            "73268ba66a7f962a",
+            "633064a13b1dde11",
+            "cdbbb3bd404d4327",
+            "74f02ff1ad5a5726",
+            "4a7e09d84565482f",
+            "708d814b09a36bd2",
+            "4e09035911d2e244",
+            "c9a98ceba76c6c47",
+            "bda2c11f55cdc105",
+            "52071c63d9f364d1",
+            "3cdfccdf2992d956",
+            "dabac98a4a72e082",
+            "226264a4d9e714a0",
+            "216548165e9963a6",
+            "6d3cebcc6d08db86",
+            "dcdc56b66844d233",
+            "0e40ee5e3d856362",
+            "60d3c66fbc8eb9a5",
+            "1197df02e61d3ae0",
+            "bf4ad33ae9a2564b",
+            "f69be0005705ad46",
+            "9b34befa4a65b782",
+            "4282050358adf8df",
+            "8d50bd9c75de148a",
+            "a243e1a87edbba9c",
+            "6cf6b172ab13ae7f",
+            "9874b9ad69545251",
+            "322e42dc06764204"
+        ],
+        "x": 14,
+        "y": 733,
+        "w": 1492,
+        "h": 2428
+    },
+    {
+        "id": "b5eadadbf165db94",
+        "type": "subflow:ee7dfcae62a1d1d1",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "x": 770,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "9194324548900780",
+        "type": "subflow:ee7dfcae62a1d1d1",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "x": 950,
+        "y": 1960,
+        "wires": []
+    },
+    {
+        "id": "73268ba66a7f962a",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "change label",
+        "func": "var label=msg.label\n\nif (label == \"Sander\"){\n    msg.label = \"Spotify Sander\";\n} else if (label == \"Fien\") {\n    msg.label = \"Spotify Fien\";\n} else if (label == \"Dide\") {\n    msg.label = \"Spotify Dide\";\n} else if (label == \"MPD Radio\") {\n    msg.label = \"Radio\";\n} else {\n    msg.label = \"Geen\"\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 2080,
+        "wires": [
+            [
+                "9194324548900780",
+                "633064a13b1dde11"
+            ]
+        ]
+    },
+    {
+        "id": "633064a13b1dde11",
+        "type": "debug",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "debug 8",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 2080,
+        "wires": []
+    },
+    {
+        "id": "cdbbb3bd404d4327",
+        "type": "subflow:ee7dfcae62a1d1d1",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "x": 1090,
+        "y": 2320,
+        "wires": []
+    },
+    {
+        "id": "4d286b6d9f925228",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "label",
+                "pt": "msg",
+                "to": "Gemeten",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 1300,
+        "wires": [
+            [
+                "b5eadadbf165db94"
+            ]
+        ]
+    },
+    {
+        "id": "fdb0652c84e550c2",
+        "type": "comment",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "Displayitem 1",
+        "info": "Make sure to add required fields:\nmsg.displayitem (align with configured displayitem)\nmsg.device (B+ device, used in MQTT topic)\nmsg.page (to which page this displayitem belongs to)",
+        "x": 210,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "ab309423bbda3afd",
+        "type": "subflow:ee7dfcae62a1d1d1",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "x": 770,
+        "y": 1440,
+        "wires": []
+    },
+    {
+        "id": "f29ff5d6e8edf9ae",
+        "type": "debug",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "debug 21",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 1500,
+        "wires": []
+    },
+    {
+        "id": "ea4f1a85e58e0a3c",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "label",
+                "pt": "msg",
+                "to": "Ingesteld",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 1440,
+        "wires": [
+            [
+                "ab309423bbda3afd",
+                "f29ff5d6e8edf9ae"
+            ]
+        ]
+    },
+    {
+        "id": "bac5188e1cbd80f1",
+        "type": "comment",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "Displayitem 2 (aangepast blok)",
+        "info": "",
+        "x": 270,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "25abc7ea7f798fa2",
+        "type": "server-state-changed",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "Woonkamer temperatuur",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "sensor.woonkamer_temperature",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "num",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "uom",
+                "propertyType": "msg",
+                "value": "$entity().attributes.unit_of_measurement",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "label",
+                "propertyType": "msg",
+                "value": "$entity().attributes.friendly_name",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "displayitem",
+                "propertyType": "msg",
+                "value": "1",
+                "valueType": "str"
+            },
+            {
+                "property": "device",
+                "propertyType": "msg",
+                "value": "#:(file)::bplusdevice",
+                "valueType": "flow"
+            },
+            {
+                "property": "page",
+                "propertyType": "msg",
+                "value": "main",
+                "valueType": "str"
+            }
+        ],
+        "x": 250,
+        "y": 1300,
+        "wires": [
+            [
+                "4d286b6d9f925228"
+            ]
+        ]
+    },
+    {
+        "id": "199a03230e204edc",
+        "type": "server-state-changed",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "sensor.spotify_now_playing",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "uom",
+                "propertyType": "msg",
+                "value": "$entity().attributes.unit_of_measurement",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "title",
+                "propertyType": "msg",
+                "value": "Now playing",
+                "valueType": "str"
+            },
+            {
+                "property": "source",
+                "propertyType": "msg",
+                "value": "$entity().attributes.source",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "media_title",
+                "propertyType": "msg",
+                "value": "$entity().attributes.media_title",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "media_artist",
+                "propertyType": "msg",
+                "value": "$entity().attributes.media_artist",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "page",
+                "propertyType": "msg",
+                "value": "muziek",
+                "valueType": "str"
+            },
+            {
+                "property": "device",
+                "propertyType": "msg",
+                "value": "#:(file)::bplusdevice",
+                "valueType": "flow"
+            },
+            {
+                "property": "displayitem",
+                "propertyType": "msg",
+                "value": "11",
+                "valueType": "str"
+            }
+        ],
+        "x": 270,
+        "y": 1960,
+        "wires": [
+            [
+                "0673d76b8e2c2b11"
+            ]
+        ]
+    },
+    {
+        "id": "74f02ff1ad5a5726",
+        "type": "server-state-changed",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "sensor.buienalarm_precipitation_forecast_total",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "num",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "uom",
+                "propertyType": "msg",
+                "value": "$entity().attributes.unit_of_measurement",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "title",
+                "propertyType": "msg",
+                "value": "Regen 15min",
+                "valueType": "str"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "buttonplus/wk1/main/in/5/",
+                "valueType": "str"
+            },
+            {
+                "property": "page",
+                "propertyType": "msg",
+                "value": "overdag",
+                "valueType": "str"
+            },
+            {
+                "property": "device",
+                "propertyType": "msg",
+                "value": "#:(file)::bplusdevice",
+                "valueType": "flow"
+            },
+            {
+                "property": "displayitem",
+                "propertyType": "msg",
+                "value": "10",
+                "valueType": "str"
+            }
+        ],
+        "x": 330,
+        "y": 2260,
+        "wires": [
+            [
+                "708d814b09a36bd2"
+            ]
+        ]
+    },
+    {
+        "id": "7f2d36bb6cd2f0de",
+        "type": "server-state-changed",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "Ingestelde temperatuur",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "climate.woonkamer",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "num",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": false,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "$entity().attributes.temperature",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "uom",
+                "propertyType": "msg",
+                "value": "$entity().attributes.unit_of_measurement",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "label",
+                "propertyType": "msg",
+                "value": "$entity().attributes.friendly_name",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "displayitem",
+                "propertyType": "msg",
+                "value": "2",
+                "valueType": "str"
+            },
+            {
+                "property": "device",
+                "propertyType": "msg",
+                "value": "#:(file)::bplusdevice",
+                "valueType": "flow"
+            },
+            {
+                "property": "page",
+                "propertyType": "msg",
+                "value": "main",
+                "valueType": "str"
+            }
+        ],
+        "x": 240,
+        "y": 1440,
+        "wires": [
+            [
+                "ea4f1a85e58e0a3c"
+            ]
+        ]
+    },
+    {
+        "id": "ae778fc259e59470",
+        "type": "subflow:ee7dfcae62a1d1d1",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "x": 770,
+        "y": 1640,
+        "wires": []
+    },
+    {
+        "id": "f4d3696a8f6a19fa",
+        "type": "debug",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "debug 25",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 1700,
+        "wires": []
+    },
+    {
+        "id": "b5d0fe5ee189f94f",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device",
+                "pt": "msg",
+                "to": "wk1",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "displayitem",
+                "pt": "msg",
+                "to": "3",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 1640,
+        "wires": [
+            [
+                "ae778fc259e59470"
+            ]
+        ]
+    },
+    {
+        "id": "894ba0312a96aadb",
+        "type": "comment",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "Displayitem 6 (aangepast blok)",
+        "info": "",
+        "x": 270,
+        "y": 1600,
+        "wires": []
+    },
+    {
+        "id": "c4590a066bf2df4f",
+        "type": "server-state-changed",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "Tijd",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "sensor.time",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "displayitem",
+                "propertyType": "msg",
+                "value": "6",
+                "valueType": "str"
+            },
+            {
+                "property": "device",
+                "propertyType": "msg",
+                "value": "#:(file)::bplusdevice",
+                "valueType": "flow"
+            },
+            {
+                "property": "page",
+                "propertyType": "msg",
+                "value": "main",
+                "valueType": "str"
+            }
+        ],
+        "x": 190,
+        "y": 1640,
+        "wires": [
+            [
+                "b5d0fe5ee189f94f"
+            ]
+        ]
+    },
+    {
+        "id": "9bcaa6cdef2cc259",
+        "type": "server-state-changed",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "Datum",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "sensor.datum_nl",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "label",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "displayitem",
+                "propertyType": "msg",
+                "value": "6",
+                "valueType": "str"
+            },
+            {
+                "property": "device",
+                "propertyType": "msg",
+                "value": "#:(file)::bplusdevice",
+                "valueType": "flow"
+            },
+            {
+                "property": "page",
+                "propertyType": "msg",
+                "value": "main",
+                "valueType": "str"
+            }
+        ],
+        "x": 190,
+        "y": 1700,
+        "wires": [
+            [
+                "b5d0fe5ee189f94f"
+            ]
+        ]
+    },
+    {
+        "id": "4a7e09d84565482f",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "mm naar voorspelling",
+        "func": "var mmpu = msg.payload*4;\nvar description;\nif (mmpu ==0){\n    description = \"(droog)\";\n} else if (mmpu < 1) {\n    description = \"(licht)\";\n} else if (mmpu < 5) {\n    description = \"(matig)\";\n} else {\n    description = \"(zwaar)\";\n}\nmsg.payload = mmpu.toString()+\" mm/u \"+description;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 2320,
+        "wires": [
+            [
+                "cdbbb3bd404d4327"
+            ]
+        ]
+    },
+    {
+        "id": "708d814b09a36bd2",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "label",
+                "pt": "msg",
+                "to": "Regen komende 15 min",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$number(payload)",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "uom",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 840,
+        "y": 2260,
+        "wires": [
+            [
+                "4a7e09d84565482f"
+            ]
+        ]
+    },
+    {
+        "id": "4e09035911d2e244",
+        "type": "server-state-changed",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "sensor.buttonplus_prio_notification",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            },
+            {
+                "property": "label",
+                "propertyType": "msg",
+                "value": "$entity(). attributes.label",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "toplabel",
+                "propertyType": "msg",
+                "value": "$entity().attributes.toplabel",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "ledrgb",
+                "propertyType": "msg",
+                "value": "$entity().attributes.frontled",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "buttonplus/wk1/button/2",
+                "valueType": "str"
+            },
+            {
+                "property": "device",
+                "propertyType": "msg",
+                "value": "#:(file)::bplusdevice",
+                "valueType": "flow"
+            }
+        ],
+        "x": 250,
+        "y": 2440,
+        "wires": [
+            [
+                "c9a98ceba76c6c47",
+                "52071c63d9f364d1"
+            ]
+        ]
+    },
+    {
+        "id": "c9a98ceba76c6c47",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "prepare MQTT topics",
+        "func": "function sleep(ms) {\n    return new Promise((resolve) => {\n        setTimeout(resolve, ms);\n    });\n}\n\nvar newMsg = {};\n// send label\nnewMsg.payload = msg.label;\nif (newMsg.payload == \"\") { newMsg.payload = \" \" }\nnewMsg.topic = msg.topic+\"/label\";\nnode.send(newMsg);\nawait sleep(20);\n\n// send toplabel\nnewMsg.payload = msg.toplabel;\nif (newMsg.payload == \"\") { newMsg.payload = \" \" }\nnewMsg.topic = msg.topic+\"/toplabel\";\nnode.send(newMsg);\nawait sleep(20);\n// send led color\nnewMsg.payload = msg.ledrgb;\nnewMsg.topic = msg.topic+\"/ledrgb\";\nnode.send(newMsg);\nawait sleep(20);\n// send led state\n// newMsg.payload = msg.led[i];\n// newMsg.topic = msg.topic + i + \"/led\";\n// node.send(newMsg);\n\n\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 2440,
+        "wires": [
+            [
+                "bda2c11f55cdc105"
+            ]
+        ]
+    },
+    {
+        "id": "bda2c11f55cdc105",
+        "type": "mqtt out",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "Update buttons",
+        "topic": "",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e6dbd5fb3f32ec20",
+        "x": 800,
+        "y": 2440,
+        "wires": []
+    },
+    {
+        "id": "52071c63d9f364d1",
+        "type": "debug",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "debug 27",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 2520,
+        "wires": []
+    },
+    {
+        "id": "0673d76b8e2c2b11",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "rules": [],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 1960,
+        "wires": [
+            [
+                "9194324548900780"
+            ]
+        ]
+    },
+    {
+        "id": "3cdfccdf2992d956",
+        "type": "server-state-changed",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "sensor.delft_temperature",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "num",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            },
+            {
+                "property": "device",
+                "propertyType": "msg",
+                "value": "#:(file)::bplusdevice",
+                "valueType": "flow"
+            },
+            {
+                "property": "page",
+                "propertyType": "msg",
+                "value": "overdag",
+                "valueType": "str"
+            },
+            {
+                "property": "displayitem",
+                "propertyType": "msg",
+                "value": "12",
+                "valueType": "str"
+            },
+            {
+                "property": "uom",
+                "propertyType": "msg",
+                "value": "$entity().attributes.unit_of_measurement",
+                "valueType": "jsonata"
+            }
+        ],
+        "x": 220,
+        "y": 2640,
+        "wires": [
+            [
+                "216548165e9963a6",
+                "0e40ee5e3d856362"
+            ]
+        ]
+    },
+    {
+        "id": "dabac98a4a72e082",
+        "type": "subflow:ee7dfcae62a1d1d1",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "x": 910,
+        "y": 2620,
+        "wires": []
+    },
+    {
+        "id": "226264a4d9e714a0",
+        "type": "debug",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "debug 31",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 2680,
+        "wires": []
+    },
+    {
+        "id": "216548165e9963a6",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "label",
+                "pt": "msg",
+                "to": "Buiten",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 2620,
+        "wires": [
+            [
+                "dabac98a4a72e082",
+                "226264a4d9e714a0"
+            ]
+        ]
+    },
+    {
+        "id": "6d3cebcc6d08db86",
+        "type": "subflow:ee7dfcae62a1d1d1",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "x": 910,
+        "y": 2740,
+        "wires": []
+    },
+    {
+        "id": "dcdc56b66844d233",
+        "type": "debug",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "debug 32",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 2800,
+        "wires": []
+    },
+    {
+        "id": "0e40ee5e3d856362",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "page",
+                "pt": "msg",
+                "to": "avond",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "displayitem",
+                "pt": "msg",
+                "to": "13",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label",
+                "pt": "msg",
+                "to": "Buiten",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 2680,
+        "wires": [
+            [
+                "6d3cebcc6d08db86",
+                "dcdc56b66844d233"
+            ]
+        ]
+    },
+    {
+        "id": "60d3c66fbc8eb9a5",
+        "type": "server-state-changed",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "input_select.media_source_selector",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "label",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            },
+            {
+                "property": "page",
+                "propertyType": "msg",
+                "value": "muziek",
+                "valueType": "str"
+            },
+            {
+                "property": "device",
+                "propertyType": "msg",
+                "value": "#:(file)::bplusdevice",
+                "valueType": "flow"
+            },
+            {
+                "property": "displayitem",
+                "propertyType": "msg",
+                "value": "11",
+                "valueType": "str"
+            }
+        ],
+        "x": 290,
+        "y": 2080,
+        "wires": [
+            [
+                "73268ba66a7f962a"
+            ]
+        ]
+    },
+    {
+        "id": "63458f075f671caa",
+        "type": "server-state-changed",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "HA Input Select",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "input_select.buttonplus_wk1_menuselector",
+        "entityIdType": "exact",
+        "outputInitially": false,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "#:(file)::bplusconfigdevice.pagetopic",
+                "valueType": "flow"
+            }
+        ],
+        "x": 1040,
+        "y": 1340,
+        "wires": [
+            [
+                "3f37e4b1bdaca3d3",
+                "e7cc598d7a6cc9f5",
+                "367ca0415582acb8"
+            ]
+        ],
+        "info": "Prepare msg.page, to be filled with the requested page name"
+    },
+    {
+        "id": "3f37e4b1bdaca3d3",
+        "type": "mqtt out",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "topic": "",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e6dbd5fb3f32ec20",
+        "x": 1430,
+        "y": 1320,
+        "wires": []
+    },
+    {
+        "id": "c90528d1b3e7c241",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "01 local config",
+        "func": "// Configuration goes here:\nvar bplusdevice = \"wk1\"; // the device this page belongs to\n\n// nothing to be changed below this line\n// -------------------------------------\n\n// retrieve existing config from disk, or create when non-existent\n// this retrieves configuration for all configured B+ devices\nvar bplusconfig = global.get(\"bplusconfig\", \"file\");\n\n\n// save the configuration and parameters to this flow, for use\nflow.set('bplusdevice', bplusdevice, \"file\");\nflow.set('bplusconfigdevice', bplusconfig[bplusdevice], \"file\");\n\n\n\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 1160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6e980a863a83beeb",
+        "type": "inject",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 250,
+        "y": 1160,
+        "wires": [
+            [
+                "c90528d1b3e7c241"
+            ]
+        ]
+    },
+    {
+        "id": "e7cc598d7a6cc9f5",
+        "type": "mqtt out",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "topic": "buttonplus/wk1/display/main/4/value",
+        "qos": "",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e6dbd5fb3f32ec20",
+        "x": 1250,
+        "y": 1440,
+        "wires": []
+    },
+    {
+        "id": "f8210e82d8b29a39",
+        "type": "comment",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "Issue new page title to MQTT",
+        "info": "",
+        "x": 1260,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "1197df02e61d3ae0",
+        "type": "server-state-changed",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "sensor.solaredge_modbus_ac_power",
+        "entityIdType": "exact",
+        "outputInitially": false,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 240,
+        "y": 2880,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bf4ad33ae9a2564b",
+        "type": "subflow:ee7dfcae62a1d1d1",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "x": 770,
+        "y": 3020,
+        "wires": []
+    },
+    {
+        "id": "f69be0005705ad46",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "label",
+                "pt": "msg",
+                "to": "Zon nu",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 3020,
+        "wires": [
+            [
+                "bf4ad33ae9a2564b"
+            ]
+        ]
+    },
+    {
+        "id": "9b34befa4a65b782",
+        "type": "comment",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "Displayitem 33",
+        "info": "Make sure to add required fields:\nmsg.displayitem (align with configured displayitem)\nmsg.device (B+ device, used in MQTT topic)\nmsg.page (to which page this displayitem belongs to)",
+        "x": 220,
+        "y": 2980,
+        "wires": []
+    },
+    {
+        "id": "4282050358adf8df",
+        "type": "server-state-changed",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "Zonnepanelen W",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "sensor.solaredge_modbus_ac_power",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "num",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "uom",
+                "propertyType": "msg",
+                "value": "$entity().attributes.unit_of_measurement",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "label",
+                "propertyType": "msg",
+                "value": "$entity().attributes.friendly_name",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "displayitem",
+                "propertyType": "msg",
+                "value": "33",
+                "valueType": "str"
+            },
+            {
+                "property": "device",
+                "propertyType": "msg",
+                "value": "#:(file)::bplusdevice",
+                "valueType": "flow"
+            },
+            {
+                "property": "page",
+                "propertyType": "msg",
+                "value": "overdag",
+                "valueType": "str"
+            }
+        ],
+        "x": 220,
+        "y": 3020,
+        "wires": [
+            [
+                "f69be0005705ad46"
+            ]
+        ]
+    },
+    {
+        "id": "8d50bd9c75de148a",
+        "type": "subflow:ee7dfcae62a1d1d1",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "x": 770,
+        "y": 3120,
+        "wires": []
+    },
+    {
+        "id": "a243e1a87edbba9c",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "label",
+                "pt": "msg",
+                "to": "Zon vandaag",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 3120,
+        "wires": [
+            [
+                "8d50bd9c75de148a"
+            ]
+        ]
+    },
+    {
+        "id": "6cf6b172ab13ae7f",
+        "type": "comment",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "Displayitem 34",
+        "info": "Make sure to add required fields:\nmsg.displayitem (align with configured displayitem)\nmsg.device (B+ device, used in MQTT topic)\nmsg.page (to which page this displayitem belongs to)",
+        "x": 220,
+        "y": 3080,
+        "wires": []
+    },
+    {
+        "id": "9874b9ad69545251",
+        "type": "server-state-changed",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "Woonkamer temperatuur",
+        "server": "c5f56a3a.f3f838",
+        "version": 5,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entityId": "sensor.solaredge_modbus_daily_energy",
+        "entityIdType": "exact",
+        "outputInitially": true,
+        "stateType": "num",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "uom",
+                "propertyType": "msg",
+                "value": "$entity().attributes.unit_of_measurement",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "label",
+                "propertyType": "msg",
+                "value": "$entity().attributes.friendly_name",
+                "valueType": "jsonata"
+            },
+            {
+                "property": "displayitem",
+                "propertyType": "msg",
+                "value": "34",
+                "valueType": "str"
+            },
+            {
+                "property": "device",
+                "propertyType": "msg",
+                "value": "#:(file)::bplusdevice",
+                "valueType": "flow"
+            },
+            {
+                "property": "page",
+                "propertyType": "msg",
+                "value": "overdag",
+                "valueType": "str"
+            }
+        ],
+        "x": 250,
+        "y": 3120,
+        "wires": [
+            [
+                "a243e1a87edbba9c"
+            ]
+        ]
+    },
+    {
+        "id": "50c18e45ce3112a2",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "g": "fed1cb9c2dc13737",
+        "name": "02 mainbutton",
+        "rules": [
+            {
+                "t": "set",
+                "p": "mainbutton.0",
+                "pt": "msg",
+                "to": "main",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "mainbutton.1",
+                "pt": "msg",
+                "to": "main",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "mainbutton.2",
+                "pt": "msg",
+                "to": "main",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "mainbutton.3",
+                "pt": "msg",
+                "to": "page",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "mainbutton.4",
+                "pt": "msg",
+                "to": "page",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "mainbutton.5",
+                "pt": "msg",
+                "to": "page",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "mainbutton.6",
+                "pt": "msg",
+                "to": "page",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "mainbutton.7",
+                "pt": "msg",
+                "to": "page",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 880,
+        "y": 220,
+        "wires": [
+            [
+                "0db84954f7a124f8"
+            ]
+        ],
+        "info": "Assign buttons to pages or to main.\n\nif assigned to \"main\" (A/Z text)\n    then it will be active on all menu pages\n\nif assigend to msg.page \n    then it will listen to whatever is in msg.page\n\nIn this example, button 0, 1 and 2 are assigned to main\nand as such always active in menu main.\n\nThe other buttons will listen to the topic with the value of msg.page in it."
+    },
+    {
+        "id": "71920cda221f77ac",
+        "type": "debug",
+        "z": "1044a74b4adb9c61",
+        "g": "0263fcac64b35f45",
+        "name": "debug 38",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2500,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "0db84954f7a124f8",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "g": "fed1cb9c2dc13737",
+        "name": "buttonpages main labels",
+        "rules": [
+            {
+                "t": "set",
+                "p": "label.0.0",
+                "pt": "msg",
+                "to": "xy",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.0.1",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.0.2",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.0.3",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.0.4",
+                "pt": "msg",
+                "to": "Avond mid",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.0.5",
+                "pt": "msg",
+                "to": "Avond dim",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.0.6",
+                "pt": "msg",
+                "to": "Slaapstand",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.0.7",
+                "pt": "msg",
+                "to": "Avond vol",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.0.0",
+                "pt": "msg",
+                "to": " ",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.0.1",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.0.2",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.0.3",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.0.4",
+                "pt": "msg",
+                "to": "Verlichting",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.0.5",
+                "pt": "msg",
+                "to": "Verlichting",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.0.6",
+                "pt": "msg",
+                "to": "Alles uit",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.0.7",
+                "pt": "msg",
+                "to": "Verlichting",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.0.0",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.0.1",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.0.2",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.0.3",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.0.4",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.0.5",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.0.6",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.0.7",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1110,
+        "y": 220,
+        "wires": [
+            [
+                "4d33050a2791d947"
+            ]
+        ]
+    },
+    {
+        "id": "4d33050a2791d947",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "g": "fed1cb9c2dc13737",
+        "name": "buttonpages 1 labels",
+        "rules": [
+            {
+                "t": "set",
+                "p": "label.1.0",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.1.1",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.1.2",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.1.3",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.1.4",
+                "pt": "msg",
+                "to": "Avond mid",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.1.5",
+                "pt": "msg",
+                "to": "Avond dim",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.1.6",
+                "pt": "msg",
+                "to": "Slaapstand",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.1.7",
+                "pt": "msg",
+                "to": "Avond vol",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.1.0",
+                "pt": "msg",
+                "to": " ",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.1.1",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.1.2",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.1.3",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.1.4",
+                "pt": "msg",
+                "to": "Verlichting",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.1.5",
+                "pt": "msg",
+                "to": "Verlichting",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.1.6",
+                "pt": "msg",
+                "to": "Alles uit",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.1.7",
+                "pt": "msg",
+                "to": "Verlichting",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.1.0",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.1.1",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.1.2",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.1.3",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.1.4",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.1.5",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.1.6",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.1.7",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1100,
+        "y": 260,
+        "wires": [
+            [
+                "06f892806f5ebbf6"
+            ]
+        ]
+    },
+    {
+        "id": "06f892806f5ebbf6",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "g": "fed1cb9c2dc13737",
+        "name": "buttonpages 2 labels",
+        "rules": [
+            {
+                "t": "set",
+                "p": "label.2.0",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.2.1",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.2.2",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.2.3",
+                "pt": "msg",
+                "to": "Play/Pause",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.2.4",
+                "pt": "msg",
+                "to": "Previous",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.2.5",
+                "pt": "msg",
+                "to": "Next",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.2.6",
+                "pt": "msg",
+                "to": "-",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.2.7",
+                "pt": "msg",
+                "to": "+",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.2.0",
+                "pt": "msg",
+                "to": " ",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.2.1",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.2.2",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.2.3",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.2.4",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.2.5",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.2.6",
+                "pt": "msg",
+                "to": "Volume",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.2.7",
+                "pt": "msg",
+                "to": "Volume",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.2.0",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.2.1",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.2.2",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.2.3",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.2.4",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.2.5",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.2.6",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.2.7",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1100,
+        "y": 300,
+        "wires": [
+            [
+                "5d5f889983a03006"
+            ]
+        ]
+    },
+    {
+        "id": "5d5f889983a03006",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "g": "fed1cb9c2dc13737",
+        "name": "buttonpages 3 labels",
+        "rules": [
+            {
+                "t": "set",
+                "p": "label.3.0",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.3.1",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.3.2",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.3.3",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.3.4",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.3.5",
+                "pt": "msg",
+                "to": "Alles aan",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.3.6",
+                "pt": "msg",
+                "to": "Vertrekken",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.3.7",
+                "pt": "msg",
+                "to": "Ochtend",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.3.0",
+                "pt": "msg",
+                "to": " ",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.3.1",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.3.2",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.3.3",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.3.4",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.3.5",
+                "pt": "msg",
+                "to": "Verlichting",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.3.6",
+                "pt": "msg",
+                "to": "Alles uit",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.3.7",
+                "pt": "msg",
+                "to": "Verlichting",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.3.0",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.3.1",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.3.2",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.3.3",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.3.4",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.3.5",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.3.6",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.3.7",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1100,
+        "y": 340,
+        "wires": [
+            [
+                "8292da757428a3ad"
+            ]
+        ]
+    },
+    {
+        "id": "8292da757428a3ad",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "g": "fed1cb9c2dc13737",
+        "name": "buttonpages 4 labels",
+        "rules": [
+            {
+                "t": "set",
+                "p": "label.4.0",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.4.1",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.4.2",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.4.3",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.4.4",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.4.5",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.4.6",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.4.7",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.4.0",
+                "pt": "msg",
+                "to": " ",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.4.1",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.4.2",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.4.3",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.4.4",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.4.5",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.4.6",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.4.7",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.4.0",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.4.1",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.4.2",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.4.3",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.4.4",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.4.5",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.4.6",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.4.7",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1100,
+        "y": 380,
+        "wires": [
+            [
+                "8506830f1601b793"
+            ]
+        ]
+    },
+    {
+        "id": "8506830f1601b793",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "g": "fed1cb9c2dc13737",
+        "name": "buttonpages 5 labels",
+        "rules": [
+            {
+                "t": "set",
+                "p": "label.5.0",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.5.1",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.5.2",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.5.3",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.5.4",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.5.5",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.5.6",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.5.7",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.5.0",
+                "pt": "msg",
+                "to": " ",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.5.1",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.5.2",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.5.3",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.5.4",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.5.5",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.5.6",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.5.7",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.5.0",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.5.1",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.5.2",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.5.3",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.5.4",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.5.5",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.5.6",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.5.7",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1100,
+        "y": 420,
+        "wires": [
+            [
+                "f48a7a59c1c8047d"
+            ]
+        ]
+    },
+    {
+        "id": "f48a7a59c1c8047d",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "g": "fed1cb9c2dc13737",
+        "name": "buttonpages 6 labels",
+        "rules": [
+            {
+                "t": "set",
+                "p": "label.6.0",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.6.1",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.6.2",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.6.3",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.6.4",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.6.5",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.6.6",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label.6.7",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.6.0",
+                "pt": "msg",
+                "to": " ",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.6.1",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.6.2",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.6.3",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.6.4",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.6.5",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.6.6",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toplabel.6.7",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.6.0",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.6.1",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.6.2",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.6.3",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.6.4",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.6.5",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.6.6",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ledrgb.6.7",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1100,
+        "y": 460,
+        "wires": [
+            [
+                "fe598751a6b0f0fa"
+            ]
+        ]
+    },
+    {
+        "id": "c318de399681016a",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "63e74347d9b0f270",
+        "name": "01 general config",
+        "func": "// Configuration goes here for this device\nvar bplusdevice = \"wk1\"; // no spacess allowed!\nvar ip = \"192.168.1.81\"; \nvar basetopic = \"buttonplus/\" // first level of the mqtt topic\nvar mac = \"F4:12:FA:45:A4:24\"; \nvar firmware = \"1.08\";\nvar location = \"Woonkamer 1\";\nvar autobackup = true; // keep at true, unsure what it does\nvar statusbar = 0; // 0 = hidden, 1 = top, 2 = statusbar at bottom of display\n\n// Number of bars below the ButtonPlus display (0-3)\nvar numbars = 3;\n\nvar mqttbrokerid = \"ha\";\nvar mqtturl = \"mqtt://192.168.1.7\";\nvar mqttport = 1883;\nvar mqttwsport = 0;\nvar mqttusername = \"mqtt\";\nvar mqttpassword = \"mqtt\";\n// add pages, should start with \"main\"; \n// when more pages are added you should change some switch blocks as well\nvar pages = [\"main\", \"avond\", \"muziek\",\"overdag\"];\nvar buttonpages = [\"main\", \"avond\", \"muziek\", \"overdag\"];\n\n// nothing to be changed below this line\n// -------------------------------------\n\n// retrieve existing config from disk, or create when non-existent\n// this retrieves configuration for all configured B+ devices\nvar bplusconfig = global.get(\"bplusconfig\", \"file\");\nif (bplusconfig == undefined) {\n    bplusconfig = {};\n\n}\n\n// assemble the base topics\nvar buttontopic = basetopic + bplusdevice + \"/button/\";\nvar displaytopic = basetopic + bplusdevice + \"/display/\";\nvar buttonsubscriptiontopic = buttontopic + \"+/state\";\nvar pagetopic = basetopic + bplusdevice+\"/page\";\nvar buttonpagetopic = basetopic + bplusdevice + \"/buttonpage\";\nvar brightnesstopic = basetopic + bplusdevice + \"/brightness\";\nvar updatetopic = basetopic + bplusdevice + \"/update\";\n\n// assemble to configuration object\nbplusconfig[bplusdevice] = {\n    'ip': ip,\n    'id': bplusdevice,\n    'basetopic': basetopic,\n    'buttontopic': buttontopic,\n    'displaytopic': displaytopic,\n    'buttonsubscriptiontopic': buttonsubscriptiontopic,\n    'pagetopic': pagetopic,\n    'buttonpagetopic': buttonpagetopic,\n    'updatetopic': updatetopic,\n    'brightnesstopic': brightnesstopic,\n    'numbars': numbars,\n    'mac': mac,\n    'firmware': firmware,\n    'location': location,\n    'autobackup': autobackup,\n    'statusbar': statusbar,\n    'pages': pages,\n    'buttonpages': buttonpages,\n    'mqttbrokers': [\n        {\n            'brokerid': mqttbrokerid,\n            'url': mqtturl,\n            'port': mqttport,\n            'wsport': mqttwsport,\n            'username': mqttusername,\n            'password': mqttpassword\n        }\n    ],\n    'configJSONcore': {\n        \"name\": bplusdevice,\n        \"location\": location,\n        \"autobackup\": autobackup,\n        \"brightnesslargedisplay\": 100,\n        \"brightnessminidisplay\": 100,\n        \"ledcolorfront\": 0,\n        \"ledcolorwall\": 0,\n        \"color\": 0,\n        \"statusbar\": statusbar\n    }\n};\n\n// save the config for all devices back to the disk\nglobal.set(\"bplusconfig\", bplusconfig, \"file\");\nflow.set(\"buttonpages\", buttonpages);\nmsg.bplusdevice = bplusdevice;\nmsg.updatetopic = updatetopic;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 230,
+        "y": 280,
+        "wires": [
+            [
+                "50c18e45ce3112a2"
+            ]
+        ]
+    },
+    {
+        "id": "b8529baf4892b3c5",
+        "type": "inject",
+        "z": "1044a74b4adb9c61",
+        "g": "63e74347d9b0f270",
+        "name": "<-- Click here after updating any of the configuration and deploying!!!!",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 390,
+        "y": 220,
+        "wires": [
+            [
+                "c318de399681016a"
+            ]
+        ],
+        "icon": "node-red/alert.svg"
+    },
+    {
+        "id": "fe598751a6b0f0fa",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "0263fcac64b35f45",
+        "name": "Assembly of button values",
+        "func": "// Nothing to configure here\nvar bplusdevice = msg.bplusdevice;\n\n\n// retrieve existing config from disk, or create when non-existent\n// this retrieves configuration for all configured B+ devices\nvar bplusconfigbuttons = global.get(\"bplusconfigbuttons\", \"file\");\nif (bplusconfigbuttons == undefined) {\n    bplusconfigbuttons = {};\n}\n\n// Save the configuration for this device in the global settings\nbplusconfigbuttons[bplusdevice] = {\n    'label': msg.label,\n    'toplabel': msg.toplabel,\n    'ledrgb': msg.ledrgb,\n    'mainbutton': msg.mainbutton\n}\nglobal.set(\"bplusconfigbuttons\", bplusconfigbuttons, \"file\");\nflow.set(\"bplusconfigbuttons\", bplusconfigbuttons);\n\n// Prepare array for display items\nmsg.displayitems = [];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1120,
+        "y": 540,
+        "wires": [
+            [
+                "616fdd3722918d71"
+            ]
+        ]
+    },
+    {
+        "id": "b0d11701b95feb0f",
+        "type": "comment",
+        "z": "1044a74b4adb9c61",
+        "g": "fed1cb9c2dc13737",
+        "name": "03 Contains the default button labels",
+        "info": "",
+        "x": 1150,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "2c891ac797e2f919",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "d6ac19073ee2e393",
+        "name": "Displayitem 4",
+        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 4;\n// assign to a page\nvar pageid = 0;\n// add characteristics\nvar x = 70;\nvar y = 84;\nvar fontsize = 1;\nvar width = 30;\nvar label = \"Menu\";\nvar value = \"\";\nvar uom = \"\"\nvar round = 0;\nvar align = 0;\n\n// no config below this line\nvar displayitempage = {\n    \"displayitem\": displayitem,\n    \"page\": pageid,\n    \"x\": x,\n    \"y\": y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\n\nmsg.displayitems.push(displayitempage);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1500,
+        "y": 380,
+        "wires": [
+            [
+                "8ccf3683cec10ac2"
+            ]
+        ]
+    },
+    {
+        "id": "8e8b58ecccec0114",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "d6ac19073ee2e393",
+        "name": "Displayitem 3",
+        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 3;\n// assign to a page\nvar pageid = 0;\n// add characteristics\nvar x = 70;\nvar y = 0;\nvar fontsize = 3;\nvar width = 30;\nvar label = \"\";\nvar value = \"\";\nvar uom = \"°C\"\nvar round = 0;\nvar align = 0;\n\n// no config below this line\nvar displayitempage = {\n    \"displayitem\": displayitem,\n    \"page\": pageid,\n    \"x\": x,\n    \"y\": y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\n\nmsg.displayitems.push(displayitempage);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1500,
+        "y": 340,
+        "wires": [
+            [
+                "2c891ac797e2f919"
+            ]
+        ]
+    },
+    {
+        "id": "55efa82f44479663",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "d6ac19073ee2e393",
+        "name": "Displayitem 2",
+        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 2;\n// assign to a page by specifying the page id it belongs to\n// for instance, when you have this in 01 general config:\n// var pages = [\"main\", \"menu_x\", \"menu_y\",\"menu_z\"];\n// pageid 1 corresponds to menu_x\nvar pageid = 0;\n// add characteristics\n// position of the item, 0-100\nvar x = 36;\nvar y = 0;\n// fontsize 1-4 (1 is smallest)\nvar fontsize = 3;\n// width of label, 0-100\nvar width = 25;\n// Default label (above value). Will be overwritten by mqtt\nvar label = \"\";\n// Default value. Will be overwritten by mqtt\nvar value = \"\";\n// Default unit of measurement (behind value). Will be overwritten by mqtt\nvar uom = \"°C\"\n// Value rounding, decimal places\nvar round = 0;\n// alignment, not working well.\nvar align = 0;\n\n// no config below this line\nvar displayitempage = {\n    \"displayitem\": displayitem,\n    \"page\": pageid,\n    \"x\": x,\n    \"y\": y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\n\nmsg.displayitems.push(displayitempage);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1500,
+        "y": 300,
+        "wires": [
+            [
+                "8e8b58ecccec0114"
+            ]
+        ]
+    },
+    {
+        "id": "616fdd3722918d71",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "d6ac19073ee2e393",
+        "name": "Displayitem 1",
+        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 1;\n// assign to a page by specifying the page id it belongs to\n// for instance, when you have this in 01 general config:\n// var pages = [\"main\", \"menu_x\", \"menu_y\",\"menu_z\"];\n// pageid 1 corresponds to menu_x\nvar pageid = 0;\n//// add characteristics\n// position of the item, 0-100\nvar x = 0;\nvar y = 0;\n// fontsize 1-4 (1 is smallest)\nvar fontsize = 3;\n// width of label, 0-100\nvar width = 27;\n// Default label (above value). Will be overwritten by mqtt\nvar label = \"\";\n// Default value. Will be overwritten by mqtt\nvar value = \"\";\n// Default unit of measurement (behind value). Will be overwritten by mqtt\nvar uom = \"°C\"\n// Value rounding, decimal places\nvar round = 1;\n// alignment, not working well.\nvar align = 0;\n\n// no config below this line\nvar displayitempage = {\n    \"displayitem\": displayitem,\n    \"page\": pageid,\n    \"x\": x,\n    \"y\": y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\n\nmsg.displayitems.push(displayitempage);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1500,
+        "y": 260,
+        "wires": [
+            [
+                "55efa82f44479663"
+            ]
+        ]
+    },
+    {
+        "id": "c8c22cbaeac01bb4",
+        "type": "comment",
+        "z": "1044a74b4adb9c61",
+        "g": "d6ac19073ee2e393",
+        "name": "04 Displayitems for Main",
+        "info": "Add more blocks if you need more display items\nmake sure to update the displayitem number\nand the pageid when needed\n\nSimply drop copy an existing node, paste\nand place it between other nodes in the flow",
+        "x": 1530,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "8fddec5047f67e3e",
+        "type": "comment",
+        "z": "1044a74b4adb9c61",
+        "g": "d6ac19073ee2e393",
+        "name": "05 Displayitems for pages",
+        "info": "Configure displayitems that belong to specific pages",
+        "x": 1910,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "8ccf3683cec10ac2",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "d6ac19073ee2e393",
+        "name": "Displayitem 13 (avond)",
+        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 13    ;\n// assign to a page\nvar pageid = 1;\n// add characteristics\nvar x = 70;\nvar y = 31;\nvar fontsize = 2;\nvar width = 30;\nvar label = \"\";\nvar value = \"\";\nvar uom = \"\"\nvar round = 1;\nvar align = 0;\n\n// no config below this line\nvar displayitempage = {\n    \"displayitem\": displayitem,\n    \"page\": pageid,\n    \"x\": x,\n    \"y\": y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\n\nmsg.displayitems.push(displayitempage);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1900,
+        "y": 220,
+        "wires": [
+            [
+                "b31108223aaa5ab5"
+            ]
+        ]
+    },
+    {
+        "id": "b31108223aaa5ab5",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "d6ac19073ee2e393",
+        "name": "Displayitem 11 (muziek)",
+        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 11;\n// assign to a page\nvar pageid = 2;\n// add characteristics\nvar x = 0;\nvar y = 31;\nvar fontsize = 2;\nvar width = 100;\nvar label = \"\";\nvar value = \"\";\nvar uom = \"\"\nvar round = 0;\nvar align = 0;\n\n// no config below this line\nvar displayitempage = {\n    \"displayitem\": displayitem,\n    \"page\": pageid,\n    \"x\": x,\n    \"y\": y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\n\nmsg.displayitems.push(displayitempage);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1910,
+        "y": 280,
+        "wires": [
+            [
+                "bda4e57e7fbbab2a"
+            ]
+        ]
+    },
+    {
+        "id": "bda4e57e7fbbab2a",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "d6ac19073ee2e393",
+        "name": "Displayitem 10 (overdag)",
+        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 10;\n// assign to a page\nvar pageid = 3;\n// add characteristics\nvar x = 0;\nvar y = 31;\nvar fontsize = 2;\nvar width = 70;\nvar label = \"\";\nvar value = \"\";\nvar uom = \"\"\nvar round = 0;\nvar align = 0;\n\n// no config below this line\nvar displayitempage = {\n    \"displayitem\": displayitem,\n    \"page\": pageid,\n    \"x\": x,\n    \"y\": y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\n\nmsg.displayitems.push(displayitempage);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1910,
+        "y": 360,
+        "wires": [
+            [
+                "257bbce024f54d9f"
+            ]
+        ]
+    },
+    {
+        "id": "257bbce024f54d9f",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "d6ac19073ee2e393",
+        "name": "Displayitem 12 (overdag)",
+        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 12;\n// assign to a page\nvar pageid = 3;\n// add characteristics\nvar x = 70;\nvar y = 31;\nvar fontsize = 2;\nvar width = 30;\nvar label = \"\";\nvar value = \"\";\nvar uom = \"\"\nvar round = 1;\nvar align = 0;\n\n// no config below this line\nvar displayitempage = {\n    \"displayitem\": displayitem,\n    \"page\": pageid,\n    \"x\": x,\n    \"y\": y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\n\nmsg.displayitems.push(displayitempage);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1910,
+        "y": 400,
+        "wires": [
+            [
+                "6e61a633d432848c"
+            ]
+        ]
+    },
+    {
+        "id": "6e61a633d432848c",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "d6ac19073ee2e393",
+        "name": "Displayitem 33 (overdag)",
+        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 33;\n// assign to a page\nvar pageid = 3;\n// add characteristics\nvar x = 0;\nvar y = 53;\nvar fontsize = 1;\nvar width = 20;\nvar label = \"\";\nvar value = \"\";\nvar uom = \"\"\nvar round = 0;\nvar align = 0;\n\n// no config below this line\nvar displayitempage = {\n    \"displayitem\": displayitem,\n    \"page\": pageid,\n    \"x\": x,\n    \"y\": y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\n\nmsg.displayitems.push(displayitempage);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1910,
+        "y": 440,
+        "wires": [
+            [
+                "df7356c48653cc49"
+            ]
+        ]
+    },
+    {
+        "id": "df7356c48653cc49",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "d6ac19073ee2e393",
+        "name": "Displayitem 34 (overdag)",
+        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 34;\n// assign to a page\nvar pageid = 3;\n// add characteristics\nvar x = 29;\nvar y = 53;\nvar fontsize = 1;\nvar width = 32;\nvar label = \"\";\nvar value = \"\";\nvar uom = \"\"\nvar round = 1;\nvar align = 0;\n\n// no config below this line\nvar displayitempage = {\n    \"displayitem\": displayitem,\n    \"page\": pageid,\n    \"x\": x,\n    \"y\": y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\n\nmsg.displayitems.push(displayitempage);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1910,
+        "y": 480,
+        "wires": [
+            [
+                "b82ef7b6665c4ad2"
+            ]
+        ]
+    },
+    {
+        "id": "b82ef7b6665c4ad2",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "0263fcac64b35f45",
+        "name": "Storage of displayitems",
+        "func": "// Nothing to configure here\nvar bplusdevice = msg.bplusdevice;\n\n\n// retrieve existing config from disk, or create when non-existent\n// this retrieves configuration for all configured B+ devices\nvar bplusconfigdisplayitems = global.get(\"bplusconfigdisplayitems\", \"file\");\nif (bplusconfigdisplayitems == undefined) {\n    bplusconfigdisplayitems = {};\n}\n\n\n\nbplusconfigdisplayitems[bplusdevice] = msg.displayitems;\nglobal.set(\"bplusconfigdisplayitems\", bplusconfigdisplayitems, \"file\");\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2250,
+        "y": 480,
+        "wires": [
+            [
+                "86576d772d08d184"
+            ]
+        ]
+    },
+    {
+        "id": "056d7c66b4cdf51a",
+        "type": "subflow:30db8c8a540ef087",
+        "z": "1044a74b4adb9c61",
+        "g": "322e42dc06764204",
+        "name": "Verlichting",
+        "x": 850,
+        "y": 900,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "30ed3ae41980acee",
+        "type": "subflow:f1722db4c9b440e0",
+        "z": "1044a74b4adb9c61",
+        "g": "322e42dc06764204",
+        "name": "Muziek",
+        "x": 840,
+        "y": 960,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "36c108bee8588f79",
+        "type": "subflow:42d3dae87571debc",
+        "z": "1044a74b4adb9c61",
+        "g": "322e42dc06764204",
+        "name": "Overdag",
+        "x": 840,
+        "y": 1020,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "603b0c5fb7c24382",
+        "type": "switch",
+        "z": "1044a74b4adb9c61",
+        "g": "322e42dc06764204",
+        "name": "06 Switch",
+        "property": "buttonpage",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "buttonpages.0",
+                "vt": "flow"
+            },
+            {
+                "t": "eq",
+                "v": "buttonpages.1",
+                "vt": "flow"
+            },
+            {
+                "t": "eq",
+                "v": "buttonpages.2",
+                "vt": "flow"
+            },
+            {
+                "t": "eq",
+                "v": "buttonpages.3",
+                "vt": "flow"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 660,
+        "y": 940,
+        "wires": [
+            [
+                "19f1cc01d6cf110c"
+            ],
+            [
+                "056d7c66b4cdf51a"
+            ],
+            [
+                "30ed3ae41980acee"
+            ],
+            [
+                "36c108bee8588f79"
+            ]
+        ]
+    },
+    {
+        "id": "34e5bb849888e876",
+        "type": "comment",
+        "z": "1044a74b4adb9c61",
+        "g": "322e42dc06764204",
+        "name": "Splits based on page",
+        "info": "",
+        "x": 620,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "19f1cc01d6cf110c",
+        "type": "subflow:acb772c499cddad8",
+        "z": "1044a74b4adb9c61",
+        "g": "322e42dc06764204",
+        "name": "",
+        "x": 830,
+        "y": 840,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "0ccb4e093771f55b",
+        "type": "comment",
+        "z": "1044a74b4adb9c61",
+        "g": "322e42dc06764204",
+        "name": "07 actions based on buttons assigned to page",
+        "info": "",
+        "x": 830,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "959c774849e00892",
+        "type": "link in",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "Buttonplus WK1 button clicks",
+        "links": [
+            "acd5a8cdd7fdab94"
+        ],
+        "x": 325,
+        "y": 920,
+        "wires": [
+            [
+                "603b0c5fb7c24382"
+            ]
+        ]
+    },
+    {
+        "id": "4b6e835d9f56bc65",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "f4782afd5389e269",
+        "name": "Displayitem 4",
+        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 4;\n// assign to a page\nvar page = \"main\";\n// add characteristics\nvar x = 70;\nvar y = 84;\nvar fontsize = 1;\nvar width = 30;\nvar label = \"Menu\";\nvar value = \"\";\nvar uom = \"\"\nvar round = 0;\nvar align = 0;\n\n// no config below this line\nvar newitem = {};\n\nnewitem = {\n    \"page\": page,\n    \"x\": x,\n    \"y\":y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\nmsg.displayitem[displayitem] = newitem;\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2940,
+        "y": 1820,
+        "wires": [
+            [
+                "e887a8f7b5d9d3e0"
+            ]
+        ]
+    },
+    {
+        "id": "6f6986666b681475",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "f4782afd5389e269",
+        "name": "Displayitem 3",
+        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 3;\n// assign to a page\nvar page = \"main\";\n// add characteristics\nvar x = 70;\nvar y = 0;\nvar fontsize = 3;\nvar width = 30;\nvar label = \"\";\nvar value = \"\";\nvar uom = \"°C\"\nvar round = 0;\nvar align = 0;\n\n// no config below this line\nvar newitem = {};\n\nnewitem = {\n    \"page\": page,\n    \"x\": x,\n    \"y\":y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\nmsg.displayitem[displayitem] = newitem;\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2940,
+        "y": 1780,
+        "wires": [
+            [
+                "4b6e835d9f56bc65"
+            ]
+        ]
+    },
+    {
+        "id": "59b216d58f3e74db",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "f4782afd5389e269",
+        "name": "Displayitem 2",
+        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 2;\n// assign to a page\nvar page = \"main\";\n// add characteristics\nvar x = 36;\nvar y = 0;\nvar fontsize = 3;\nvar width = 25;\nvar label = \"\";\nvar value = \"\";\nvar uom = \"°C\"\nvar round = 0;\nvar align = 0;\n\n// no config below this line\nvar newitem = {};\n\nnewitem = {\n    \"page\": page,\n    \"x\": x,\n    \"y\": y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\nmsg.displayitem[displayitem] = newitem;\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2940,
+        "y": 1740,
+        "wires": [
+            [
+                "6f6986666b681475"
+            ]
+        ]
+    },
+    {
+        "id": "ef40f9d055be8e33",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "f4782afd5389e269",
+        "name": "Displayitem 1",
+        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 1;\n// assign to a page\nvar page = \"main\";\n// add characteristics\nvar x = 0;\nvar y = 0;\nvar fontsize = 3;\nvar width = 27;\nvar label = \"\";\nvar value = \"\";\nvar uom = \"°C\"\nvar round = 1;\nvar align = 0;\n\n// no config below this line\nvar newitem = {};\n\nnewitem = {\n    \"page\": page,\n    \"x\": x,\n    \"y\": y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\nmsg.displayitem[displayitem] = newitem;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2940,
+        "y": 1700,
+        "wires": [
+            [
+                "59b216d58f3e74db"
+            ]
+        ]
+    },
+    {
+        "id": "e887a8f7b5d9d3e0",
+        "type": "switch",
+        "z": "1044a74b4adb9c61",
+        "d": true,
+        "g": "f4782afd5389e269",
+        "name": "06 Switch",
+        "property": "page",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "#:(file)::pages.1",
+                "vt": "flow"
+            },
+            {
+                "t": "eq",
+                "v": "#:(file)::pages.2",
+                "vt": "flow"
+            },
+            {
+                "t": "eq",
+                "v": "#:(file)::pages.3",
+                "vt": "flow"
+            },
+            {
+                "t": "eq",
+                "v": "#:(file)::pages.4",
+                "vt": "flow"
+            },
+            {
+                "t": "eq",
+                "v": "#:(file)::pages.5",
+                "vt": "flow"
+            },
+            {
+                "t": "eq",
+                "v": "#:(file)::pages.6",
+                "vt": "flow"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 6,
+        "x": 3140,
+        "y": 1740,
+        "wires": [
+            [
+                "1186516299b589db"
+            ],
+            [
+                "72f9cf83a07eb74d"
+            ],
+            [
+                "30f7455b98a26c22"
+            ],
+            [],
+            [],
+            []
+        ],
+        "info": "Compares msg.page with the contents of msg.pages\n\nItem 0 is main,\nItem 1 and further are the configured pages\n\nAdd more rows if you have more pages."
+    },
+    {
+        "id": "d6048671975494dc",
+        "type": "comment",
+        "z": "1044a74b4adb9c61",
+        "g": "f4782afd5389e269",
+        "name": "04 Displayitems for Main",
+        "info": "Add more blocks if you need more display items\nmake sure to update the displayitem number",
+        "x": 2970,
+        "y": 1660,
+        "wires": []
+    },
+    {
+        "id": "a00c6d048d2c5646",
+        "type": "comment",
+        "z": "1044a74b4adb9c61",
+        "g": "f4782afd5389e269",
+        "name": "05 Displayitems for pages",
+        "info": "Configure displayitems that belong to specific pages",
+        "x": 3350,
+        "y": 1620,
+        "wires": []
+    },
+    {
+        "id": "1186516299b589db",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "f4782afd5389e269",
+        "name": "Displayitem 13 (avond)",
+        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 13    ;\n// assign to a page\nvar page = msg.page;\n// add characteristics\nvar x = 70;\nvar y = 31;\nvar fontsize = 2;\nvar width = 30;\nvar label = \"\";\nvar value = \"\";\nvar uom = \"\"\nvar round = 1;\nvar align = 0;\n\n// no config below this line\nvar newitem = {};\n\nnewitem = {\n    \"page\": page,\n    \"x\": x,\n    \"y\":y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\nmsg.displayitem[displayitem] = newitem;\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3340,
+        "y": 1660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "72f9cf83a07eb74d",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "f4782afd5389e269",
+        "name": "Displayitem 11 (muziek)",
+        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 11;\n// assign to a page\nvar page = msg.page;\n// add characteristics\nvar x = 0;\nvar y = 31;\nvar fontsize = 2;\nvar width = 100;\nvar label = \"\";\nvar value = \"\";\nvar uom = \"\"\nvar round = 0;\nvar align = 0;\n\n// no config below this line\nvar newitem = {};\n\nnewitem = {\n    \"page\": page,\n    \"x\": x,\n    \"y\":y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\nmsg.displayitem[displayitem] = newitem;\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3350,
+        "y": 1720,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "30f7455b98a26c22",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "f4782afd5389e269",
+        "name": "Displayitem 10 (overdag)",
+        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 10;\n// assign to a page\nvar page = msg.page;\n// add characteristics\nvar x = 0;\nvar y = 31;\nvar fontsize = 2;\nvar width = 70;\nvar label = \"\";\nvar value = \"\";\nvar uom = \"\"\nvar round = 0;\nvar align = 0;\n\n// no config below this line\nvar newitem = {};\n\nnewitem = {\n    \"page\": page,\n    \"x\": x,\n    \"y\":y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\nmsg.displayitem[displayitem] = newitem;\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3350,
+        "y": 1800,
+        "wires": [
+            [
+                "e5f4d16c47030b24"
+            ]
+        ]
+    },
+    {
+        "id": "e5f4d16c47030b24",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "f4782afd5389e269",
+        "name": "Displayitem 12 (overdag)",
+        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 12;\n// assign to a page\nvar page = msg.page;\n// add characteristics\nvar x = 70;\nvar y = 31;\nvar fontsize = 2;\nvar width = 30;\nvar label = \"\";\nvar value = \"\";\nvar uom = \"\"\nvar round = 1;\nvar align = 0;\n\n// no config below this line\nvar newitem = {};\n\nnewitem = {\n    \"page\": page,\n    \"x\": x,\n    \"y\":y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\nmsg.displayitem[displayitem] = newitem;\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3350,
+        "y": 1840,
+        "wires": [
+            [
+                "8414a763e766e334"
+            ]
+        ]
+    },
+    {
+        "id": "8414a763e766e334",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "f4782afd5389e269",
+        "name": "Displayitem 33 (overdag)",
+        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 33;\n// assign to a page\nvar page = msg.page;\n// add characteristics\nvar x = 0;\nvar y = 53;\nvar fontsize = 1;\nvar width = 20;\nvar label = \"\";\nvar value = \"\";\nvar uom = \"\"\nvar round = 0;\nvar align = 0;\n\n// no config below this line\nvar newitem = {};\n\nnewitem = {\n    \"page\": page,\n    \"x\": x,\n    \"y\":y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\nmsg.displayitem[displayitem] = newitem;\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3350,
+        "y": 1880,
+        "wires": [
+            [
+                "f3aa5092f91c198d"
+            ]
+        ]
+    },
+    {
+        "id": "f3aa5092f91c198d",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "g": "f4782afd5389e269",
+        "name": "Displayitem 34 (overdag)",
+        "func": "//// Configuration of displayitem\n// assign unique number\nvar displayitem = 34;\n// assign to a page\nvar page = msg.page;\n// add characteristics\nvar x = 29;\nvar y = 53;\nvar fontsize = 1;\nvar width = 32;\nvar label = \"\";\nvar value = \"\";\nvar uom = \"\"\nvar round = 1;\nvar align = 0;\n\n// no config below this line\nvar newitem = {};\n\nnewitem = {\n    \"page\": page,\n    \"x\": x,\n    \"y\":y,\n    \"fontsize\": fontsize,\n    \"width\": width,\n    \"label\": label,\n    \"value\": value,\n    \"uom\": uom,\n    \"round\": round,\n    \"align\": align\n};\nmsg.displayitem[displayitem] = newitem;\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3350,
+        "y": 1920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8f0e49d9c8346603",
+        "type": "comment",
+        "z": "1044a74b4adb9c61",
+        "g": "fed1cb9c2dc13737",
+        "name": "Open for more help",
+        "info": "In this block you specify the labels for the buttons.\n\n# 02 mainbutton:\nAssign some buttons to the main menu. Their function does not change when the menu changes\nFor instance, assign a button to change the menu.\n\nDo this by setting msg.mainbutton.x to \"main\"\nwhere x is 0 to 7 for buttons 1 to 8.\n\n# 03 buttonpages\nAssign labels. toplabels and default led colors\nto all buttons for all buttonpages\n\nfor instance: msg.label.0.2 contains the label shown\nfor the main (always visible) menu\nof button 2, left button on first bar below the display\n\n\nBy default 6 pages can be used, besides main. \nIf you need more, be sure to add more to 'buttonpages' in the main configuration block. \n\nCopy node 'buttonpages 6 labels' to 'buttonpages 7 labels'\nand update msg.label.6.x to msg.label.7.x\nmsg.toplabel.6.x to msg.toplabel.7.x\nmsg.ledrgb.6.x to msg.ledrgb.7.x\n",
+        "x": 890,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "2da8d93be9d086c8",
+        "type": "comment",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "info": "",
+        "x": 1290,
+        "y": 1360,
+        "wires": []
+    },
+    {
+        "id": "12f925c0fa6fe3f5",
+        "type": "comment",
+        "z": "1044a74b4adb9c61",
+        "g": "63e74347d9b0f270",
+        "name": "Open for more help",
+        "info": "You can apply different menus for the thisplay and the buttons.\nYou could for instance have the display show the current song in menu \"Music\"\n\nwhile \nwhen playing albums from a streaming service\n    Show play/pause/next/Volume \nor\nwhen playing radio (linear)\n    Show station presets & Volume\n",
+        "x": 210,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "86576d772d08d184",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "g": "0263fcac64b35f45",
+        "name": "Force update of device flow",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "updatetopic",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2260,
+        "y": 520,
+        "wires": [
+            [
+                "51a3694d492a22d7",
+                "71920cda221f77ac"
+            ]
+        ]
+    },
+    {
+        "id": "51a3694d492a22d7",
+        "type": "mqtt out",
+        "z": "1044a74b4adb9c61",
+        "g": "0263fcac64b35f45",
+        "name": "",
+        "topic": "",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e6dbd5fb3f32ec20",
+        "x": 2510,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "886407beb73e83b6",
+        "type": "comment",
+        "z": "1044a74b4adb9c61",
+        "g": "63e74347d9b0f270",
+        "name": "Deploy after making an update!",
+        "info": "You can apply different menus for the thisplay and the buttons.\nYou could for instance have the display show the current song in menu \"Music\"\n\nwhile \nwhen playing albums from a streaming service\n    Show play/pause/next/Volume \nor\nwhen playing radio (linear)\n    Show station presets & Volume\n",
+        "x": 490,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "367ca0415582acb8",
+        "type": "change",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "#:(file)::bplusconfigdevice.buttonpagetopic",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1240,
+        "y": 1240,
+        "wires": [
+            [
+                "3f37e4b1bdaca3d3"
+            ]
+        ]
+    },
+    {
+        "id": "86eb09a65e37736c",
+        "type": "comment",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "",
+        "info": "",
+        "x": 240,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "3e0813953330696d",
+        "type": "comment",
+        "z": "1044a74b4adb9c61",
+        "g": "dc3f4508d883debe",
+        "name": "Listen to button presses and start actions",
+        "info": "specifc for my setup",
+        "x": 300,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "c5f56a3a.f3f838",
+        "type": "server",
+        "name": "Home Assistant",
+        "version": 5,
+        "addon": true,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": true,
+        "heartbeat": false,
+        "heartbeatInterval": "30",
+        "areaSelector": "friendlyName",
+        "deviceSelector": "friendlyName",
+        "entitySelector": "friendlyName",
+        "statusSeparator": "at: ",
+        "statusYear": "hidden",
+        "statusMonth": "short",
+        "statusDay": "numeric",
+        "statusHourCycle": "h23",
+        "statusTimeFormat": "h:m",
+        "enableGlobalContextStore": true
+    }
+]
