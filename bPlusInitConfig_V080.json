@@ -1,0 +1,120 @@
+[
+    {
+        "id": "ccc56f3ceaa0a69f",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "name": "Set Initial Config",
+        "func": "// In this node you specify the basic information for one\n// particular button+ in your environment.\n// Put this function between an inject and an MQTT Publish\n// And only run it ONCE. Except if you replace a ButtonPlus\n// or the unit is reset to the factory settings.\n// <Inject> --- <bPlusInitConfig> --- <MQTT Punblish>\n// The configuration is sent to the button+ device and\n// saved to the retained storage on disk.\n// Make sure you enabled file based retension for your broker\n// (See the wiki on https://github.com/balk77/node-red-buttonplus-menu/wiki)\n// V0.80, 20240201 Rene Boeije\n//\n// The name of your device. Can be the room where it is placed\n// No spaces or special characters, case sensitive\nvar bplusdevice = \"werkkamer\";\n// The IP-address of your button+. It is displayed on the display unless\n// you (or other function) disabled it. If not visible, press the left\n// button next to the USB-connector at the bottom of your button+. A \n// popup will show IP-Address,  firmware version and internal temperature.\nvar ip = \"192.168.0.XXX\"; \n// The base topic of all Button+ related MQTT. Only change if you have \n// a good reason and know the impact.\nvar basetopic = \"buttonplus/\" // first level of the mqtt topic\n// The MAC-address of your unit. Just for reference, you are not able to change it.\n// (In the unit, it is the pysical MAC-address)\nvar mac = \"F4:12:FA:XX:XX:XX\"; \n//var firmware = \"1.08\"; // Depricated\n// The location of the device. Can be the floor or room number.\n// Is free text for display purposes\nvar location = \"verdieping\";\n// Auto backup determines if the setup is saved on the buttonPlus server.\n// True: It is saved on every change\n// False: It is not saved, sof if y reset the unit to factory settings\n// the config is lost.\n// NOTE: Not sure if this is in operation.\nvar autobackup = true; // keep at true, unsure what it does\n// By default, the IP-address and Wifi status is displayed in the lower\n// left corner. This will overwrite the label and text of button 0, which is \n// not desirable. Set it to 0 to disable this function, to 1 to put it on top\n// or 2 to leave it at the default position \nvar statusbar = 0; \n\n// Number of bars below the ButtonPlus display (1-3)\n// If 1, the display is at its lowest position (3rd connector from top)\n// If 3, it is on the top position.\nvar numbars = 1;\n// The name of the MQTT-broker the button+ connects to. This Node-Red flow \n// currently only supports one MQTT-broker. The ID is a name.\n// No spaces and/or special characters.\nvar mqttbrokerid = \"VM\";\n// The IP-address of your MQTT-broker. (Maybe domain name is allowed, not tested)\nvar mqtturl = \"mqtt://192.168.0.49\";\n// The MQTT-port teh broker listens to, normally 1883\nvar mqttport = 1883;\n// The Websocket-port the broker listens to, normally 9001\n// Set o 0 if not used\nvar mqttwsport = 0;\n// MQTT broker credentials\nvar mqttusername = \"XXX\";\nvar mqttpassword = \"XXX\";\n\n// add pages, should start with \"main\"; \n// when more pages are added you should change some switch blocks as well\nvar pages = [\"main\", \"avond\", \"muziek\",\"overdag\"];\nvar buttonpages = [\"main\", \"avond\", \"muziek\", \"overdag\"];\n\n// nothing to be changed below this line\n// -------------------------------------\n\n// retrieve existing config from disk, or create when non-existent\n// this retrieves configuration for all configured B+ devices\nvar bplusconfig = global.get(\"bplusconfig\", \"file\");\nif (bplusconfig == undefined) {\n    bplusconfig = {};\n\n}\n\n// assemble the base topics\nvar buttontopic = basetopic + bplusdevice + \"/button/\";\nvar displaytopic = basetopic + bplusdevice + \"/display/\";\nvar buttonsubscriptiontopic = buttontopic + \"+/state\";\nvar pagetopic = basetopic + bplusdevice+\"/page\";\nvar buttonpagetopic = basetopic + bplusdevice + \"/buttonpage\";\nvar brightnesstopic = basetopic + bplusdevice + \"/brightness\";\nvar updatetopic = basetopic + bplusdevice + \"/update\";\n\n// assemble to configuration object\nbplusconfig[bplusdevice] = {\n    'ip': ip,\n    'id': bplusdevice,\n    'basetopic': basetopic,\n    'buttontopic': buttontopic,\n    'displaytopic': displaytopic,\n    'buttonsubscriptiontopic': buttonsubscriptiontopic,\n    'pagetopic': pagetopic,\n    'buttonpagetopic': buttonpagetopic,\n    'updatetopic': updatetopic,\n    'brightnesstopic': brightnesstopic,\n    'numbars': numbars,\n//    'mac': mac, // Depricated\n//    'firmware': firmware, // Depricated\n    'location': location,\n    'autobackup': autobackup,\n    'statusbar': statusbar,\n    'pages': pages,\n    'buttonpages': buttonpages,\n    'mqttbrokers': [\n        {\n            'brokerid': mqttbrokerid,\n            'url': mqtturl,\n            'port': mqttport,\n            'wsport': mqttwsport,\n            'username': mqttusername,\n            'password': mqttpassword\n        }\n    ],\n    'configJSONcore': {\n        \"name\": bplusdevice,\n        \"location\": location,\n        \"autobackup\": autobackup,\n        \"brightnesslargedisplay\": 76,\n        \"brightnessminidisplay\": 80,\n        \"ledcolorfront\": 0,\n        \"ledcolorwall\": 0,\n        \"color\": 0,\n        \"statusbar\": statusbar\n    }\n};\n\n// save the config for all devices back to the disk\nglobal.set(\"bplusconfig\", bplusconfig, \"file\");\nflow.set(\"buttonpages\", buttonpages);\nmsg.bplusdevice = bplusdevice;\nmsg.updatetopic = updatetopic;\nmsg.ipaddress = ip\nmsg.payload = bplusconfig\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 60,
+        "wires": [
+            [
+                "f18346a91a81579d"
+            ]
+        ]
+    },
+    {
+        "id": "f609c7d282a69f10",
+        "type": "inject",
+        "z": "1044a74b4adb9c61",
+        "name": "InitBaseConfig",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 60,
+        "wires": [
+            [
+                "ccc56f3ceaa0a69f"
+            ]
+        ]
+    },
+    {
+        "id": "4758e2e9f9832fe4",
+        "type": "http request",
+        "z": "1044a74b4adb9c61",
+        "name": "Post JSON",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "body",
+        "url": "",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "Content-Type",
+                "keyValue": "",
+                "valueType": "other",
+                "valueValue": "application/json"
+            }
+        ],
+        "x": 750,
+        "y": 60,
+        "wires": [
+            [
+                "6b973e554bca0358"
+            ]
+        ]
+    },
+    {
+        "id": "f18346a91a81579d",
+        "type": "function",
+        "z": "1044a74b4adb9c61",
+        "name": "Set headers",
+        "func": "// This function sets the header, a message on the main screen\n// to indicate that the bas confg is succesfully transfers \n// and as a proof of successful broker connection, it \n// subscribes to the topic of the internal temperature sensor.\n// Note that to make this happen without a flow, we have to break \n// the naming conventions of the display item for this test.\n// DO NOT EDIT THIS FILE\n// 20240201 V0.80 René Boeije, initial release  parts based on code of balk77\nvar configJSON = {};\nvar bplusdevice = flow.get('bplusdevice', 'file');\nvar bplusconfig = global.get('bplusconfig', 'file');\nvar configJSONcore = flow.get('configJSONcore', 'file');\nvar ipaddress = msg.ipaddress;\nvar mqttbrokers = bplusconfig[bplusdevice].mqttbrokers;\n//msg.ipaddress = bplusconfig[bplusdevice].ip;\nconfigJSON['core'] = configJSONcore;\nconfigJSON['mqttbrokers'] = mqttbrokers;\n// Setup message to be displayed to prove that the config\n// was succesfully loaded and an item to display the temp.\n// Note: We abuse the 'unit' property in a terrible way!\nvar displayitempage = [\n    {\n    \"displayitem\": 1,\n    \"page\": \"main\",\n    \"x\": 0,\n    \"y\": 20,\n    \"fontsize\": 2,\n    \"width\": 100,\n    \"label\": \"Info\",\n    \"value\": \"\",\n    \"unit\": \"If you can read this message, \\nthe core configuration is \\nsuccesfully loaded to your Button+\",\n    \"round\": 0,\n    \"align\": 0,\n    \"topics\": []\n    },\n    {\n    \"align\": 0,\n    \"fontsize\": 2,\n    \"label\": \"Temperature\",\n    \"round\": 1,\n    \"topics\": [\n        {\n            \"brokerid\": mqttbrokers[0].brokerid,\n            \"eventtype\": 15,\n            \"payload\": \"\",\n            \"topic\": bplusdevice + \"/sensors/temperature\"\n        }\n    ],\n    \"unit\": \"°C\",\n    \"width\": 30,\n    \"x\": 0,\n    \"y\": 10\n}\n];\nconfigJSON['mqttdisplays'] = displayitempage\n\n// Make the sensor publish its value\nvar tempSensor = [\n    {\n    \"interval\": 10,\n    \"sensorid\": 1,\n    \"topic\": {\n        \"brokerid\": mqttbrokers[0].brokerid,\n        \"eventtype\": 18,\n        \"payload\": \"\",\n        \"topic\": bplusdevice + \"/sensors/temperature\"\n        }\n    }\n]\n\nconfigJSON['mqttsensors'] = tempSensor\nmsg.payload = configJSON;\nmsg.url='http://'+ipaddress+'/configsave'\n\nmsg.headers = {};\nmsg.headers[\"Accept\"] = 'application/json';\nmsg.headers[\"Accept-Encoding\"] = 'gzip, deflate, br';\nmsg.headers[\"json\"] = true;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 60,
+        "wires": [
+            [
+                "4758e2e9f9832fe4"
+            ]
+        ],
+        "icon": "font-awesome/fa-lock"
+    },
+    {
+        "id": "6b973e554bca0358",
+        "type": "debug",
+        "z": "1044a74b4adb9c61",
+        "name": "InitData",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 60,
+        "wires": []
+    }
+]
