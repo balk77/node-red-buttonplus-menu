@@ -2,7 +2,7 @@
     {
         "id": "18dd279f36d97386",
         "type": "tab",
-        "label": "Button+ modes",
+        "label": "B+ page logic",
         "disabled": false,
         "info": "",
         "env": []
@@ -23,15 +23,37 @@
         ],
         "x": 74,
         "y": 19,
-        "w": 472,
+        "w": 492,
         "h": 142
+    },
+    {
+        "id": "20f91c554b2bf198",
+        "type": "group",
+        "z": "18dd279f36d97386",
+        "name": "Buttons subscribe to page specific topics for labels etc",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "d5ef9aae41093179",
+            "44bfea5d2f724782",
+            "93ec2f7ec45edc5b",
+            "f48878bc94b26aed",
+            "41cf2ce5166bbf8a",
+            "8fdbb046e8c742e4",
+            "b26898a67589d7e3"
+        ],
+        "x": 14,
+        "y": 1099,
+        "w": 732,
+        "h": 302
     },
     {
         "id": "1cc89963bcc5d396",
         "type": "debug",
         "z": "18dd279f36d97386",
         "name": "debug 19",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -140,9 +162,7 @@
         "x": 1810,
         "y": 580,
         "wires": [
-            [
-                "1cc89963bcc5d396"
-            ]
+            []
         ]
     },
     {
@@ -161,7 +181,8 @@
         "y": 540,
         "wires": [
             [
-                "a2a79e0bbb8e37ee"
+                "a2a79e0bbb8e37ee",
+                "1cc89963bcc5d396"
             ]
         ],
         "icon": "font-awesome/fa-lock"
@@ -447,7 +468,7 @@
         "type": "function",
         "z": "18dd279f36d97386",
         "g": "3dc14376c3d7d50c",
-        "name": "01 global config",
+        "name": "01 general config",
         "func": "// Configuration goes here:\nvar bplusdevice = \"wk1\"; // the device this page belongs to\n\n// nothing to be changed below this line\n// -------------------------------------\n\n// retrieve existing config from disk, or create when non-existent\n// this retrieves configuration for all configured B+ devices\nvar bplusconfig = global.get(\"bplusconfig\", \"file\");\nvar bplusconfigbuttons = global.get('bplusconfigbuttons','file');\nvar bplusconfigdisplayitems = global.get('bplusconfigdisplayitems', 'file');\n\n\n\n\nvar buttonpages = bplusconfig[bplusdevice].buttonpages;\nvar pages = bplusconfig[bplusdevice].pages;\n\n\n// retrieve existing config from disk, or create when non-existent\n// this retrieves configuration for all configured B+ devices\nvar bplusconfig = global.get(\"bplusconfig\", \"file\");\nif (bplusconfig == undefined) {\n    bplusconfig = {};\n\n}\n\n\n\nvar label = bplusconfigbuttons[bplusdevice].label;\nvar toplabel = bplusconfigbuttons[bplusdevice].toplabel;\nvar ledrgb = bplusconfigbuttons[bplusdevice].ledrgb;\nvar mainbutton = bplusconfigbuttons[bplusdevice].mainbutton;\n\nfor (var i in label) {\n    for (var j in label[i]) {\n\n        if (mainbutton[j] == \"main\") {\n            var label_thisbutton = label[i];\n            var label_mainbutton = label[0];\n            label_thisbutton[j] = label_mainbutton[j];\n        }\n        label[i] = label_thisbutton;\n    }\n}\n\nfor (var i in toplabel) {\n    for (var j in toplabel[i]) {\n\n        if (mainbutton[j] == \"main\") {\n            var label_thisbutton = toplabel[i];\n            var label_mainbutton = toplabel[0];\n            label_thisbutton[j] = label_mainbutton[j];\n        }\n        toplabel[i] = label_thisbutton;\n    }\n}\n\nfor (var i in ledrgb) {\n    for (var j in ledrgb[i]) {\n\n        if (mainbutton[j] == \"main\") {\n            var label_thisbutton = ledrgb[i];\n            var label_mainbutton = ledrgb[0];\n            label_thisbutton[j] = label_mainbutton[j];\n        }\n        ledrgb[i] = label_thisbutton;\n    }\n}\n\n\nbplusconfigbuttons = {\n    'label': label,\n    'toplabel': toplabel,\n    'ledrgb': ledrgb,\n    'mainbutton': mainbutton\n}\n\n\n\n\n// save the configuration and parameters to this flow, for use\n// flow.set('bplusdevice', bplusdevice, \"file\");\n// flow.set('bplusconfigdevice', bplusconfig[bplusdevice], \"file\");\nflow.set('pages',pages,\"file\");\nflow.set('buttonpages', buttonpages, \"file\");\nflow.set('configJSONcore', bplusconfig[bplusdevice].configJSONcore, \"file\");\nflow.set('bplusconfigdisplayitems',bplusconfigdisplayitems[bplusdevice]);\n\n// save the configuration and parameters to this flow, for use\nflow.set('bplusdevice', bplusdevice, \"file\");\nflow.set('bplusconfigdevice', bplusconfig[bplusdevice], \"file\");\nflow.set('bplusconfigbuttons', bplusconfigbuttons, 'file')\n\n\n\n// // save the config of all devices back to the disk\n// global.set(\"bplusconfig\", bplusconfig, \"file\")\n\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -455,7 +476,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 440,
+        "x": 450,
         "y": 60,
         "wires": [
             [
@@ -685,7 +706,8 @@
         "wires": [
             [
                 "920ae05b7da02f5e",
-                "87ee8d61ca60d62d"
+                "87ee8d61ca60d62d",
+                "8fdbb046e8c742e4"
             ]
         ]
     },
@@ -750,8 +772,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 280,
-        "y": 1000,
+        "x": 320,
+        "y": 980,
         "wires": []
     },
     {
@@ -1908,7 +1930,7 @@
         "type": "function",
         "z": "18dd279f36d97386",
         "name": "save buttonpageid",
-        "func": "var buttonpage = msg.buttonpage;\nvar buttonpages = flow.get(\"buttonpages\",\"file\");\n\nvar buttonpageid = buttonpages.indexOf(buttonpage);\nmsg.buttonpageid = buttonpageid;\nflow.set(\"buttonpageid\", buttonpageid);\nreturn msg;",
+        "func": "var buttonpage = msg.buttonpage;\nvar buttonpages = flow.get(\"buttonpages\",\"file\");\n\nvar mainbutton = flow.get(\"bplusconfigbuttons\", \"file\").mainbutton;\n\nvar mainbutton_array = [];\n// Object.keys(mainbutton).forEach((element) => {\n//     if (mainbutton[i] != \"main\") {\n//         mainbutton_array.push(buttonpage);\n//     }else{\n//         mainbutton_array.push(\"main\");\n//     }\n// })\n\nObject.entries(mainbutton).forEach(([key, value]) => {\n    // console.log(`${key}: ${value}`)\n    if (value != \"main\") {\n        mainbutton_array.push(buttonpage);\n    } else {\n        mainbutton_array.push(\"main\");\n    }\n})\n\n// for (var i = 0; i < mainbutton.length; i++) {\n//     if (mainbutton[i] != \"main\" ){\n//         mainbutton_array.push(buttonpage);\n//     }else{\n//         mainbutton_array.push(\"main\");\n//     }\n// }\n\n\n\nvar buttonpageid = buttonpages.indexOf(buttonpage);\nmsg.buttonpageid = buttonpageid;\nflow.set(\"buttonpageid\", buttonpageid);\nflow.set(\"mainbutton\", mainbutton_array);\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -1918,7 +1940,9 @@
         "x": 580,
         "y": 380,
         "wires": [
-            []
+            [
+                "20bfd02c0d57ca95"
+            ]
         ]
     },
     {
@@ -2198,6 +2222,167 @@
         "info": "",
         "x": 1270,
         "y": 880,
+        "wires": []
+    },
+    {
+        "id": "d5ef9aae41093179",
+        "type": "comment",
+        "z": "18dd279f36d97386",
+        "g": "20f91c554b2bf198",
+        "name": "Subscription to generic button MQTT topics",
+        "info": "Translates the generic button presses\ninto menu specific button presses\n\nFor insance, when buttonpage = music and button 4 is pressed:\n\nbuttonplus/<device>/button/4/state (press/release/etc)\nis translated into\nbuttonplus/<device>/button/music/4/state (press/release/etc)\n\nThis way, you can let your music player always listen to\nbuttonplus/<device>/button/music/4/state (value: press)\nto increase the volume",
+        "x": 270,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "44bfea5d2f724782",
+        "type": "mqtt in",
+        "z": "18dd279f36d97386",
+        "g": "20f91c554b2bf198",
+        "name": "",
+        "topic": "",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "e6dbd5fb3f32ec20",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 1,
+        "x": 310,
+        "y": 1240,
+        "wires": [
+            [
+                "93ec2f7ec45edc5b"
+            ]
+        ]
+    },
+    {
+        "id": "93ec2f7ec45edc5b",
+        "type": "function",
+        "z": "18dd279f36d97386",
+        "g": "20f91c554b2bf198",
+        "name": "Translate to generic B+ topics",
+        "func": "// See for more info the function node upstream\n\n// split the received topic:\nvar topic = msg.topic;\ntopic = topic.split(\"/\");\n\n// Button number of the received topic\nvar button = topic[4];\n\n// Page name of the received topic\nvar page = topic[3];\n\n// Array with active mapping of buttons;\n// for instance: [\"main\",\"main\",\"main\",\"page1\",\"page1\",\"page1\"]\n// this is prepared in the \"Save Buttonpageid\" node\nvar mainbutton = flow.get(\"mainbutton\");\n\n// check if received page name equals page name belonging to\n// the mapping in mainbutton\nif (mainbutton[button] == page) {\n    // create new topic\n    var newtopic = [topic[0], topic[1], topic[2], topic[4], topic[5]];\n    msg.topic = newtopic.join(\"/\");\n    return msg;\n} else { \n    // else do noting\n    return null; } \n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 1300,
+        "wires": [
+            [
+                "41cf2ce5166bbf8a",
+                "b26898a67589d7e3"
+            ]
+        ]
+    },
+    {
+        "id": "f48878bc94b26aed",
+        "type": "inject",
+        "z": "18dd279f36d97386",
+        "g": "20f91c554b2bf198",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "buttonpage",
+                "v": "overdag",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 1320,
+        "wires": [
+            [
+                "8fdbb046e8c742e4"
+            ]
+        ]
+    },
+    {
+        "id": "41cf2ce5166bbf8a",
+        "type": "debug",
+        "z": "18dd279f36d97386",
+        "g": "20f91c554b2bf198",
+        "name": "debug 41",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 1360,
+        "wires": []
+    },
+    {
+        "id": "8fdbb046e8c742e4",
+        "type": "function",
+        "z": "18dd279f36d97386",
+        "g": "20f91c554b2bf198",
+        "name": "Page specific B+ subscription topics",
+        "func": "// The purpose of this module is to subscribe to page-specific B+ topics\n// for the buttons\n// This means: you can send a topic to \n// buttonplus/<device>/button/<page>/<buttonid>/label\n// and it will be translated to \n// buttonplus/<device>/button/<buttonid>/label\n// but ONLY when that page is active.\n// This way, you can control the labels for the buttons \n// through MQTT, per page.\n// make sure to switch on the retain flag when issueing messages\n\n// Get base topic\nvar basetopic = flow.get('bplusconfigdevice','file').buttonpublishtopic;\n// Active button page\nvar buttonpage = msg.buttonpage;\n\n//prepare array\nvar topic = [];\n// topics to subscribe to\ntopic[0] = basetopic+buttonpage+\"/+/label\"\ntopic[1] = basetopic + buttonpage + \"/+/toplabel\"\ntopic[2] = basetopic + buttonpage + \"/+/ledrgb\"\ntopic[3] = basetopic + \"main\" + \"/+/label\"\ntopic[4] = basetopic + \"main\" + \"/+/toplabel\"\ntopic[5] = basetopic + \"main\" + \"/+/ledrgb\"\nmsg.topic = topic;\n// Activate the MQTT node\nmsg.action = 'subscribe';\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 1180,
+        "wires": [
+            [
+                "44bfea5d2f724782"
+            ]
+        ]
+    },
+    {
+        "id": "20bfd02c0d57ca95",
+        "type": "debug",
+        "z": "18dd279f36d97386",
+        "name": "debug 43",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "b26898a67589d7e3",
+        "type": "mqtt out",
+        "z": "18dd279f36d97386",
+        "g": "20f91c554b2bf198",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e6dbd5fb3f32ec20",
+        "x": 670,
+        "y": 1300,
         "wires": []
     },
     {
