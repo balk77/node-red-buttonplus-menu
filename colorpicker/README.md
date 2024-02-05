@@ -2,7 +2,13 @@ Simple flow to test Buttonplus led color.
 
 Depends on node-red-dashboard
 
+Function node:
+```
+msg.payload = parseInt(msg.payload, 16) ;
 
+
+return msg;
+```
 
 <img width="640" alt="image" src="https://github.com/balk77/node-red-buttonplus-menu/assets/10166350/127fbfed-7c33-4ed2-8012-e3157a851de2">
 
