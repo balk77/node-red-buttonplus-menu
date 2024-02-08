@@ -1,1 +1,874 @@
 
+[
+    {
+        "id": "ee7dfcae62a1d1d1",
+        "type": "subflow",
+        "name": "B+ MQTT to main",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 80,
+                "y": 100,
+                "wires": [
+                    {
+                        "id": "a49cd7b39edf50ad"
+                    }
+                ]
+            }
+        ],
+        "out": [],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "96d164091bca558c",
+        "type": "mqtt out",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "value",
+        "topic": "",
+        "qos": "0",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e6dbd5fb3f32ec20",
+        "x": 730,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "523048e5478dc2ba",
+        "type": "change",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "label",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 300,
+        "wires": [
+            [
+                "b18f1afeaa130737"
+            ]
+        ]
+    },
+    {
+        "id": "b18f1afeaa130737",
+        "type": "mqtt out",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "title",
+        "topic": "",
+        "qos": "0",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e6dbd5fb3f32ec20",
+        "x": 730,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "e343e9a04e0cf6df",
+        "type": "mqtt out",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "uom",
+        "topic": "",
+        "qos": "0",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e6dbd5fb3f32ec20",
+        "x": 730,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "2906bb2e666b787a",
+        "type": "change",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "uom",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 240,
+        "wires": [
+            [
+                "e343e9a04e0cf6df"
+            ]
+        ]
+    },
+    {
+        "id": "4b58c6126865041d",
+        "type": "function",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "concat uom",
+        "func": "var appendix='uom'\nmsg.topic = msg.topic.concat(appendix)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 240,
+        "wires": [
+            [
+                "2906bb2e666b787a"
+            ]
+        ]
+    },
+    {
+        "id": "ef07977994e4e2f4",
+        "type": "function",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "concat label",
+        "func": "var appendix='label'\nmsg.topic = msg.topic.concat(appendix)\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 300,
+        "wires": [
+            [
+                "523048e5478dc2ba"
+            ]
+        ]
+    },
+    {
+        "id": "7611744803215c96",
+        "type": "function",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "concat value",
+        "func": "var appendix='value'\nmsg.topic = msg.topic.concat(appendix)\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 360,
+        "wires": [
+            [
+                "96d164091bca558c"
+            ]
+        ]
+    },
+    {
+        "id": "a49cd7b39edf50ad",
+        "type": "function",
+        "z": "ee7dfcae62a1d1d1",
+        "name": "set topic",
+        "func": "msg.topic = \"buttonplus/\"+msg.device+\"/display/\"+msg.page+\"/\"+msg.displayitem+\"/\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 140,
+        "y": 300,
+        "wires": [
+            [
+                "4b58c6126865041d",
+                "ef07977994e4e2f4",
+                "7611744803215c96"
+            ]
+        ]
+    },
+    {
+        "id": "e6dbd5fb3f32ec20",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.1.7",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "1ab4106bfcbcc16b",
+        "type": "tab",
+        "label": "Vertrektijden",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f3fa7218b2333365",
+        "type": "function",
+        "z": "1ab4106bfcbcc16b",
+        "name": "Prepare HTTP call",
+        "func": "\nvar url = 'https://gateway.apiportal.ns.nl/reisinformatie-api/api/v3/trips/?'\n\nif (msg.fromStation != undefined) {\n    var fromStation = \"&fromStation=\" + msg.fromStation;\n} else { var fromStation =\"\"}\nif (msg.viaStation != undefined) {\n    var viaStation = \"&viaStation=\" + msg.viaStation;\n} else { var viaStation = \"\" }\nif(msg.toStation != undefined){\n    var toStation = \"&toStation=\"+msg.toStation;\n} else { var toStation = \"\" }\n\nurl = url+fromStation+toStation+viaStation;\n\nmsg.url = url;\n\nmsg.headers = {};\nmsg.headers[\"Accept\"] = 'application/json';\nmsg.headers[\"Ocp-Apim-Subscription-Key\"] = msg.nsapikey;\nreturn msg;\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 40,
+        "wires": [
+            [
+                "96707dd6b9bede0f"
+            ]
+        ]
+    },
+    {
+        "id": "96707dd6b9bede0f",
+        "type": "http request",
+        "z": "1ab4106bfcbcc16b",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 550,
+        "y": 80,
+        "wires": [
+            [
+                "a74dc589f0ab3936"
+            ]
+        ]
+    },
+    {
+        "id": "94aebc22b6c40d08",
+        "type": "debug",
+        "z": "1ab4106bfcbcc16b",
+        "name": "actualDepartureDateTime",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "d641cb92fe3eef02",
+        "type": "inject",
+        "z": "1ab4106bfcbcc16b",
+        "name": "Manual trigger",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 40,
+        "wires": [
+            [
+                "3a60b2c3f8bd7ff5"
+            ]
+        ]
+    },
+    {
+        "id": "a74dc589f0ab3936",
+        "type": "json",
+        "z": "1ab4106bfcbcc16b",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 530,
+        "y": 120,
+        "wires": [
+            [
+                "53e24527ad167f12"
+            ]
+        ]
+    },
+    {
+        "id": "0a6cb9760c3016b5",
+        "type": "change",
+        "z": "1ab4106bfcbcc16b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "zactualDepartureDateTime.0",
+                "pt": "msg",
+                "to": "payload.trips.0.legs.0.stops.0.actualDepartureDateTime",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "plannedDepartureDateTime.0",
+                "pt": "msg",
+                "to": "payload.trips.0.legs.0.stops.0.plannedDepartureDateTime",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "zactualDepartureDateTime.1",
+                "pt": "msg",
+                "to": "payload.trips.1.legs.0.stops.0.actualDepartureDateTime",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "plannedDepartureDateTime.1",
+                "pt": "msg",
+                "to": "payload.trips.1.legs.0.stops.0.plannedDepartureDateTime",
+                "tot": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 200,
+        "wires": [
+            [
+                "a31703adafa23d8b"
+            ]
+        ]
+    },
+    {
+        "id": "a31703adafa23d8b",
+        "type": "moment",
+        "z": "1ab4106bfcbcc16b",
+        "name": "actualDepartureDateTimeunix.0",
+        "topic": "",
+        "input": "actualDepartureDateTime.0",
+        "inputType": "msg",
+        "inTz": "Europe/Amsterdam",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "X",
+        "locale": "C",
+        "output": "actualDepartureDateTimeunix.0",
+        "outputType": "msg",
+        "outTz": "Europe/Amsterdam",
+        "x": 570,
+        "y": 300,
+        "wires": [
+            [
+                "2320545e8530cb7d"
+            ]
+        ]
+    },
+    {
+        "id": "2320545e8530cb7d",
+        "type": "moment",
+        "z": "1ab4106bfcbcc16b",
+        "name": "plannedDepartureDateTimeunix.0",
+        "topic": "",
+        "input": "plannedDepartureDateTime.0",
+        "inputType": "msg",
+        "inTz": "Europe/Amsterdam",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "X",
+        "locale": "C",
+        "output": "plannedDepartureDateTimeunix.0",
+        "outputType": "msg",
+        "outTz": "Europe/Amsterdam",
+        "x": 580,
+        "y": 340,
+        "wires": [
+            [
+                "078c523bbf9bb740"
+            ]
+        ]
+    },
+    {
+        "id": "aa307279d0e260d6",
+        "type": "function",
+        "z": "1ab4106bfcbcc16b",
+        "name": "Calc delay and prep message",
+        "func": "// Get actual and planned time in unix time stamp\nvar actualDepartureDateTimeunix = msg.actualDepartureDateTimeunix;\nvar plannedDepartureDateTimeunix = msg.plannedDepartureDateTimeunix;\n// Get actual and planned time in 24h format\nvar actualDepartureDateTime = msg.actualDepartureDateTime;\nvar plannedDepartureDateTime = msg.plannedDepartureDateTime;\n\n// initialize delay array\nvar delay = [];\nvar hasdelay = [];\n// calculate delay, and round to whole number\ndelay[0] = Math.round((actualDepartureDateTimeunix[0] - plannedDepartureDateTimeunix[0])/60);\ndelay[1] = Math.round((actualDepartureDateTimeunix[1] - plannedDepartureDateTimeunix[1]) / 60);\n\n// if delay > 0, format time like \"7:24 + 1\"\nif (delay[0] != 0) {\n    hasdelay[0] = true;\n    msg.plannedDepartureDateTime[0]\n        = plannedDepartureDateTime[0] + \" + \" + delay[0];\n} else { hasdelay[0] = false; }\nif (delay[1] != 0) {\n    hasdelay[1] = true;\n    msg.plannedDepartureDateTime[1]\n        = plannedDepartureDateTime[1] + \" + \" + delay[1];\n} else { hasdelay[1] = false; }\n\n// set msg.hasdelay to true if train 1 or 2 has delay\nmsg.hasdelay = hasdelay.includes(true);\n\n// array with delay (minutes)\nmsg.delay = delay;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 930,
+        "y": 380,
+        "wires": [
+            [
+                "94aebc22b6c40d08",
+                "a0d6d382f23edbe3"
+            ]
+        ]
+    },
+    {
+        "id": "c7b805b47292e772",
+        "type": "moment",
+        "z": "1ab4106bfcbcc16b",
+        "name": "plannedDepartureDateTime.0",
+        "topic": "",
+        "input": "plannedDepartureDateTime.0",
+        "inputType": "msg",
+        "inTz": "Europe/Amsterdam",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "H:mm",
+        "locale": "C",
+        "output": "plannedDepartureDateTime.0",
+        "outputType": "msg",
+        "outTz": "Europe/Amsterdam",
+        "x": 570,
+        "y": 420,
+        "wires": [
+            [
+                "2583e2c168baefa3"
+            ]
+        ]
+    },
+    {
+        "id": "078c523bbf9bb740",
+        "type": "moment",
+        "z": "1ab4106bfcbcc16b",
+        "name": "actualDepartureDateTime.0",
+        "topic": "",
+        "input": "actualDepartureDateTime.0",
+        "inputType": "msg",
+        "inTz": "Europe/Amsterdam",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "H:mm",
+        "locale": "C",
+        "output": "actualDepartureDateTime.0",
+        "outputType": "msg",
+        "outTz": "Europe/Amsterdam",
+        "x": 560,
+        "y": 380,
+        "wires": [
+            [
+                "c7b805b47292e772"
+            ]
+        ]
+    },
+    {
+        "id": "2583e2c168baefa3",
+        "type": "moment",
+        "z": "1ab4106bfcbcc16b",
+        "name": "actualDepartureDateTimeunix.1",
+        "topic": "",
+        "input": "actualDepartureDateTime.1",
+        "inputType": "msg",
+        "inTz": "Europe/Amsterdam",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "X",
+        "locale": "C",
+        "output": "actualDepartureDateTimeunix.1",
+        "outputType": "msg",
+        "outTz": "Europe/Amsterdam",
+        "x": 570,
+        "y": 460,
+        "wires": [
+            [
+                "c7fe55805078457b"
+            ]
+        ]
+    },
+    {
+        "id": "c7fe55805078457b",
+        "type": "moment",
+        "z": "1ab4106bfcbcc16b",
+        "name": "plannedDepartureDateTimeunix.1",
+        "topic": "",
+        "input": "plannedDepartureDateTime.1",
+        "inputType": "msg",
+        "inTz": "Europe/Amsterdam",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "X",
+        "locale": "C",
+        "output": "plannedDepartureDateTimeunix.1",
+        "outputType": "msg",
+        "outTz": "Europe/Amsterdam",
+        "x": 580,
+        "y": 500,
+        "wires": [
+            [
+                "3e17028becd9923a"
+            ]
+        ]
+    },
+    {
+        "id": "2e5ff5e9825e3c2e",
+        "type": "moment",
+        "z": "1ab4106bfcbcc16b",
+        "name": "plannedDepartureDateTime.1",
+        "topic": "",
+        "input": "plannedDepartureDateTime.1",
+        "inputType": "msg",
+        "inTz": "Europe/Amsterdam",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "H:mm",
+        "locale": "C",
+        "output": "plannedDepartureDateTime.1",
+        "outputType": "msg",
+        "outTz": "Europe/Amsterdam",
+        "x": 570,
+        "y": 580,
+        "wires": [
+            [
+                "aa307279d0e260d6"
+            ]
+        ]
+    },
+    {
+        "id": "3e17028becd9923a",
+        "type": "moment",
+        "z": "1ab4106bfcbcc16b",
+        "name": "actualDepartureDateTime.1",
+        "topic": "",
+        "input": "actualDepartureDateTime.1",
+        "inputType": "msg",
+        "inTz": "Europe/Amsterdam",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "H:mm",
+        "locale": "C",
+        "output": "actualDepartureDateTime.1",
+        "outputType": "msg",
+        "outTz": "Europe/Amsterdam",
+        "x": 560,
+        "y": 540,
+        "wires": [
+            [
+                "2e5ff5e9825e3c2e"
+            ]
+        ]
+    },
+    {
+        "id": "3a60b2c3f8bd7ff5",
+        "type": "change",
+        "z": "1ab4106bfcbcc16b",
+        "name": "Config",
+        "rules": [
+            {
+                "t": "set",
+                "p": "fromStation",
+                "pt": "msg",
+                "to": "Ams",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "toStation",
+                "pt": "msg",
+                "to": "Hfd",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "viaStation",
+                "pt": "msg",
+                "to": "Ledn",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "label",
+                "pt": "msg",
+                "to": "Volgende treinen naar Hoofddorp",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "nsapikey",
+                "pt": "msg",
+                "to": "abc",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "device",
+                "pt": "msg",
+                "to": "wk1",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "page",
+                "pt": "msg",
+                "to": "ochtend",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "displayitem",
+                "pt": "msg",
+                "to": "41",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 40,
+        "wires": [
+            [
+                "f3fa7218b2333365",
+                "28ea54add1f9a43a"
+            ]
+        ]
+    },
+    {
+        "id": "53e24527ad167f12",
+        "type": "function",
+        "z": "1ab4106bfcbcc16b",
+        "name": "Next two train times",
+        "func": "var payload = msg.payload;\nvar actualDepartureDateTime = [];\nvar plannedDepartureDateTime = [];\nactualDepartureDateTime[0] = payload['trips'][0]['legs'][0]['stops'][0]['actualDepartureDateTime'];\nactualDepartureDateTime[1] = payload['trips'][1]['legs'][0]['stops'][0]['actualDepartureDateTime'];\nplannedDepartureDateTime[0] = payload['trips'][0]['legs'][0]['stops'][0]['plannedDepartureDateTime'];\nplannedDepartureDateTime[1] = payload['trips'][1]['legs'][0]['stops'][0]['plannedDepartureDateTime'];\n\n\nif (actualDepartureDateTime[0] == null) {\n    actualDepartureDateTime[0] = plannedDepartureDateTime[0];\n}\n\nif (actualDepartureDateTime[1] == null) {\n    actualDepartureDateTime[1] = plannedDepartureDateTime[1];\n}\n\nmsg.actualDepartureDateTime = actualDepartureDateTime;\nmsg.plannedDepartureDateTime = plannedDepartureDateTime;\nmsg.actualDepartureDateTime0 = actualDepartureDateTime[0];\nmsg.actualDepartureDateTime1 = actualDepartureDateTime[1];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 160,
+        "wires": [
+            [
+                "0a6cb9760c3016b5"
+            ]
+        ]
+    },
+    {
+        "id": "a0d6d382f23edbe3",
+        "type": "function",
+        "z": "1ab4106bfcbcc16b",
+        "name": "Beautify message",
+        "func": "var time = msg.plannedDepartureDateTime;\n\nmsg.payload = time[0]+\", \"+time[1];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 500,
+        "wires": [
+            [
+                "fcbd92cf168aeadd"
+            ]
+        ]
+    },
+    {
+        "id": "6860904732aef6dc",
+        "type": "comment",
+        "z": "1ab4106bfcbcc16b",
+        "name": "Convert timestamps to usable formats",
+        "info": "",
+        "x": 590,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "fcbd92cf168aeadd",
+        "type": "subflow:ee7dfcae62a1d1d1",
+        "z": "1ab4106bfcbcc16b",
+        "name": "",
+        "x": 1130,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "43049733653df5d8",
+        "type": "mqtt in",
+        "z": "1ab4106bfcbcc16b",
+        "name": "",
+        "topic": "buttonplus/wk1/treintijden",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "e6dbd5fb3f32ec20",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 170,
+        "y": 180,
+        "wires": [
+            [
+                "205219ddcd04c09a"
+            ]
+        ]
+    },
+    {
+        "id": "205219ddcd04c09a",
+        "type": "change",
+        "z": "1ab4106bfcbcc16b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "fromStation",
+                "pt": "msg",
+                "to": "payload.fromStation",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "toStation",
+                "pt": "msg",
+                "to": "payload.toStation",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "viaStation",
+                "pt": "msg",
+                "to": "payload.viaStation",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "device",
+                "pt": "msg",
+                "to": "payload.device",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "page",
+                "pt": "msg",
+                "to": "payload.page",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "displayitem",
+                "pt": "msg",
+                "to": "payload.displayitem",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "nsapikey",
+                "pt": "msg",
+                "to": "payload.nsapikey",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 100,
+        "wires": [
+            [
+                "f3fa7218b2333365",
+                "28ea54add1f9a43a"
+            ]
+        ]
+    },
+    {
+        "id": "28ea54add1f9a43a",
+        "type": "debug",
+        "z": "1ab4106bfcbcc16b",
+        "name": "debug 44",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 80,
+        "wires": []
+    }
+]
